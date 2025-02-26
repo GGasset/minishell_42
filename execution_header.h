@@ -59,10 +59,3 @@ typedef struct s_exe
 	t_cmd *commands;
 	size_t command_count;
 }		t_exe;
-
-
-
-typedef struct s_shell
-{
-	char **envp;
-}		t_shell;

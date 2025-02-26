@@ -42,3 +42,8 @@ typedef struct s_raw_line
 	t_raw_cmd		*raw_commands;
 	size_t			len;
 }		t_raw_line;
+
+typedef struct s_shell
+{
+	char **envp;
+}		t_shell;

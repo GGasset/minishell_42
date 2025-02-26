@@ -1,0 +1,5 @@
+
+" or ' parsing
+
+" o ' solo cambia si se hace un split a los espacios o no
+	e.j. mkdir "h     ola"" Que tal" " estas"

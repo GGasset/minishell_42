@@ -1,5 +1,5 @@
 
-#include "common_header.h"
+#include "common_structs.h"
 
 typedef struct s_operator
 {

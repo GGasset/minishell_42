@@ -21,13 +21,15 @@ Pasos para parsing:
 	3. comillas
 	4. Separar por operadores, tokenizar
 		* crear la estructura t_raw_line
-		* funcion:
+		* funcion tokenizadora:
 			* Input:
 				* Pasas un char puntero de inicio
-				* Puntero a operator_type del anterior token
 			* Output:
 				* Con return:
-					* t_raw_cmd *
-				* Con puntero a puntero: 
-					* La posicion en la que acaba el token
+ 					* t_raw_cmd *
+		* funcion que avance un token
+			* Input:
+				* Pasas un char * de inicio
+			* Output:
+				* Te devuelve el puntero del inicio del siguiente comando, archivo
 		 

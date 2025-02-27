@@ -14,10 +14,20 @@ Pasos para parsing:
 		* Mirar comillas sin cerrar, solo mirar las de mas afuera
 			* Nota: echo " ' "" ' "
 				* Prueba que no se puede hacer nesting de comillas
+		* Normalizar espacios y tabuladores en un espacio si esta fuera de comillas
 
 	2. Variables de entorno
 		* Una funcion que sea consciente de cuales commillas son las que le rodean de mas afuera y sustituya las variables
 	3. comillas
-	4. Separar en operadores
-		* 
+	4. Separar por operadores, tokenizar
+		* crear la estructura t_raw_line
+		* funcion:
+			* Input:
+				* Pasas un char puntero de inicio
+				* Puntero a operator_type del anterior token
+			* Output:
+				* Con return:
+					* t_raw_cmd *
+				* Con puntero a puntero: 
+					* La posicion en la que acaba el token
 		 

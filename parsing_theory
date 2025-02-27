@@ -3,3 +3,21 @@
 
 " o ' solo cambia si se hace un split a los espacios o no
 	e.j. mkdir "h     ola"" Que tal" " estas"
+
+contenido dentro de " expande las variables mientras contenido dentro de ' no las expande
+
+Solo hay que tomar en cuenta si estas en las comillas de mas afuera
+	e.j. mkdir 'Hola "$PATH"'
+
+Pasos para parsing:
+	1. Checkear errores
+		* Mirar comillas sin cerrar, solo mirar las de mas afuera
+			* Nota: echo " ' "" ' "
+				* Prueba que no se puede hacer nesting de comillas
+
+	2. Variables de entorno
+		* Una funcion que sea consciente de cuales commillas son las que le rodean de mas afuera y sustituya las variables
+	3. comillas
+	4. Separar en operadores
+		* 
+		 

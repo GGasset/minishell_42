@@ -46,4 +46,4 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 		* Notas:
 			* Ya que la los espacios fuera de comillas estan normalizados 
 			* Aqui se checkean los argv
-				* Los argv no deben contener las comillas de mas afuera
+				* Los argv no deben contener las comillas de mas afuera: echo "Hola"Que" Tal'"

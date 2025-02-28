@@ -26,7 +26,7 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 	* Es el primer paso (antes de la normalizacion de espacios) debido a el ejemplo:
 		1. HM="          a       asd    |"
 		2. echo $HM
-		3. echo 
+		3. echo "$HM"
 
 2. Checkear errores y normalizacion
 	* Mirar comillas sin cerrar, solo mirar las de mas afuera

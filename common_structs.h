@@ -7,9 +7,7 @@ enum operator_type
 	stdout_redirect,
 	stdin_delimiter,
 	stdout_append,
-	pipe_left,
-	between_pipes,
-	pipe_right
+	pipe
 };
 
 typedef struct s_raw_cmd
@@ -23,16 +21,16 @@ typedef struct s_raw_cmd
  * example "<in cat | cat>outi"
  raw_commands:
 	- {in, 0, stdin_redirect}
-	- {cat, {"cat"}, pipe_left}
-	- {cat, {"cat"}, pipe_right}
+	- {cat, {"cat"}, pipe}
+	- {cat, {"cat"}, pipe}
 	- {outi, 0, stdout_redirect}
  len: 4
  * example "<< "EOF" cat | cat -e | cat"
  raw_commands:
 	- {EOF, 0, stdin_delimiter}
-	- {cat, {"cat"}, pipe_left}
-	- {cat, {"cat", "-e"}, between_pipes}
-	- {cat, {"cat"}, pipe_right}
+	- {cat, {"cat"}, pipe}
+	- {cat, {"cat", "-e"}, pipe}
+	- {cat, {"cat"}, pipe}
  * example "<in cat"
  raw_commands:
 	- {in, 0, stdin_redirect}

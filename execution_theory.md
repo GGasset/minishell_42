@@ -15,4 +15,4 @@ Pasos:
 				- no pipe stdout redirect
 		* Añadir operadores de t_cmd
 			- abrir fds o pipes
-			- En caso de 
+			- En caso de heredoc (<<) crear archivo, leer de stdin y traducir a stdin redirect (<)

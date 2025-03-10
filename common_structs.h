@@ -2,6 +2,7 @@
 enum operator_type
 {
 	no_stdout_redirect,
+	no_pipe_stdout_redirect,
 	stdin_redirect,
 	stdout_redirect,
 	stdin_delimiter,
@@ -36,6 +37,10 @@ typedef struct s_raw_cmd
  raw_commands:
 	- {in, 0, stdin_redirect}
 	- {cat, {"cat"}, no_stdout_redirect}
+ * example "<in cat > out"
+	- {in, 0, stdin_redirect}
+	- {cat, {"cat"}, no_pipe_stdout_redirect}
+	- {out, 0, stdout_redirect}
 */
 typedef struct s_raw_line
 {

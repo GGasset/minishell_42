@@ -15,11 +15,11 @@ typedef struct s_operator
 		* Does not use pipe
 	- (<<) 
 		* fd of dupped command stdin
-		* Added to next operator
+		* Added to prev operator
 		* 
 	- (>>)
 		* fd of file opended in APPEND mode
-		* Added to prev operator
+		* Added to next operator
 		* Does not use pipe
 	- (|)
 		* fd of next stdin program dupped fd
@@ -41,6 +41,7 @@ typedef struct s_cmd
 		1) <
 		2) <<
 	### Nullable
+	* Redirects stdin
 	*/
 	t_operator *prev_operator;
 
@@ -50,6 +51,7 @@ typedef struct s_cmd
 		2) >>
 		3) |
 	### Nullable
+	* Redirects stdout
 	*/
 	t_operator *next_operator;
 } t_cmd;

@@ -22,7 +22,7 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 	
 # Pasos para parsing:
 1. Variables de entorno
-	* Una funcion que sea consciente de cuales comillas son las que le rodean de mas afuera y sustituya las variables
+	* Una funcion que sea consciente de cuales comillas son las que le rodean de mas afuera (no reemplazar en caso de comillas simples) y sustituya las variables
 	* Es el primer paso (antes de la normalizacion de espacios) debido a el ejemplo:
 		1. HM="          a       asd    |"
 		2. echo $HM

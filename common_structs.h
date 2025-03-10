@@ -15,6 +15,7 @@ typedef struct s_raw_cmd
 	char *file;
 	char **argv;
 	operator_type type;
+	int is_builtin;
 }		t_raw_cmd;
 
 /*

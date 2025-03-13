@@ -1,7 +1,7 @@
 
 
 Pasos:
-	Checkear errores:
+	* Checkear errores:
 		* Chekear si los comando son builtin
 
 		* Conseguir la ruta de el nombre de los archivos
@@ -21,3 +21,7 @@ Pasos:
 			- abrir fds o pipes
 			- En caso de heredoc (<<) crear archivo, leer de stdin y traducir a stdin redirect (<)
 				* Añadir archivo a files_to_delete en t_shell, los archivos seran separados por ":"
+		* Hacer free a t_raw_line
+
+	* Ejecutar
+	* Hacer free a todo

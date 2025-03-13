@@ -2,12 +2,14 @@
 
 Pasos:
 	Checkear errores:
-		* Comprobar existencia de archivos si se requiere, permisos de archivos (Unicamente los necesarios)
-	
-	Conseguir la ruta de el nombre de los archivos
-		(Hecho en pipex)
+		* Chekear si los comando son builtin
 
-	Crear la estructura t_exe
+		* Conseguir la ruta de el nombre de los archivos
+			- (Hecho en pipex)
+	
+		* Comprobar existencia de archivos si se requiere, permisos de archivos (Unicamente los permisos y archivos necesarios)
+
+	* Crear la estructura t_exe
 		* crear un t_cmd por comando
 			* Un comando es un t_raw_cmd con tipo de operador:
 				* Sin redireccion de stdout

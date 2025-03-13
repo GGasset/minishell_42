@@ -1,6 +1,18 @@
 
 #include "common_structs.h"
 
+enum builtin_type
+{
+	command,
+	echo,
+	cd,
+	pwd,
+	export,
+	unset,
+	env,
+	exit
+};
+
 typedef struct s_operator
 {
 	/*
@@ -54,6 +66,8 @@ typedef struct s_cmd
 	* Redirects stdout
 	*/
 	t_operator *next_operator;
+
+	builtin_type command_tye;
 } t_cmd;
 
 typedef struct s_exe

@@ -22,23 +22,23 @@ typedef struct s_raw_cmd
  * example "<in cat | cat>outi"
  raw_commands:
 	- {in, 0, stdin_redirect}
-	- {cat, {"cat"}, pipe}
-	- {cat, {"cat"}, pipe}
+	- {cat, {"cat", 0}, pipe}
+	- {cat, {"cat", 0}, pipe}
 	- {outi, 0, stdout_redirect}
  len: 4
  * example "<< "EOF" cat | cat -e | cat"
  raw_commands:
 	- {EOF, 0, stdin_delimiter}
-	- {cat, {"cat"}, pipe}
-	- {cat, {"cat", "-e"}, pipe}
-	- {cat, {"cat"}, pipe}
+	- {cat, {"cat", 0}, pipe}
+	- {cat, {"cat", "-e", 0}, pipe}
+	- {cat, {"cat", 0}, pipe}
  * example "<in cat"
  raw_commands:
 	- {in, 0, stdin_redirect}
-	- {cat, {"cat"}, no_stdout_redirect}
+	- {cat, {"cat", 0}, no_stdout_redirect}
  * example "<in cat > out"
 	- {in, 0, stdin_redirect}
-	- {cat, {"cat"}, no_pipe_stdout_redirect}
+	- {cat, {"cat", 0}, no_pipe_stdout_redirect}
 	- {out, 0, stdout_redirect}
 */
 typedef struct s_raw_line

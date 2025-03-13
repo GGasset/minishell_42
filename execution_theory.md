@@ -16,7 +16,6 @@ Pasos:
 					- no stdout redirect
 				* Con redireccion de stdout
 					- pipe
-						* mirar el comando de adelante y atras si existen para saber si conectarlos
 				- no pipe stdout redirect
 		* Añadir operadores de t_cmd
 			- abrir fds o pipes

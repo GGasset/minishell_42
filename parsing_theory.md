@@ -1,6 +1,8 @@
 
 # Notas
 
+## Hacer todo esto en una funcion para implementar ";" facilmente
+
 " or ' parsing
 
 " o ' solo cambia si se hace un split a los espacios o no

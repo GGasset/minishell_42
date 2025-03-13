@@ -20,3 +20,4 @@ Pasos:
 		* Añadir operadores de t_cmd
 			- abrir fds o pipes
 			- En caso de heredoc (<<) crear archivo, leer de stdin y traducir a stdin redirect (<)
+				* Añadir archivo a files_to_delete en t_shell, los archivos seran separados por ":"

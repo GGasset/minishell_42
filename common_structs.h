@@ -50,4 +50,5 @@ typedef struct s_raw_line
 typedef struct s_shell
 {
 	char **envp;
+	char *files_to_delete;
 }		t_shell;

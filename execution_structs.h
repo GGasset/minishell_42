@@ -52,6 +52,7 @@ typedef struct s_cmd
 	# Used with:
 		1) <
 		2) <<
+		3) |
 	### Nullable
 	* Redirects stdin
 	*/

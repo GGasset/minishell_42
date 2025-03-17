@@ -1,4 +1,7 @@
 
+#ifndef COMMON_HEADER_H
+# define COMMON_HEADER_H
+
 enum operator_type
 {
 	no_stdout_redirect,
@@ -52,3 +55,5 @@ typedef struct s_shell
 	char **envp;
 	char *files_to_delete;
 }		t_shell;
+
+#endif

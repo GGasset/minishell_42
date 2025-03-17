@@ -1,5 +1,8 @@
 
-#include "common_structs.h"
+#ifndef EXECUTION_HEADER_H
+# define EXECUTION_HEADER_H
+
+# include "common_header.h"
 
 enum builtin_type
 {
@@ -76,3 +79,5 @@ typedef struct s_exe
 	t_cmd *commands;
 	size_t command_count;
 }		t_exe;
+
+#endif

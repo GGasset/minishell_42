@@ -2,6 +2,9 @@
 #ifndef COMMON_HEADER_H
 # define COMMON_HEADER_H
 
+# include <stddef.h>
+# include <libft.h>
+
 enum operator_type
 {
 	no_stdout_redirect,
@@ -52,6 +55,7 @@ typedef struct s_raw_line
 
 typedef struct s_shell
 {
+	unsigned char last_return_code;
 	char **envp;
 	char *files_to_delete;
 }		t_shell;

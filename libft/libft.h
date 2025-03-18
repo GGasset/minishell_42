@@ -60,6 +60,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
 char	*ft_strdup(const char *s);
+char	*ft_strdup_free(char *s, int free_s);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strjoin_free(char *s1, char *s2, int free1, int free2);
 

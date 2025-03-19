@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:08:42 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/19 19:47:13 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/19 20:25:20 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	is_valid_env_char(char c)
 
 // Gets next dollarsign outside single quotes (')
 // If dollarsign is followed by a non alpha numeric character is ignored
-static char	*get_next_dollar(char *s)
+static size_t	get_next_dollar(char *s)
 {
 	size_t	i;
 	char	quotes;
@@ -29,8 +29,8 @@ static char	*get_next_dollar(char *s)
 	while (s && s[i])
 	{
 		handle_quotes(s[i], &quotes);
-		if (s[i] == '$' && quotes != '\'' && ft_isalnum(s[i + 1]))
-			return (s + i);
+		if (s[i] == '$' && quotes != '\'' && is_valid_env_char(s[i + 1]))
+			return (i);
 		i++;
 	}
 	return (0);
@@ -71,11 +71,37 @@ static char	*get_replacer_text(char *s, t_shell *shell)
 	if (!out)
 		return (0);
 	out = ft_strdup(get_envp(tmp, shell->envp));
+	if (!out)
+		out = ft_strdup("");
 	free(tmp);
 	return (out);
 }
 
 char	*ft_shell_replace(char *s, t_shell *shell)
 {
-	
+	char	*out;
+	size_t	replace_start;
+	char	*replacer;
+	size_t	dollar_i;
+	size_t	tmp;
+
+	if (!s || !shell)
+		return (0);
+	out = ft_strdup(s);
+	dollar_i = 0;
+	dollar_i = get_next_dollar(s);
+	replace_start = dollar_i;
+	while (dollar_i)
+	{
+		replacer = get_replacer_text(s + dollar_i, shell);
+		out = ft_index_replace(out, replace_start,
+				get_replaced_len(s + dollar_i), replacer);
+		dollar_i += get_replaced_len(s + dollar_i);
+		if (!get_next_dollar(s + dollar_i))
+			dollar_i = 0;
+		tmp = get_next_dollar(s + dollar_i);
+		replace_start += tmp + ft_strlen(replacer);
+		dollar_i += tmp;
+		free(replacer);
+	}
 }

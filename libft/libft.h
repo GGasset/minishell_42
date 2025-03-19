@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:06:22 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/19 15:12:34 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:18:02 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ char	*ft_strdup(const char *s);
 char	*ft_strdup_free(char *s, int free_s);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strjoin_free(char *s1, char *s2, int free1, int free2);
+
+// free's s
 char	*ft_index_replace(char *s, size_t start, size_t replace_len, char *new);
 char	*ft_replace(char *s, char *old, char *new, int free_s);
 

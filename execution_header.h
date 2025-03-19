@@ -10,7 +10,7 @@ enum builtin_type
 	echo,
 	cd,
 	pwd,
-	export,
+	export_b,
 	unset,
 	env,
 	exit
@@ -43,7 +43,7 @@ typedef struct s_operator
 	*/
 	int fd;
 	int pipe[2];
-	operator_type type;
+	e_operators type;
 }		t_operator;
 
 typedef struct s_cmd

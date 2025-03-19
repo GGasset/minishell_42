@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/19 15:15:15 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:50:26 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ enum e_operators
 	stdout_redirect,
 	stdin_delimiter,
 	stdout_append,
-	pipe
+	pipe_op
 };
 
 typedef struct s_raw_cmd

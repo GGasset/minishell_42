@@ -32,6 +32,8 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 	* Solo son validos para expandir los caracteres alfanumericos
 	* Al expandir solo buscara hasta que no halla caracteres valido
 	* $[caracter no valido] o $ no sera considerado como valido para expandir y sera ignorado, se buscara el proximo $
+	* Caso especial
+		- echo $?a
 
 2. Checkear errores y normalizacion
 	* Mirar comillas sin cerrar, solo mirar las de mas afuera

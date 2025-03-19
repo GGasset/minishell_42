@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:05:22 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/19 15:11:49 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:40:23 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_index_replace(char *s, size_t start, size_t replace_len, char *new)
 
 	if (!s)
 		return (0);
-	new_len = ft_strlen(new_len);
+	new_len = ft_strlen(new);
 	s_new_len = ft_strlen(s);
 	if (start + replace_len > s_new_len)
 		replace_len = s_new_len - start;

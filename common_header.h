@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   common_header.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
+/*   Updated: 2025/03/19 15:15:15 by ggasset-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef COMMON_HEADER_H
 # define COMMON_HEADER_H
@@ -5,7 +16,7 @@
 # include <stddef.h>
 # include <libft.h>
 
-enum operator_type
+enum e_operators
 {
 	no_stdout_redirect,
 	no_pipe_stdout_redirect,
@@ -18,10 +29,10 @@ enum operator_type
 
 typedef struct s_raw_cmd
 {
-	char *file;
-	char **argv;
-	operator_type type;
-	int is_builtin;
+	char				*file;
+	char				**argv;
+	enum e_operators	type;
+	int					is_builtin;
 }		t_raw_cmd;
 
 /*
@@ -55,9 +66,9 @@ typedef struct s_raw_line
 
 typedef struct s_shell
 {
-	unsigned char last_return_code;
-	char **envp;
-	char *files_to_delete;
+	unsigned char	last_return_code;
+	char			**envp;
+	char			*files_to_delete;
 }		t_shell;
 
 #endif

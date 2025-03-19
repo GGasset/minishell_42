@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:06:22 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/19 16:18:02 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:35:04 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		ft_abs(int n);
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
+int		ft_isquotes(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);

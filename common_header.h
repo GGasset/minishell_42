@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/19 15:50:26 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:56:28 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define COMMON_HEADER_H
 
 # include <stddef.h>
+# include <fcntl.h>
 # include <libft.h>
 
 enum e_operators
@@ -70,5 +71,9 @@ typedef struct s_shell
 	char			**envp;
 	char			*files_to_delete;
 }		t_shell;
+
+int			file_exists(char *file_path)
+char		*get_from_path(char *filename, char *envp[]);
+char		*get_envp(char *key, char *envp[]);
 
 #endif

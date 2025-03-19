@@ -6,11 +6,11 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:08:42 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/19 18:00:03 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/19 19:14:09 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "common_header.h"
+#include "parsing_header.h"
 
 // Gets next dollarsign outside single quotes (')
 static char	*get_next_dollar(char *s)

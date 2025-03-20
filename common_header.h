@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/19 18:06:01 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:07:45 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 
 # include <stddef.h>
 # include <fcntl.h>
-# include <libft.h>
+
+# include <readline/readline.h>
+# include <readline/history.h>
+
+# include "libft.h"
 
 enum e_operators
 {
-	no_stdout_redirect,
-	no_pipe_stdout_redirect,
+	none,
 	stdin_redirect,
 	stdout_redirect,
 	stdin_delimiter,
@@ -53,10 +56,10 @@ typedef struct s_raw_cmd
  * example "<in cat"
  raw_commands:
 	- {in, 0, stdin_redirect}
-	- {cat, {"cat", 0}, no_stdout_redirect}
+	- {cat, {"cat", 0}, none}
  * example "<in cat > out"
 	- {in, 0, stdin_redirect}
-	- {cat, {"cat", 0}, no_pipe_stdout_redirect}
+	- {cat, {"cat", 0}, none}
 	- {out, 0, stdout_redirect}
 */
 typedef struct s_raw_line

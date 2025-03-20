@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:08:42 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/20 12:45:29 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/20 13:14:53 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ char	*ft_shell_replace(char *s, t_shell *shell)
 				get_replaced_len(s + dollar_i) + 1, replacer);
 		dollar_i += get_replaced_len(s + dollar_i);
 		tmp = get_next_dollar(s + dollar_i);
-		replace_start += ft_strlen(replacer) + tmp;
+		replace_start += ft_strlen(replacer) - 1 + tmp;
 		free(replacer);
 		if (!get_next_dollar(s + dollar_i))
 			return (out);

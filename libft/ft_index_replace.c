@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:05:22 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/19 16:54:39 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/20 13:05:50 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_index_replace(char *s, size_t start, size_t replace_len, char *new)
 	ft_memcpy(out, s, start);
 	ft_memcpy(out + start, new, new_len);
 	ft_memcpy(out + start + new_len, s + start + replace_len,
-		s_new_len - start - replace_len - 1);
+		ft_strlen(s + start + replace_len));
 	free(s);
 	return (out);
 }

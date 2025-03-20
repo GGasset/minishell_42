@@ -10,5 +10,6 @@
 * - Else sets *quote to c 
 */
 void	handle_quotes(char c, char *quote);
+char	*ft_shell_replace(char *s, t_shell *shell);
 
 #endif

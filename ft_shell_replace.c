@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:08:42 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/20 13:14:53 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:44:52 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,23 @@ static int	is_valid_env_char(char c)
 
 // Gets next dollarsign outside single quotes (')
 // If dollarsign is followed by a non alpha numeric character is ignored
-static size_t	get_next_dollar(char *s)
+static size_t	get_next_dollar(char *s, size_t start)
 {
 	size_t	i;
 	char	quotes;
 
 	quotes = 0;
 	i = 0;
+	while (i < start)
+	{
+		handle_quotes(s[i], &quotes);
+		i++;
+	}
 	while (s && s[i])
 	{
 		handle_quotes(s[i], &quotes);
 		if (s[i] == '$' && quotes != '\'' && is_valid_env_char(s[i + 1]))
-			return (i + 1);
+			return (i - start + 1);
 		i++;
 	}
 	return (0);
@@ -42,9 +47,9 @@ static size_t	get_replaced_len(char *s)
 	size_t	i;
 
 	i = 0;
-	while (s && ft_isalnum(s[i]))
-		i++;
 	if (s && s[i] == '?')
+		return (1);
+	while (s && ft_isalnum(s[i]))
 		i++;
 	return (i);
 }
@@ -84,7 +89,7 @@ char	*ft_shell_replace(char *s, t_shell *shell)
 	if (!s || !shell)
 		return (0);
 	out = ft_strdup(s);
-	dollar_i = get_next_dollar(s);
+	dollar_i = get_next_dollar(s, 0);
 	replace_start = dollar_i;
 	while (dollar_i)
 	{
@@ -92,10 +97,10 @@ char	*ft_shell_replace(char *s, t_shell *shell)
 		out = ft_index_replace(out, replace_start - 1,
 				get_replaced_len(s + dollar_i) + 1, replacer);
 		dollar_i += get_replaced_len(s + dollar_i);
-		tmp = get_next_dollar(s + dollar_i);
+		tmp = get_next_dollar(s, dollar_i);
 		replace_start += ft_strlen(replacer) - 1 + tmp;
 		free(replacer);
-		if (!get_next_dollar(s + dollar_i))
+		if (!get_next_dollar(s, dollar_i))
 			return (out);
 		dollar_i += tmp;
 	}

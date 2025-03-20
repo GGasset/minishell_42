@@ -13,7 +13,7 @@ enum builtin_type
 	export_b,
 	unset,
 	env,
-	exit
+	exit_b
 };
 
 typedef struct s_operator
@@ -43,7 +43,7 @@ typedef struct s_operator
 	*/
 	int fd;
 	int pipe[2];
-	e_operators type;
+	enum e_operators type;
 }		t_operator;
 
 typedef struct s_cmd
@@ -71,7 +71,7 @@ typedef struct s_cmd
 	*/
 	t_operator *next_operator;
 
-	builtin_type command_tye;
+	enum builtin_type command_tye;
 } t_cmd;
 
 typedef struct s_exe

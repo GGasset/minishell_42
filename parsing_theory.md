@@ -29,7 +29,7 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 	3. echo "$HM"
 * Solo son validos para expandir los caracteres alfanumericos
 * Al expandir solo buscara hasta que no halla caracteres valido
-* $[caracter no valido] o $ no sera considerado como valido para expandir y sera ignorado, se buscara el proximo $
+* \$[caracter no valido] o \$ no sera considerado como valido para expandir y sera ignorado, se buscara el proximo \$
 * Caso especial
 	- echo $?a
 
@@ -95,23 +95,23 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 			}		t_raw_line;
 
 		```
-* Finite State Machine (Un estado por token)
+* Finite State Machine (Buscando simplicidad y generalizacion en la implementacion)
 	* Ya que un operador siempre empieza con su signo (excepto pipes).
 		- Al encontrarse un caracter de operador e.g. '|'.
 			* Al haber una carencia de operador al principio se asume un comando
 		- Se avanza hasta encontrar el final del token
 			* Encontrar otro operador o final de string
 				* Pipes
-			* Operador con numero de nombres definidos
+			* Operador con numero de nombres definidos. Debido a su similar estructura sintactica se puede reusar la funcion.
 				* Principio del string
-					* Stdin redirect
-					* Stdin delimiter (Here doc)
+					* Stdin redirect '<'
+					* Stdin delimiter (Here doc) '<<'
 				* Final del string
-					* Stdout redirect
-					* Stdout append
+					* Stdout redirect '>'
+					* Stdout append '>>'
 		- Se guarda el final y se repite con el proximo token
 
 
 
 ## 4. Checkear errores en la estructura tokenizada
-	* Si hay un stdout redirect (>) que no es el ultimo token por ej
+* Si hay un stdout redirect (>) que no es el ultimo token por ej

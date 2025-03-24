@@ -100,7 +100,6 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 					* Stdout append '>>'
 		- Se guarda el final y se repite con el proximo token
 
-
-
 ## 4. Checkear errores en la estructura tokenizada
 * Si hay un stdout redirect (>) que no es el ultimo token por ejemplo
+* No hay ningun comando

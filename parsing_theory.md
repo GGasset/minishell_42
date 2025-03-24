@@ -11,15 +11,6 @@ contenido dentro de " expande las variables mientras contenido dentro de ' no la
 Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 	e.j. mkdir 'Hola "$PATH"'
 
-# Funciones basicas para parsing
-* funcion que avance un token
-	* Input:
-		* Pasas un char * de inicio que puede ser arbitrario
-	* Output:
-		* Te devuelve el puntero del inicio del siguiente comando, archivo
-		* Opcionalmente, pasando un puntero a puntero diferente de cero setea al puntero del operador previo, otro para el siguiente
-			* Si no hay operador siguiente o previo lo setea a 0
-	
 # Pasos para parsing:
 ## 1. Variables de entorno
 * Una funcion que sea consciente de cuales comillas son las que le rodean de mas afuera (no reemplazar en caso de comillas simples) y sustituya las variables
@@ -38,7 +29,6 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 	* Nota: echo " ' "" ' ", echo ' " ' "" y echo ' " ' "
 		* Prueba que no se puede hacer nesting de comillas
 * Normalizar espacios y tabuladores en un espacio si esta fuera de comillas
-* Comprobar que cada operador tenga sus archivos correspondientes
 
 ## 3. Separar por operadores, tokenizar
 * crear la estructura t_raw_line
@@ -62,7 +52,6 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 				char				*file;
 				char				**argv;
 				enum e_operators	type;
-				int					is_builtin;
 			}		t_raw_cmd;
 
 			/*
@@ -99,7 +88,7 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 	* Ya que un operador siempre empieza con su signo (excepto pipes).
 		- Al encontrarse un caracter de operador e.g. '|'.
 			* Al haber una carencia de operador al principio se asume un comando
-		- Se avanza hasta encontrar el final del token
+		- Se avanza hasta encontrar el final del token y se guarda en un t_raw_cmd. Este es buen lugar para checkear archivos que faltan.
 			* Encontrar otro operador o final de string
 				* Pipes
 			* Operador con numero de nombres definidos. Debido a su similar estructura sintactica se puede reusar la funcion.
@@ -114,4 +103,4 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 
 
 ## 4. Checkear errores en la estructura tokenizada
-* Si hay un stdout redirect (>) que no es el ultimo token por ej
+* Si hay un stdout redirect (>) que no es el ultimo token por ejemplo

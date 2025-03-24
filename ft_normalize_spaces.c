@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:49:09 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/24 15:31:10 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:33:18 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*trim_space(char *s, int free_s)
 	out = ft_strtrim(s, " ");
 	if (free_s)
 		free(s);
-	return out;
+	return (out);
 }
 
 char	normalize_spaces(char c)

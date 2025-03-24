@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:59:31 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/24 13:37:48 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:56:16 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_invalid_quotes(char *s)
 
 	out = 0;
 	i = 0;
-	while (s[i])
+	while (s && s[i])
 	{
 		handle_quotes(s[i], &out);
 		i++;

@@ -38,7 +38,7 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 	* Input:
 		* char * inicio de token
 		* int *err
-		* e_state *prev
+		* e_state *state
 
 	* Output:
 		* Con return:

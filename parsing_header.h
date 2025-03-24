@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/24 13:35:05 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:05:50 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,16 @@ char	*ft_shell_replace(char *s, t_shell *shell);
 
 /*
 * # Behaviour
-* Normalize any white-space char into a sigle space
+* Normalize any white-space char into a single space
 * Trims starting and ending whitspace chars
 * Does not do nothing inside single or double quotes
 * See:
 *	- man isspace
 
 * ### Memory handling
-* Does not free s
 * Returns malloc'ed pointer
 */
-char	*normalize_spaces(char *s, int free_s);
+char	*ft_normalize_spaces(char *s, int free_s);
 int		*check_invalid_quotes(char *s);
 
 #endif

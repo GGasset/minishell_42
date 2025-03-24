@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execution_header.h                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/24 14:35:57 by ggasset-          #+#    #+#             */
+/*   Updated: 2025/03/24 14:36:18 by ggasset-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #ifndef EXECUTION_HEADER_H
 # define EXECUTION_HEADER_H
 
 # include "common_header.h"
 
-enum builtin_type
+/*enum builtin_type
 {
 	command,
 	echo,
@@ -14,7 +26,7 @@ enum builtin_type
 	unset,
 	env,
 	exit_b
-};
+};*/
 
 typedef struct s_operator
 {
@@ -41,15 +53,15 @@ typedef struct s_operator
 		* Added to both operators
 		* uses pipe
 	*/
-	int fd;
-	int pipe[2];
-	enum e_operators type;
+	int					fd;
+	int					pipe[2];
+	enum e_operators	type;
 }		t_operator;
 
 typedef struct s_cmd
 {
-	char	*path;
-	char	**argv;
+	char		*path;
+	char		**argv;
 
 	/*
 	# Used with:
@@ -59,7 +71,7 @@ typedef struct s_cmd
 	### Nullable
 	* Redirects stdin
 	*/
-	t_operator *prev_operator;
+	t_operator	*prev_operator;
 
 	/*
 	# Used with:
@@ -69,15 +81,13 @@ typedef struct s_cmd
 	### Nullable
 	* Redirects stdout
 	*/
-	t_operator *next_operator;
-
-	enum builtin_type command_tye;
-} t_cmd;
+	t_operator	*next_operator;
+}		t_cmd;
 
 typedef struct s_exe
 {
-	t_cmd *commands;
-	size_t command_count;
+	t_cmd	*commands;
+	size_t	command_count;
 }		t_exe;
 
 #endif

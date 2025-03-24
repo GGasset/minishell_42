@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggasset- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:39:54 by ggasset-          #+#    #+#             */
-/*   Updated: 2024/09/27 12:09:20 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:28:04 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-///int main() {}
 
 static char	in(char const c, char const *set)
 {
@@ -40,8 +38,6 @@ char	*create_output(char const *s1, size_t strt_trim, size_t out_len)
 	return (output);
 }
 
-// aaacbbb7
-//   3 3
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	out_len;

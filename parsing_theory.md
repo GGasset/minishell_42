@@ -15,9 +15,11 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 ## 1. Variables de entorno
 * Una funcion que sea consciente de cuales comillas son las que le rodean de mas afuera (no reemplazar en caso de comillas simples) y sustituya las variables
 * Es el primer paso (antes de la normalizacion de espacios) debido a el ejemplo:
+	```
 	1. HM="          a       asd    |"
 	2. echo $HM
 	3. echo "$HM"
+	```
 * Solo son validos para expandir los caracteres alfanumericos
 * Al expandir solo buscara hasta que no halla caracteres valido
 * \$[caracter no valido] o \$ no sera considerado como valido para expandir y sera ignorado, se buscara el proximo \$
@@ -34,7 +36,10 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 * crear la estructura t_raw_line
 * funcion tokenizadora:
 	* Input:
-		* Pasas un char puntero de inicio
+		* char * inicio de token
+		* int *err
+		* e_state *prev
+
 	* Output:
 		* Con return:
 			* t_raw_cmd *
@@ -82,7 +87,6 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 				t_raw_cmd		*raw_commands;
 				size_t			len;
 			}		t_raw_line;
-
 		```
 * Finite State Machine (Buscando simplicidad y generalizacion en la implementacion)
 	* Ya que un operador siempre empieza con su signo (excepto pipes).

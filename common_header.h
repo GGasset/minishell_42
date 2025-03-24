@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/20 16:07:45 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:41:30 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_raw_cmd
 	char				*file;
 	char				**argv;
 	enum e_operators	type;
-	int					is_builtin;
 }		t_raw_cmd;
 
 /*

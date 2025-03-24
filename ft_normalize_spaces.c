@@ -6,11 +6,30 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:49:09 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/24 15:03:40 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:31:10 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing_header.h"
+
+char	*trim_space(char *s, int free_s)
+{
+	char	*out;
+
+	if (!s)
+		return (0);
+	out = ft_strtrim(s, " ");
+	if (free_s)
+		free(s);
+	return out;
+}
+
+char	normalize_spaces(char c)
+{
+	if (ft_isspace(c))
+		c = ' ';
+	return (c);
+}
 
 char	*ft_normalize_spaces(char *s, int free_s)
 {
@@ -29,13 +48,14 @@ char	*ft_normalize_spaces(char *s, int free_s)
 		i++;
 	while (out && s[i])
 	{
-		tmp[0] = s[i];
+		tmp[0] = normalize_spaces(s[i]);
 		if (!ft_isspace(s[i])
-			|| (i && ft_isspace(s[i]) && ft_isspace(s[i - 1])))
-			out = ft_strjoin_free(out, tmp, 1, 0);
+			|| (i && ft_isspace(s[i]) && !ft_isspace(s[i - 1])))
+			out = ft_strjoin_free(out, tmp, TRUE, FALSE);
 		i++;
 	}
 	if (free_s)
 		free(s);
+	out = trim_space(out, TRUE);
 	return (out);
 }

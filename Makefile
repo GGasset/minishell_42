@@ -6,7 +6,7 @@
 #    By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/03/19 17:57:32 by ggasset-         ###   ########.fr        #
+#    Updated: 2025/03/24 15:04:47 by ggasset-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME=minishell
 libft_NAME=./libft/libft.a
 ARCHIVES= ${libft_NAME}
 
-O_FILES= test_main.o ft_shell_replace.o envp_search.o text_utils.o
+O_FILES= test_main.o ft_shell_replace.o ft_normalize_spaces.o envp_search.o text_utils.o
 
 CC_SECURITY_FLAGS= -Wall -Wextra -Werror
 CC_FLAGS= -g -I ./libft/

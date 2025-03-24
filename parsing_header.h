@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/24 15:05:50 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:54:53 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 # define PARSING_HEADER_H
 
 # include "common_header.h"
+
+enum e_states
+{
+	input_parsing,
+	command_parsing,
+	output_parsing
+};
 
 /*
 * - If quote is null or c is not a quote returns

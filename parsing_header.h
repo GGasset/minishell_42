@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/25 12:30:03 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:03:37 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 * - If *quote is 0 and c is a quote, sets *quote to c
 * - Else sets *quote to c 
 */
-void	handle_quotes(char c, char *quote);
+void		handle_quotes(char c, char *quote);
 
 
 // Environment variables
@@ -47,7 +47,7 @@ y  sera ignorado, se buscara el proximo $
  * Returns malloc'ed char *
  * Does not free s
 */
-char	*ft_shell_replace(char *s, t_shell *shell);
+char		*ft_shell_replace(char *s, t_shell *shell);
 
 
 // Normalization and simple errors
@@ -63,8 +63,8 @@ char	*ft_shell_replace(char *s, t_shell *shell);
 * ### Memory handling
 * Returns malloc'ed pointer
 */
-char	*ft_normalize_spaces(char *s, int free_s);
-int		*check_invalid_quotes(char *s);
+char		*ft_normalize_spaces(char *s, int free_s);
+int			*check_invalid_quotes(char *s);
 
 
 // Tokenization with finite state machines
@@ -75,5 +75,17 @@ enum e_states
 	command_parsing,
 	output_parsing
 };
+
+/*
+* # Behaviour
+* Sets start to the start of the next token
+* Sets err to true in case of state misalignment
+*	- i.e. "<in > out"
+*		- This is incorrect although could be thougth of of copying in to out
+
+* ### Memory handling
+* Returns malloc'ed struct
+*/
+t_raw_cmd	*parse_token(char **start, int *err, enum e_states *state);
 
 #endif

@@ -89,6 +89,14 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 			}		t_raw_line;
 		```
 * Finite State Machine (Buscando simplicidad y generalizacion en la implementacion)
+	``` c
+	enum e_states
+	{
+		input_parsing,
+		command_parsing,
+		output_parsing
+	};
+	```
 	* Ya que un operador siempre empieza con su signo (excepto pipes).
 		- Al encontrarse un caracter de operador e.g. '|'.
 			* Al haber una carencia de operador al principio se asume un comando

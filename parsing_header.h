@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/25 13:03:37 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:13:52 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,15 @@ enum e_states
 * Sets err to true in case of state misalignment
 *	- i.e. "<in > out"
 *		- This is incorrect although could be thougth of of copying in to out
-
+*
+* Sets state to new state if needed
 * ### Memory handling
 * Returns malloc'ed struct
+*
+* ### Important cases
+* echo "a | cat"
 */
 t_raw_cmd	*parse_token(char **start, int *err, enum e_states *state);
+
 
 #endif

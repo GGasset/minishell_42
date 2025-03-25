@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/25 13:26:38 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:28:16 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 * - Else sets *quote to c 
 */
 void		handle_quotes(char c, char *quote);
-
 
 // Environment variables
 
@@ -49,7 +48,6 @@ y  sera ignorado, se buscara el proximo $
 */
 char		*ft_shell_replace(char *s, t_shell *shell);
 
-
 // Normalization and simple errors
 
 /*
@@ -65,7 +63,6 @@ char		*ft_shell_replace(char *s, t_shell *shell);
 */
 char		*ft_normalize_spaces(char *s, int free_s);
 int			*check_invalid_quotes(char *s);
-
 
 // Tokenization with finite state machines
 

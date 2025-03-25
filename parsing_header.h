@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/25 13:13:52 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:26:38 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,12 @@ enum e_states
 */
 t_raw_cmd	*parse_token(char **start, int *err, enum e_states *state);
 
+// Start is on the start of the operator
+t_raw_cmd	*parse_stdin(char **start);
+// Start is on the start of the operator
+t_raw_cmd	*parse_stdout(char **start);
+// Checks if there is a pipe next
+// Start is on the start of the operator or the command
+t_raw_cmd	*parse_command(char **start);
 
 #endif

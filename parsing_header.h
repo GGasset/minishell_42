@@ -6,10 +6,9 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/25 13:28:16 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:37:33 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef PARSING_HEADER_H
 # define PARSING_HEADER_H
@@ -89,12 +88,12 @@ enum e_states
 */
 t_raw_cmd	*parse_token(char **start, int *err, enum e_states *state);
 
-// Start is on the start of the operator
+// Start is set on the start of the next operator
 t_raw_cmd	*parse_stdin(char **start);
-// Start is on the start of the operator
+// Start is set on the start of the next operator
 t_raw_cmd	*parse_stdout(char **start);
 // Checks if there is a pipe next
-// Start is on the start of the operator or the command
+// Start is set on the start of the next operator or the command
 t_raw_cmd	*parse_command(char **start);
 
 #endif

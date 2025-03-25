@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/25 15:15:27 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:19:05 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,6 @@ t_raw_cmd		*parse_command(char **start);
 // Finite state machine utils
 
 enum e_states	get_state(enum e_operators op);
-int				is_compatible(enum e_states state_a, enum e_states state_b);
+int				is_compatible(enum e_states prev, enum e_states next);
 
 #endif

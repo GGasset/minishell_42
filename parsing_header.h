@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/25 14:37:33 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:47:31 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 * - If *quote is 0 and c is a quote, sets *quote to c
 * - Else sets *quote to c 
 */
-void		handle_quotes(char c, char *quote);
+void			handle_quotes(char c, char *quote);
 
 // Environment variables
 
@@ -45,7 +45,7 @@ y  sera ignorado, se buscara el proximo $
  * Returns malloc'ed char *
  * Does not free s
 */
-char		*ft_shell_replace(char *s, t_shell *shell);
+char			*ft_shell_replace(char *s, t_shell *shell);
 
 // Normalization and simple errors
 
@@ -60,8 +60,8 @@ char		*ft_shell_replace(char *s, t_shell *shell);
 * ### Memory handling
 * Returns malloc'ed pointer
 */
-char		*ft_normalize_spaces(char *s, int free_s);
-int			*check_invalid_quotes(char *s);
+char			*ft_normalize_spaces(char *s, int free_s);
+int				*check_invalid_quotes(char *s);
 
 // Tokenization with finite state machines
 
@@ -86,14 +86,19 @@ enum e_states
 * ### Important cases
 * echo "a | cat"
 */
-t_raw_cmd	*parse_token(char **start, int *err, enum e_states *state);
+t_raw_cmd		*parse_token(char **start, int *err, enum e_states *state);
 
 // Start is set on the start of the next operator
-t_raw_cmd	*parse_stdin(char **start);
+t_raw_cmd		*parse_stdin(char **start);
 // Start is set on the start of the next operator
-t_raw_cmd	*parse_stdout(char **start);
+t_raw_cmd		*parse_stdout(char **start);
 // Checks if there is a pipe next
 // Start is set on the start of the next operator or the command
-t_raw_cmd	*parse_command(char **start);
+t_raw_cmd		*parse_command(char **start);
+
+// Finite state machine utils
+
+enum e_states	get_state(enum e_operators op);
+int				is_compatible(enum e_states state_a, enum e_states state_b);
 
 #endif

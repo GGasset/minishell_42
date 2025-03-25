@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/25 14:47:31 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:14:12 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int				*check_invalid_quotes(char *s);
 
 enum e_states
 {
+	state_err  = 0,
 	input_parsing,
 	command_parsing,
 	output_parsing

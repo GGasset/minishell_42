@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:35:57 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/26 15:09:12 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:11:20 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_cmd
 	char		*path;
 	char		**argv;
 	pid_t		pid;
+	int			is_builtin;
 
 	/*
 	# Used with:

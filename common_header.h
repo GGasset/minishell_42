@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/24 17:39:17 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:05:47 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <readline/history.h>
 
 # include "libft.h"
+
+unsigned char	g_last_return_code = 0;
 
 enum e_operators
 {
@@ -69,7 +71,6 @@ typedef struct s_raw_line
 
 typedef struct s_shell
 {
-	unsigned char	last_return_code;
 	char			**envp;
 	char			*files_to_delete;
 }		t_shell;

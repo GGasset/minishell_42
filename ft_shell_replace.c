@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:08:42 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/20 17:44:52 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:06:04 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static char	*get_replacer_text(char *s, t_shell *shell)
 		return (0);
 	len = get_replaced_len(s);
 	if (*s == '?')
-		return (ft_itoa(shell->last_return_code));
+		return (ft_itoa(g_last_return_code));
 	tmp = ft_substr(s, 0, len);
 	out = ft_strdup(get_envp(tmp, shell->envp));
 	if (!out)

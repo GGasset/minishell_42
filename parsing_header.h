@@ -108,6 +108,11 @@ char			*shell_get_word(char *s, size_t start, char *delimiter);
 */
 size_t			get_next_word_start_i(char *s, size_t start);
 
+// Returns the index of the first char that is not part of the word
+// If start is the index of a delimiter skips delimiters until it finds a word
+// Checks for quotes
+size_t			skip_word(char *s, size_t start);
+
 // Tokenization with finite state machines
 
 enum e_states

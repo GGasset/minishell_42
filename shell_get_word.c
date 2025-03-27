@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:36:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 16:28:10 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 18:41:22 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,19 @@ static char	set_delimiter(char *s, size_t start, size_t len)
 	return (0);
 }
 
-char	*shell_get_word(char *s, size_t start, char *delimiter)
+size_t	skip_word(char *s, size_t start)
 {
-	char	quote;
-	size_t	len;
+	char	quotes;
 
-	if (!s)
-		return (0);
-	while (ft_isspace(s[start]))
+	quotes = get_quote_at_point(s, start);
+	while (is_word_delimiter(s[start]) && s[start] && !quotes)
 		start++;
-	quote = get_quote_at_point(s, start);
-	len = 0;
-	while (quote || !is_word_delimiter(s[start + len]))
+	while ((!is_word_delimiter(s[start]) || quotes) && s[start])
 	{
-		if (!s[start + len])
-			break ;
-		handle_quotes(s[start + len], &quote);
-		len++;
+		handle_quotes(s[start], &quotes);
+		start++;
 	}
-	if (delimiter)
-		*delimiter = set_delimiter(s, start, len);
-	if (!len)
-		return (0);
-	return (ft_substr(s, start, len));
+	return (start);
 }
 
 size_t	get_next_word_start_i(char *s, size_t start)
@@ -69,4 +59,29 @@ size_t	get_next_word_start_i(char *s, size_t start)
 		start++;
 	}
 	return (start);
+}
+
+char	*shell_get_word(char *s, size_t start, char *delimiter)
+{
+	char	quote;
+	size_t	len;
+
+	if (!s)
+		return (0);
+	while (ft_isspace(s[start]))
+		start++;
+	quote = get_quote_at_point(s, start);
+	len = 0;
+	while (quote || !is_word_delimiter(s[start + len]))
+	{
+		if (!s[start + len])
+			break ;
+		handle_quotes(s[start + len], &quote);
+		len++;
+	}
+	if (delimiter)
+		*delimiter = set_delimiter(s, start, len);
+	if (!len)
+		return (0);
+	return (ft_substr(s, start, len));
 }

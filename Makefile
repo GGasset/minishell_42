@@ -6,16 +6,19 @@
 #    By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/03/27 15:41:57 by ggasset-         ###   ########.fr        #
+#    Updated: 2025/03/27 17:06:56 by ggasset-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=minishell
+TEST_NAME=test
 
 libft_NAME=./libft/libft.a
 ARCHIVES= ${libft_NAME}
 
-O_FILES= test_main.o shell_get_word.o ft_shell_replace.o ft_normalize_spaces.o envp_search.o text_utils.o state_machine_utils.o
+O_FILES=shell_get_word.o ft_shell_replace.o ft_normalize_spaces.o envp_search.o text_utils.o state_machine_utils.o
+MAIN_O=
+TEST_MAIN_O=test_main.o
 
 CC_SECURITY_FLAGS= -Wall -Wextra -Werror
 CC_FLAGS= -g -I ./libft/
@@ -25,8 +28,11 @@ LOGO=\n ▗▄▄▄▄▖    ▗▄▄▄▄▖\n▐▌        ▐▌ \n▐▌ 
 
 all: libft ${NAME}
 
-${NAME}: ${O_FILES} ${ARCHIVES}
+${NAME}: ${MAIN_O} ${O_FILES} ${ARCHIVES}
 	cc ${LINKING_FLAGS} -o ${NAME} ${O_FILES} ${ARCHIVES}
+
+${TEST_NAME}: ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
+	cc ${LINKING_FLAGS} -o ${TEST_NAME} ${O_FILES} ${ARCHIVES}
 
 %.o: %.c
 	cc ${CC_FLAGS} ${CC_SECURITY_FLAGS} -c $?

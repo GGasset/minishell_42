@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:08:28 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/25 15:21:08 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 13:13:57 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ enum e_states	get_state(enum e_operators op)
 int	is_compatible(enum e_states prev, enum e_states next)
 {
 	if (prev == input_parsing && next == command_parsing)
-		return (1);
+		return (TRUE);
 	if (prev == command_parsing && next == command_parsing)
-		return (1);
+		return (TRUE);
 	if (prev == command_parsing && next == output_parsing)
-		return (1);
-	return (0);
+		return (TRUE);
+	return (FALSE);
 }

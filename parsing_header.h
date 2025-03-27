@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 13:29:23 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 13:30:29 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ enum e_states
 * Sets start to the start of the next token
 * Sets err to true in case of state misalignment
 *	- i.e. "<in > out"
-*		- This is incorrect although could be thougth of of copying in to out
+*	-	- This is incorrect although could be thougth of of copying in to out
 *
 * Sets state to new state if needed
 * ### Memory handling

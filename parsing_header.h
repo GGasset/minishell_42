@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 12:45:44 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 13:10:33 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,15 @@
 */
 void			handle_quotes(char c, char *quote);
 char			get_quote_at_point(char *s, size_t point);
+
+int				is_operator(char c);
 int				is_word_delimiter(char c);
 
 /*
 * # Behaviour
 * Skips starting white_spaces (should be normalized by this point)
 * Returns the next word
+* If delimiter is different of 0, is set as the char that was the delimiter
 * Checks for quotes and doesn't count spaces in them as word delimiters
 *	-	- Operator characters count as word delimiters outside quotes
 *	-	-	i.e. echo|cat>out     echo"|"cat">"out
@@ -38,9 +41,9 @@ int				is_word_delimiter(char c);
 * ## Memory management
 * Returns malloc'ed pointer
 */
-char			*shell_get_word(char *s, size_t start);
+char			*shell_get_word(char *s, size_t start, char *delimiter);
 
-//size_t			get_word_len(char *s, size_t start);
+size_t			get_next_word_i(char *s, size_t start);
 
 // Environment variables
 

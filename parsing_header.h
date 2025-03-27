@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 13:30:29 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:52:34 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,14 @@ int				is_word_delimiter(char c);
 */
 char			*shell_get_word(char *s, size_t start, char *delimiter);
 
+/*
+* # Behaviour
+* Similar to shell_get_word
+* ## Return Value
+* Returns the index of the start of the next word
+* On string end, returns the pointer to the NULL character
+*	- String end should be checked with char *delimiter of shell_get_word
+*/
 size_t			get_next_word_start_i(char *s, size_t start);
 
 // Environment variables

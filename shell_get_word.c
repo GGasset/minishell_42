@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:36:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 15:11:35 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:26:38 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,24 @@ char	*shell_get_word(char *s, size_t start, char *delimiter)
 size_t	get_next_word_start_i(char *s, size_t start)
 {
 	char	quote;
-	size_t	i;
 
 	if (!s)
 		return (0);
 	quote = get_quote_at_point(s, start);
+	while (!quote && is_word_delimiter(s[start]))
+	{
+		handle_quotes(s[start], &quote);
+		start++;
+	}
+	while (quote || !is_word_delimiter(s[start]))
+	{
+		handle_quotes(s[start], &quote);
+		start++;
+	}
+	while (!quote && is_word_delimiter(s[start]))
+	{
+		handle_quotes(s[start], &quote);
+		start++;
+	}
+	return (start);
 }

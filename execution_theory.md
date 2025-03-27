@@ -1,6 +1,12 @@
+# Notas
 
+## casos extremos
 
-Pasos:
+<archivo (Imprimir archivo entero normal)
+>archivo
+<archivo1 > archivo2
+
+# Pasos:
 	* Checkear errores:
 		* Chekear si los comando son builtin
 

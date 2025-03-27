@@ -6,7 +6,7 @@
 #    By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/03/27 17:11:30 by ggasset-         ###   ########.fr        #
+#    Updated: 2025/03/27 17:15:12 by ggasset-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ fclean: clean
 	rm -f ${NAME}
 
 clean: libft-fclean
-	rm -f ${O_FILES}
+	rm -f ${O_FILES} ${TEST_MAIN_O} ${MAIN_O}
 
 # LIBFT
 

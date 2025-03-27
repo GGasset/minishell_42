@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 15:39:39 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:51:27 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,43 +27,6 @@ char			get_quote_at_point(char *s, size_t point);
 
 int				is_operator(char c);
 int				is_word_delimiter(char c);
-
-/*
-* # Behaviour
-* Skips starting white_spaces (should be normalized by this point)
-* If delimiter is different of 0, is set as the char that was the delimiter
-*	- In case of delimiter being a space.
-*	-	- Checks next char and if is a delimiter sets delimiter pointer to it.
-*	-	- Spects normalized spaces at this point.
-*	-	- So it may reliably be used to check next operator.
-* Checks for quotes and doesn't count spaces in them as word delimiters
-*	-	- Operator characters count as word delimiters outside quotes
-*	-	-	i.e. echo|cat>out     echo"|"cat">"out
-*	-	- Because of quotes its recommended for s to be the start of the string
-*	-	-	- To evade possible errors
-* ## Return Value
-* Returns the next word
-* Returns NULL in case of error or if a word delimiter is found at start
-*	- Word delimiters other than spaces
-* ## Memory management
-* Returns malloc'ed pointer
-*/
-char			*shell_get_word(char *s, size_t start, char *delimiter);
-
-/*
-* # Behaviour
-* Similar to shell_get_word at word recognition
-* 1. Skips word delimiters
-* 2. Skips word
-* 3. Skips word delimiter
-* ## Return Value
-* Returns the index of the start of the next word
-* On string end, returns the pointer to the NULL character
-*	- String end should be checked with char *delimiter of shell_get_word
-* ## Use
-* Used to move index for next shell_get_word call
-*/
-size_t			get_next_word_start_i(char *s, size_t start);
 
 // Environment variables
 
@@ -106,6 +69,45 @@ char			*ft_normalize_spaces(char *s, int free_s);
 // Returns true for invalid quoting
 int				check_invalid_quotes(char *s);
 
+// Tokenization
+
+/*
+* # Behaviour
+* Skips starting white_spaces (should be normalized by this point)
+* If delimiter is different of 0, is set as the char that was the delimiter
+*	- In case of delimiter being a space.
+*	-	- Checks next char and if is a delimiter sets delimiter pointer to it.
+*	-	- Spects normalized spaces at this point.
+*	-	- So it may reliably be used to check next operator.
+* Checks for quotes and doesn't count spaces in them as word delimiters
+*	-	- Operator characters count as word delimiters outside quotes
+*	-	-	i.e. echo|cat>out     echo"|"cat">"out
+*	-	- Because of quotes its recommended for s to be the start of the string
+*	-	-	- To evade possible errors
+* ## Return Value
+* Returns the next word
+* Returns NULL in case of error or if a word delimiter is found at start
+*	- Word delimiters other than spaces
+* ## Memory management
+* Returns malloc'ed pointer
+*/
+char			*shell_get_word(char *s, size_t start, char *delimiter);
+
+/*
+* # Behaviour
+* Similar to shell_get_word at word recognition
+* 1. Skips word delimiters
+* 2. Skips word
+* 3. Skips word delimiter
+* ## Return Value
+* Returns the index of the start of the next word
+* On string end, returns the pointer to the NULL character
+*	- String end should be checked with char *delimiter of shell_get_word
+* ## Use
+* Used to move index for next shell_get_word call
+*/
+size_t			get_next_word_start_i(char *s, size_t start);
+
 // Tokenization with finite state machines
 
 enum e_states
@@ -126,19 +128,21 @@ enum e_states
 * Sets state to new state if needed
 * ### Memory handling
 * Returns malloc'ed struct
-*
+* Needs space normalization for proper behaviour
 * ### Important cases
 * echo "a | cat"
 */
-t_raw_cmd		*parse_token(char **start, int *err, enum e_states *state);
+t_raw_line		*parse_line(char *s, int *err);
 
-// Start is set on the start of the next operator
-t_raw_cmd		*parse_stdin(char **start);
-// Start is set on the start of the next operator
-t_raw_cmd		*parse_stdout(char **start);
-// Checks if there is a pipe next
-// Start is set on the start of the next operator or the command
-t_raw_cmd		*parse_command(char **start);
+// If there is no stdin operator return 0
+// Needs space normalization for proper behaviour
+t_raw_cmd		*parse_stdin(char *s);
+// Needs space normalization for proper behaviour
+t_raw_cmd		*parse_stdout(char *s, size_t start);
+
+// Sets next operator to the word delimiter after the command and argv
+// Needs space normalization for proper behaviour
+t_raw_cmd		*parse_command(char *s, size_t start, char *next_operator);
 
 // Finite state machine utils
 

@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 14:52:34 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:07:33 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ int				is_word_delimiter(char c);
 * # Behaviour
 * Skips starting white_spaces (should be normalized by this point)
 * If delimiter is different of 0, is set as the char that was the delimiter
+*	- In case of delimiter being a space.
+*	-	- Checks next char and if is a delimiter sets delimiter pointer to it.
+*	-	- Spects normalized spaces at this point.
 * Checks for quotes and doesn't count spaces in them as word delimiters
 *	-	- Operator characters count as word delimiters outside quotes
 *	-	-	i.e. echo|cat>out     echo"|"cat">"out
@@ -48,11 +51,16 @@ char			*shell_get_word(char *s, size_t start, char *delimiter);
 
 /*
 * # Behaviour
-* Similar to shell_get_word
+* Similar to shell_get_word with words
+* 1. Skips word delimiters
+* 2. Skips word
+* 3. Skips word delimiter
 * ## Return Value
 * Returns the index of the start of the next word
 * On string end, returns the pointer to the NULL character
 *	- String end should be checked with char *delimiter of shell_get_word
+* ## Use
+* Used to move index for next shell_get_word call
 */
 size_t			get_next_word_start_i(char *s, size_t start);
 

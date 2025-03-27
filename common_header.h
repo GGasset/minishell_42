@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/26 15:24:10 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:49:59 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include <readline/history.h>
 
 # include "libft.h"
-
-unsigned char	g_last_return_code = 0;
 
 enum e_operators
 {

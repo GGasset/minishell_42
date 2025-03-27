@@ -6,11 +6,13 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:08:42 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/26 15:06:04 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:49:10 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing_header.h"
+
+unsigned char	g_last_return_code = 0;
 
 static int	is_valid_env_char(char c)
 {

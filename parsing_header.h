@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 13:24:45 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 13:29:23 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 /*
 * - If quote is null or c is not a quote returns
 * - If *quote is 0 and c is a quote, sets *quote to c
-* - Else sets *quote to c 
+* - Else if *quote is c *quote is set to 0
 */
 void			handle_quotes(char c, char *quote);
 char			get_quote_at_point(char *s, size_t point);

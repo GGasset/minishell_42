@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 15:27:38 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:39:39 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,9 @@ char			*ft_shell_replace(char *s, t_shell *shell);
 * Returns malloc'ed pointer
 */
 char			*ft_normalize_spaces(char *s, int free_s);
-int				*check_invalid_quotes(char *s);
+
+// Returns true for invalid quoting
+int				check_invalid_quotes(char *s);
 
 // Tokenization with finite state machines
 

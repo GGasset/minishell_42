@@ -6,11 +6,20 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:36:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 15:26:38 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:45:39 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing_header.h"
+
+static char	set_delimiter(char *s, size_t start, size_t len)
+{
+	if (ft_isspace(s[start + len]) && is_word_delimiter(s[start + len + 1]))
+		return (s[start + len + 1]);
+	else
+		return (s[start + len]);
+	return (0);
+}
 
 char	*shell_get_word(char *s, size_t start, char *delimiter)
 {
@@ -31,10 +40,7 @@ char	*shell_get_word(char *s, size_t start, char *delimiter)
 		len++;
 	}
 	if (delimiter)
-		if (ft_isspace(s[start + len]) && is_word_delimiter(s[start + len + 1]))
-			*delimiter = s[start + len + 1];
-		else
-			*delimiter = s[start + len];
+		*delimiter = set_delimiter(s, start, len);
 	if (!len)
 		return (0);
 	return (ft_substr(s, start, len));

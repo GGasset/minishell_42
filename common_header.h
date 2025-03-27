@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/26 15:05:47 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:24:10 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ typedef struct s_raw_line
 	t_raw_cmd		*raw_commands;
 	size_t			len;
 }		t_raw_line;
+
+void		free_raw_line(t_raw_line line);
 
 typedef struct s_shell
 {

@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:36:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 13:16:12 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:11:35 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,21 @@ char	*shell_get_word(char *s, size_t start, char *delimiter)
 		len++;
 	}
 	if (delimiter)
-		*delimiter = s[start + len];
+		if (ft_isspace(s[start + len]) && is_word_delimiter(s[start + len + 1]))
+			*delimiter = s[start + len + 1];
+		else
+			*delimiter = s[start + len];
 	if (!len)
 		return (0);
 	return (ft_substr(s, start, len));
+}
+
+size_t	get_next_word_start_i(char *s, size_t start)
+{
+	char	quote;
+	size_t	i;
+
+	if (!s)
+		return (0);
+	quote = get_quote_at_point(s, start);
 }

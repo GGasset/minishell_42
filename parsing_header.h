@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 15:13:09 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:24:20 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char			*shell_get_word(char *s, size_t start, char *delimiter);
 
 /*
 * # Behaviour
-* Similar to shell_get_word with words
+* Similar to shell_get_word at word recognition
 * 1. Skips word delimiters
 * 2. Skips word
 * 3. Skips word delimiter

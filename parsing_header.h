@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 15:07:33 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:13:09 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int				is_word_delimiter(char c);
 *	- In case of delimiter being a space.
 *	-	- Checks next char and if is a delimiter sets delimiter pointer to it.
 *	-	- Spects normalized spaces at this point.
+*	-	- So it may reliably be used to check next operator.
 * Checks for quotes and doesn't count spaces in them as word delimiters
 *	-	- Operator characters count as word delimiters outside quotes
 *	-	-	i.e. echo|cat>out     echo"|"cat">"out

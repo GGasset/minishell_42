@@ -6,7 +6,7 @@
 #    By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/03/27 17:06:56 by ggasset-         ###   ########.fr        #
+#    Updated: 2025/03/27 17:11:30 by ggasset-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,10 @@ LOGO=\n ▗▄▄▄▄▖    ▗▄▄▄▄▖\n▐▌        ▐▌ \n▐▌ 
 all: libft ${NAME}
 
 ${NAME}: ${MAIN_O} ${O_FILES} ${ARCHIVES}
-	cc ${LINKING_FLAGS} -o ${NAME} ${O_FILES} ${ARCHIVES}
+	cc ${LINKING_FLAGS} -o ${NAME} ${MAIN_O} ${O_FILES} ${ARCHIVES}
 
-${TEST_NAME}: ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
-	cc ${LINKING_FLAGS} -o ${TEST_NAME} ${O_FILES} ${ARCHIVES}
+${TEST_NAME}: libft ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
+	cc ${LINKING_FLAGS} -o ${TEST_NAME} ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
 
 %.o: %.c
 	cc ${CC_FLAGS} ${CC_SECURITY_FLAGS} -c $?

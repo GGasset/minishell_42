@@ -58,7 +58,7 @@ size_t	get_next_word_start_i(char *s, size_t start)
 		handle_quotes(s[start], &quote);
 		start++;
 	}
-	while (quote || !is_word_delimiter(s[start]) && s[start])
+	while ((quote || !is_word_delimiter(s[start])) && s[start])
 	{
 		handle_quotes(s[start], &quote);
 		start++;

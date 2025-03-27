@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:59:31 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 12:48:25 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/27 13:10:04 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,14 @@ int	check_invalid_quotes(char *s)
 	return (out != 0);
 }
 
+int	is_operator(char c)
+{
+	return (c == '<' || c == '>' || c == '|');
+}
+
 int	is_word_delimiter(char c)
 {
-	if (ft_isspace(c))
-		return (TRUE);
-	if (c == '<' || c == '>' || c == '|')
-		return (TRUE);
-	return (FALSE);
+	return (ft_isspace(c) || is_operator(c));
 }
 
 char	get_quote_at_point(char *s, size_t point)

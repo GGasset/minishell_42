@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 16:51:27 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/31 18:35:43 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,44 +114,5 @@ size_t			get_next_word_start_i(char *s, size_t start);
 size_t			skip_word(char *s, size_t start);
 
 // Tokenization with finite state machines
-
-enum e_states
-{
-	state_err = 0,
-	input_parsing,
-	command_parsing,
-	output_parsing
-};
-
-/*
-* # Behaviour
-* Sets start to the start of the next token
-* Sets err to true in case of state misalignment
-*	- i.e. "<in > out"
-*	-	- This is incorrect although could be thougth of of copying in to out
-*
-* Sets state to new state if needed
-* ### Memory handling
-* Returns malloc'ed struct
-* Needs space normalization for proper behaviour
-* ### Important cases
-* echo "a | cat"
-*/
-t_raw_line		*parse_line(char *s, int *err);
-
-// If there is no stdin operator return 0
-// Needs space normalization for proper behaviour
-t_raw_cmd		*parse_stdin(char *s);
-// Needs space normalization for proper behaviour
-t_raw_cmd		*parse_stdout(char *s, size_t start);
-
-// Sets next operator to the word delimiter after the command and argv
-// Needs space normalization for proper behaviour
-t_raw_cmd		*parse_command(char *s, size_t start, char *next_operator);
-
-// Finite state machine utils
-
-enum e_states	get_state(enum e_operators op);
-int				is_compatible(enum e_states prev, enum e_states next);
 
 #endif

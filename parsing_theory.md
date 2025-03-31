@@ -89,6 +89,16 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 			}		t_raw_line;
 		```
 * Finite State Machine (Buscando simplicidad y generalizacion en la implementacion)
+	* No tiene mucho sentido por estos casos
+		```
+		>hol echo "hola"
+		cat  <parsing_header.h test_main.c
+
+		echo "hola" | cat <parsing_header.h test_main.c
+			Translates to --> cat <parsing_header.h test_main.c
+		echo "Hola" > out | <infile cat > out2
+		cat | cat | cat < parsing_header.h
+		```
 	``` c
 	enum e_states
 	{
@@ -111,6 +121,38 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 					* Stdout redirect '>'
 					* Stdout append '>>'
 		- Se guarda el final y se repite con el proximo token
+
+#### Nueva filosofia de parseo dados los nuevos casos limitantes de la arquitectura anterior
+* Nueva estructura
+``` c
+
+//* Not used for pipes, pipes will be created according to the number of commands
+//* Redirections have a higher priority than pipes
+//	* Meaning that when both pipe and redirect (i.e. >) are present command will be dup'ed to redirect
+typedef struct t_raw_redirect
+{
+	char				*file;
+	enum e_operators	type;
+}
+
+// Input and output _redirect are nullable
+typedef struct s_raw_cmd
+{
+	char			*file;
+	char			**argv;
+	t_raw_redirect	*input_redirect;
+	t_raw_redirect	*output_redirect;
+}		t_raw_cmd
+
+
+typedef struct s_raw_line
+{
+	t_raw_cmd		*raw_commands;
+	size_t			len;
+}		t_raw_line;
+
+```
+
 
 ## 4. Checkear errores en la estructura tokenizada
 * Si hay un stdout redirect (>) que no es el ultimo token por ejemplo

@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/27 15:49:59 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/03/31 18:42:13 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,31 @@ enum e_operators
 	pipe_op = '|'
 };
 
-typedef struct s_raw_cmd
+//* * Not used for pipes, 
+// pipes will be created according to the number of commands
+//
+//* * Redirections have a higher priority than pipes
+//*	*	* Meaning that when both pipe and redirect (i.e. >) are present command 
+// will be dup'ed to redirect
+/* ## Tests
+echo "Hola" > out | <infile cat > out2
+echo "Hola" > out | <infile cat > out2 | <infile1 cat > out3 | <infile2 cat
+cat | cat | cat < parsing_header.h
+
+*/
+typedef struct t_raw_redirect
 {
 	char				*file;
-	char				**argv;
 	enum e_operators	type;
+}		t_raw_redirect;
+
+// Input and output _redirect are nullable
+typedef struct s_raw_cmd
+{
+	char			*file;
+	char			**argv;
+	t_raw_redirect	*input_redirect;
+	t_raw_redirect	*output_redirect;
 }		t_raw_cmd;
 
 /*

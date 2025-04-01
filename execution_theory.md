@@ -6,28 +6,23 @@
 >archivo
 <archivo1 > archivo2
 
+## Advertencias de implemtacion
+* Cualquier string copiado de la estructura de parseo a la de ejecucion debe de ser duplicado
+	- Esto para poder hacer frees mas facilmente y sin casos extremos.
+
 # Pasos:
-	* Checkear errores:
-		* Chekear si los comando son builtin
+* Crear t_exe con valores por defecto, el array tambien
+1. gestionar heredocs
+2. Buscar archivos
+3. checkeo de errores e imprimir errores
+	* En caso de error dejar error en 1
+		- Permisos
+		- Existencia de archivos
+		- File es Null (No imprime)
+4. Preparar ejecucion
+	* Crear pipes
+5. Setear input_fd y output_fd
+	* Cuando halla un input o output _redirect ignorar pipe y setearlo en el archivo
+6. Ejecucion
+	* 
 
-		* Conseguir la ruta de el nombre de los archivos
-			- (Hecho en pipex)
-	
-		* Comprobar existencia de archivos si se requiere, permisos de archivos (Unicamente los permisos y archivos necesarios)
-
-	* Crear la estructura t_exe
-		* crear un t_cmd por comando
-			* Un comando es un t_raw_cmd con tipo de operador:
-				* Sin redireccion de stdout
-					- no stdout redirect
-				* Con redireccion de stdout
-					- pipe
-				- no pipe stdout redirect
-		* Añadir operadores de t_cmd
-			- abrir fds o pipes
-			- En caso de heredoc (<<) crear archivo, leer de stdin y traducir a stdin redirect (<)
-				* Añadir archivo a files_to_delete en t_shell, los archivos seran separados por ":"
-		* Hacer free a t_raw_line
-
-	* Ejecutar
-	* Hacer free a todo

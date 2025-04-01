@@ -24,5 +24,5 @@
 5. Setear input_fd y output_fd
 	* Cuando halla un input o output _redirect ignorar pipe y setearlo en el archivo
 6. Ejecucion
-	* 
+	* Ejecutar los t_cmd que tengan error a cero
 

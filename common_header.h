@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/31 18:42:13 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/01 18:22:21 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,29 +58,6 @@ typedef struct s_raw_cmd
 	t_raw_redirect	*output_redirect;
 }		t_raw_cmd;
 
-/*
- * example "<in cat | cat>outi"
- raw_commands:
-	- {in, 0, stdin_redirect}
-	- {cat, {"cat", 0}, pipe}
-	- {cat, {"cat", 0}, pipe}
-	- {outi, 0, stdout_redirect}
- len: 4
- * example "<< "EOF" cat | cat -e | cat"
- raw_commands:
-	- {EOF, 0, stdin_delimiter}
-	- {cat, {"cat", 0}, pipe}
-	- {cat, {"cat", "-e", 0}, pipe}
-	- {cat, {"cat", 0}, pipe}
- * example "<in cat"
- raw_commands:
-	- {in, 0, stdin_redirect}
-	- {cat, {"cat", 0}, none}
- * example "<in cat > out"
-	- {in, 0, stdin_redirect}
-	- {cat, {"cat", 0}, none}
-	- {out, 0, stdout_redirect}
-*/
 typedef struct s_raw_line
 {
 	t_raw_cmd		*raw_commands;

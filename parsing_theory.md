@@ -123,6 +123,27 @@ Solo hay que tomar en cuenta si estas en las comillas de mas afuera
 		- Se guarda el final y se repite con el proximo token
 
 #### Nueva filosofia de parseo dados los nuevos casos limitantes de la arquitectura anterior
+* Casos a tener en cuenta
+```
+PROBAR TODO EN BASH, tiene comportamiento diferente, bash es mas sencillo ademas
+
+	<infile cat > outi1 | <<"DOc" cato >outi2
+	<infile cat > outi1 | <<"DOc" cato >outi | << "DOc" cat > outi3
+		(outi3 is successfully created with heredoc content)
+	cat | cat | cat | cat | <infile cat
+		(Este no se si lo entiendo)
+```
+Gestion de errores
+```
+<infile <infile2 cat
+	equivale a
+<infile2 cat
+
+echo "Hello World" > outi1 > outi2
+	equivale a
+echo "Hello World" > outi2
+```
+
 * Nueva estructura
 ``` c
 
@@ -152,7 +173,14 @@ typedef struct s_raw_line
 }		t_raw_line;
 
 ```
-
+* Dado estos nuevos casos, se puede seguir este pseudocodigo
+	1. splitear por comandos (por pipes '|')
+	2. construir cada t_raw_cmd
+		- Buscar ultimo [infile, heredoc] y [outfile, outfile append] y parsearlo
+			- Checkear en cada uno tenga su string correspondiente, si no mostrar error y liberar t_raw_line
+		- en los casos sin comando pero con operador, dejar file en null
+			- i.e. < infile > outfile | cat
+	3. construir t_raw_line
 
 ## 4. Checkear errores en la estructura tokenizada
 * Si hay un stdout redirect (>) que no es el ultimo token por ejemplo

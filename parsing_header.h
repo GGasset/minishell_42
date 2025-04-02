@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/02 19:06:54 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/02 19:44:30 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,6 @@ t_raw_line		tokenize_line(char *line, int *err);
 * Sets error to true on syntax errors, operators without its files
 */
 t_raw_cmd		tokenize_command(char *command, int *err);
+void			remove_quotes(t_raw_line tokens);
 
 #endif

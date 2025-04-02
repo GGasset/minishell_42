@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/01 18:22:21 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/02 15:18:49 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ enum e_operators
 	stdout_append = '>' + 1,
 	pipe_op = '|'
 };
+
+int		is_e_operator(int op);
+int		is_redirect_operator(int op);
+int		is_input_e_operator(int op);
+int		is_output_e_operator(int op);
 
 //* * Not used for pipes, 
 // pipes will be created according to the number of commands

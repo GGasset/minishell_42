@@ -177,9 +177,11 @@ typedef struct s_raw_line
 	1. splitear por comandos (por pipes '|')
 	2. construir cada t_raw_cmd
 		- Buscar ultimo [infile, heredoc] y [outfile, outfile append] y parsearlo
-			- Checkear en cada uno tenga su string correspondiente, si no mostrar error y liberar t_raw_line
-		- en los casos sin comando pero con operador, dejar file en null
-			- i.e. < infile > outfile | cat
+			- Checkear que cada uno tenga su string correspondiente, si no mostrar error y liberar t_raw_line
+		- En los casos sin comando pero con operador, dejar file en null
+			- ``` i.e. < infile > outfile | cat ```
+		- La primera palabra que no tenga operador asociado es un comando y las demas sin operador son sus argv
+			- ``` <infile cat >outi ola ```
 	3. construir t_raw_line
 
 ## 4. Checkear errores en la estructura tokenizada

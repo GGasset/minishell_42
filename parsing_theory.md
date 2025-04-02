@@ -183,6 +183,7 @@ typedef struct s_raw_line
 		- La primera palabra que no tenga operador asociado es un comando y las demas sin operador son sus argv
 			- ``` <infile cat >outi ola ```
 	3. construir t_raw_line
+	4. Eliminar comillas de todos lados
 
 ## 4. Checkear errores en la estructura tokenizada
 * Si hay un stdout redirect (>) que no es el ultimo token por ejemplo

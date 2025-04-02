@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/02 14:54:16 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/02 14:58:51 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int				check_invalid_quotes(char *s);
 # Behaviour
 * Skips starting white_spaces (should be normalized by this point)
 * If delimiter is different of 0, is set as the char that was the delimiter
-*	-
+*	- Follows e_operator structure logic
 *	- In case of delimiter being a space.
 *	-	- Checks next char and if is a delimiter sets delimiter pointer to it.
 *	-	- Spects normalized spaces at this point.

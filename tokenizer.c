@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:47:55 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/02 19:14:44 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/02 19:25:20 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,9 @@ t_raw_cmd	tokenize_command(char *command, int *err)
 	while (operator && err && !*err)
 	{
 		tmp_s = shell_get_word(command, i, &operator);
-		*err = is_e_operator(current_op) && !tmp_s; 
-		if (is_e_operator(current_op) && *err)
-			set_redirect(tmp_s, &out, current_op);
-		else if (tmp_s)
+		*err = current_op && !tmp_s; 
+		set_redirect(tmp_s, &out, current_op);
+		if (tmp_s && !is_e_operator(current_op))
 		{
 			if (!out.file)
 				out.file = ft_strdup(tmp_s);
@@ -79,6 +78,11 @@ t_raw_line	tokenize_line(char *line, int *err)
 	i = 0;
 	while (err && !*err && commands && out.raw_commands && commands[i])
 	{
+		if (!commands[i][0] || !commands[i][1])
+		{
+			*err = 1;
+			break ;
+		}
 		out.raw_commands[i] = tokenize_command(commands[i], err);
 		i++;
 	}

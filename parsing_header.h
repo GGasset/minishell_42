@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/02 13:13:20 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/02 14:54:16 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,26 +69,27 @@ char			*ft_normalize_spaces(char *s, int free_s);
 // Returns true for invalid quoting
 int				check_invalid_quotes(char *s);
 
-// Tokenization
+// Tokenization prepocessing
 
 /*
-* # Behaviour
+# Behaviour
 * Skips starting white_spaces (should be normalized by this point)
 * If delimiter is different of 0, is set as the char that was the delimiter
+*	-
 *	- In case of delimiter being a space.
 *	-	- Checks next char and if is a delimiter sets delimiter pointer to it.
 *	-	- Spects normalized spaces at this point.
 *	-	- So it may reliably be used to check next operator.
-* Checks for quotes and doesn't count spaces in them as word delimiters
+* Checks for quotes and doesn't count anything in them as word delimiters
 *	-	- Operator characters count as word delimiters outside quotes
-*	-	-	i.e. echo|cat>out     echo"|"cat">"out
+*	-	-	i.e. ``` echo|cat>out     echo"|"cat">"out```
 *	-	- Because of quotes its recommended for s to be the start of the string
 *	-	-	- To evade possible errors
-* ## Return Value
+## Return Value
 * Returns the next word
 * Returns NULL in case of error or if a word delimiter is found at start
 *	- Word delimiters other than spaces
-* ## Memory management
+ # Memory management
 * Returns malloc'ed pointer
 */
 char			*shell_get_word(char *s, size_t start, char *delimiter);
@@ -115,7 +116,10 @@ size_t			skip_word(char *s, size_t start);
 
 // Tokenization
 
+char			**add_to_argv(char **argv, char *s, int free_s);
 
+// Split but skips delimiter characters inside quotes
+char			**minishell_split(char *s, char c);
 t_raw_line		tokenize_line(char *line, int *err);
 
 /*

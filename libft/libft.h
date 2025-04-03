@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:06:22 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/02 14:49:53 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 12:23:19 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ char	*ft_index_replace(char *s, size_t start, size_t replace_len, char *new);
 char	*ft_replace(char *s, char *old, char *new, int free_s);
 
 char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strfilter(char const *s1, char const *set);
 
 // Returns malloc'ed argv!!
 char	**ft_expand_argv(int *argc, char **argv, char *separator, int split_by);

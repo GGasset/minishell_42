@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/03 12:03:18 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 17:08:16 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,12 +120,12 @@ size_t			skip_word(char *s, size_t start);
 // Handles null argv parameter
 // Free's old argv
 // Dup's s
-char			**argv_append(char **argv, char *s, int free_s);
+char			**argv_append(char **argv, char *s, int free_s);// NEEDS TESTING
 
 // Split but skips delimiter characters inside quotes
-char			**minishell_split(char *s, char c);
-t_raw_line		tokenize_line(char *line, int *err, t_shell *shell);
+char			**shell_split(char *s, char c);// NEEDS TESTING
+t_raw_line		tokenize_line(char *line, int *err, t_shell *shell);// NEEDS TESTING
 
-void			remove_quotes(t_raw_line tokens);
+void			remove_quotes(t_raw_line tokens);// NEEDS TESTING
 
 #endif

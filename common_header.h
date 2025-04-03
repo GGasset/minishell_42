@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/03 18:42:47 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 20:35:22 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ char	*get_from_path(char *filename, char *envp[]);
 char	*get_envp(char *key, char *envp[]);
 
 // Checks for errors and can search in path
-void	create_empty_file(char *path, t_shell *shell); // NEEDS TESTING
+// TODO: Test for calls for not created directories
+void	create_empty_file(char *path, t_shell *shell);
+
+// If has filename is set to 0, everything will be considered a directory name
+void	create_directory(char *path, int has_filename);
 
 #endif

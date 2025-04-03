@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:36:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/02 15:52:22 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 15:15:32 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	set_delimiter(char *s, size_t start, size_t len)
 	{
 		out = s[i];
 		if (!s[i] || !is_operator(s[i]))
-			return (null);
+			return (0);
 		if (ft_isspace(s[i + 1]))
 			i++;
 		i++;

@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 17:15:23 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/03/19 17:16:48 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 20:23:00 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,9 @@ char	*get_envp(char *key, char *envp[])
 
 int	file_exists(char *file_path)
 {
-	int		file_fd;
-
 	if (!file_path)
 		return (0);
-	file_fd = open(file_path, O_RDONLY);
-	if (file_fd != -1)
-	{
-		close(file_fd);
-		return (1);
-	}
-	return (0);
+	return (!access(file_path, F_OK));
 }
 
 static char	*search_in_path(char *filename, char **path)

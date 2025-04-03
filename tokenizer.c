@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:47:55 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/03 12:04:35 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 12:08:30 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_raw_line	tokenize_line(char *line, int *err, t_shell *shell)
 			*err = 1;
 			break ;
 		}
-		out.raw_commands[i] = tokenize_command(commands[i], err);
+		out.raw_commands[i] = tokenize_command(commands[i], err, shell);
 		i++;
 	}
 	ft_free_splitted(commands);

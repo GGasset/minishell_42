@@ -6,11 +6,27 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:47:55 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/03 15:03:32 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:39:51 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing_header.h"
+
+char	**argv_append(char **argv, char *s, int free_s)
+{
+	char	**out;
+	size_t	len;
+
+	if (!argv)
+		return (NULL);
+	len = ft_get_split_count(argv);
+	out = ft_realloc(argv, sizeof(char *) * len,
+		sizeof(char *) * (len + 1), TRUE);
+	len++;
+	if (out)
+		out[len - 1] = ft_strdup_free(s, free_s);
+	return (out);
+}
 
 // i is the start of the word after the operator
 // just let the thing do the thing

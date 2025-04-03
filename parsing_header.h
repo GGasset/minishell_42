@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:09:19 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/02 19:44:30 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 12:03:18 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,12 +124,8 @@ char			**argv_append(char **argv, char *s, int free_s);
 
 // Split but skips delimiter characters inside quotes
 char			**minishell_split(char *s, char c);
-t_raw_line		tokenize_line(char *line, int *err);
+t_raw_line		tokenize_line(char *line, int *err, t_shell *shell);
 
-/*
-* Sets error to true on syntax errors, operators without its files
-*/
-t_raw_cmd		tokenize_command(char *command, int *err);
 void			remove_quotes(t_raw_line tokens);
 
 #endif

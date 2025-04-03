@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/02 15:18:49 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 12:01:04 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stddef.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -80,5 +81,8 @@ typedef struct s_shell
 int			file_exists(char *file_path);
 char		*get_from_path(char *filename, char *envp[]);
 char		*get_envp(char *key, char *envp[]);
+
+// Checks for errors and can search in path
+void		create_empty_file(char *path, t_shell *shell);
 
 #endif

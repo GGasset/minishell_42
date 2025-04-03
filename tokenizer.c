@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:47:55 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/02 19:25:20 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 12:04:35 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,20 @@
 // i is the start of the word after the operator
 // just let the thing do the thing
 // free your stuff
-static void	set_redirect(char *word, t_raw_cmd *cmd, int e_operator)
+// TODO create output files
+static void	set_redirect(char *word, t_raw_cmd *cmd, int e_operator, t_shell *s)
 {
 	t_raw_redirect	**redirect;
 
+	if (!word)
+		return ;
 	if (is_input_e_operator(e_operator))
 		redirect = &cmd->input_redirect;
 	else if (is_output_e_operator(e_operator))
+	{
 		redirect = &cmd->output_redirect;
+		create_empty_file(word, s);
+	}
 	else
 		return ;
 	if (*redirect)
@@ -37,7 +43,7 @@ static void	set_redirect(char *word, t_raw_cmd *cmd, int e_operator)
 	(*redirect)->file = ft_strdup(word);
 }
 
-t_raw_cmd	tokenize_command(char *command, int *err)
+static t_raw_cmd	tokenize_command(char *command, int *err, t_shell *shell)
 {
 	t_raw_cmd	out;
 	char		operator;
@@ -52,7 +58,7 @@ t_raw_cmd	tokenize_command(char *command, int *err)
 	{
 		tmp_s = shell_get_word(command, i, &operator);
 		*err = current_op && !tmp_s; 
-		set_redirect(tmp_s, &out, current_op);
+		set_redirect(tmp_s, &out, current_op, shell);
 		if (tmp_s && !is_e_operator(current_op))
 		{
 			if (!out.file)
@@ -65,7 +71,7 @@ t_raw_cmd	tokenize_command(char *command, int *err)
 	return (out);
 }
 
-t_raw_line	tokenize_line(char *line, int *err)
+t_raw_line	tokenize_line(char *line, int *err, t_shell *shell)
 {
 	char		**commands;
 	t_raw_line	out;

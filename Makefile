@@ -6,7 +6,7 @@
 #    By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/04/02 16:06:46 by ggasset-         ###   ########.fr        #
+#    Updated: 2025/04/03 15:04:37 by ggasset-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ TEST_NAME=test
 libft_NAME=./libft/libft.a
 ARCHIVES= ${libft_NAME}
 
-O_FILES=is_operator.o tokenizer.o shell_get_word.o ft_shell_replace.o ft_normalize_spaces.o envp_search.o text_utils.o state_machine_utils.o
+O_FILES=is_operator.o tokenizer.o shell_get_word.o ft_shell_replace.o ft_normalize_spaces.o envp_search.o text_utils.o
 MAIN_O=
 TEST_MAIN_O=test_main.o
 

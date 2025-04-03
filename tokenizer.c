@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:47:55 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/03 18:39:51 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:42:37 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ char	**argv_append(char **argv, char *s, int free_s)
 // i is the start of the word after the operator
 // just let the thing do the thing
 // free your stuff
-// TODO create output files
 static void	set_redirect(char *word, t_raw_cmd *cmd, int e_operator, t_shell *s)
 {
 	t_raw_redirect	**redirect;

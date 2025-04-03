@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/03 12:01:04 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 15:00:41 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_raw_line
 	size_t			len;
 }		t_raw_line;
 
-void		free_raw_line(t_raw_line line);
+void	free_raw_line(t_raw_line line);
 
 typedef struct s_shell
 {
@@ -78,11 +78,11 @@ typedef struct s_shell
 	char			*files_to_delete;
 }		t_shell;
 
-int			file_exists(char *file_path);
-char		*get_from_path(char *filename, char *envp[]);
-char		*get_envp(char *key, char *envp[]);
+int		file_exists(char *file_path);
+char	*get_from_path(char *filename, char *envp[]);
+char	*get_envp(char *key, char *envp[]);
 
 // Checks for errors and can search in path
-void		create_empty_file(char *path, t_shell *shell);
+void	create_empty_file(char *path, t_shell *shell);
 
 #endif

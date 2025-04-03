@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:06:22 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/03 12:23:19 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:58:55 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 # define TRUE 1
 # define FALSE 0
-# define null 0
 
 /*
 Notes:
@@ -46,7 +45,6 @@ int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_isspace(int c);
-
 
 int		ft_toupper(int c);
 int		ft_tolower(int c);

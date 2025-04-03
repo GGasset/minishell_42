@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:47:55 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/03 12:08:30 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 15:03:32 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ static t_raw_cmd	tokenize_command(char *command, int *err, t_shell *shell)
 	char		current_op;
 	char		*tmp_s;
 	size_t		i;
-	
+
 	ft_bzero(&out, sizeof(out));
 	current_op = 0;
 	i = 0;
 	while (operator && err && !*err)
 	{
 		tmp_s = shell_get_word(command, i, &operator);
-		*err = current_op && !tmp_s; 
+		*err = current_op && !tmp_s;
 		set_redirect(tmp_s, &out, current_op, shell);
 		if (tmp_s && !is_e_operator(current_op))
 		{

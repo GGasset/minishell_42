@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 15:31:51 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/03 15:43:40 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:33:46 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_realloc(void *old, size_t old_len, size_t new_len, int free_old)
 
 	out = ft_calloc(new_len, 1);
 	i = 0;
-	while (out && i < min(old_len, new_len))
+	while (old && out && i < min(old_len, new_len))
 	{
 		out[i] = ((char *)old)[i];
 		i++;

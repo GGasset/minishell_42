@@ -6,7 +6,7 @@
 /*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:06:22 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/03 14:58:55 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/03 15:46:11 by ggasset-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,9 @@ size_t	ft_get_split_count(char **split_out);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
+void	*ft_calloc(size_t nmeb, size_t size);
+void	*ft_realloc(void *old, size_t old_len, size_t new_len, int free_old);
+
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
@@ -99,7 +102,6 @@ float	ft_atof(char *str);
 int		ft_atoi(const char *nptr);
 int		ft_atoi_s(const char *nptr, int *err);
 
-void	*ft_calloc(size_t nmeb, size_t size);
 void	ft_putchar_fd(char c, int fd);
 size_t	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);

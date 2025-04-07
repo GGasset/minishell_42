@@ -73,8 +73,6 @@ static char	*get_replacer_text(char *s, t_shell *shell)
 	tmp = ft_substr(s, 0, len);
 	out = ft_strdup(get_envp(tmp, shell->envp));
 	if (!out)
-		return (0);
-	if (!out)
 		out = ft_strdup("");
 	free(tmp);
 	return (out);

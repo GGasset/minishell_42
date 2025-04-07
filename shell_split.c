@@ -38,6 +38,30 @@ static ssize_t	shell_strchr(char *s, ssize_t start, char c)
 	return (-1);
 }
 
+static char	**add_last(char **out, ssize_t out_len, char *s, ssize_t start)
+{
+	char	*tmp;
+
+	out = ft_realloc(out, out_len * sizeof(char **),
+		(out_len + 1) * sizeof(char **), TRUE);
+	tmp = ft_strdup(s + start);
+	if (!out || !tmp)
+		return (handle_error(out, tmp));
+	out[out_len] = tmp;
+	return (out);
+}
+
+static void	skip_dups(char *s, ssize_t *start)
+{
+	char	starting_char;
+
+	if (!start || !start)
+		return ;
+	starting_char = s[*start];
+	while (s[*start] == starting_char && starting_char)
+		start[0]++;
+}
+
 char	**shell_split(char *s, char c)
 {
 	char	**out;
@@ -46,19 +70,22 @@ char	**shell_split(char *s, char c)
 	ssize_t	split_len;
 
 	out = ft_calloc(1, sizeof(char *));
-	ft_bzero(i, sizeof(size_t) * 2);
+	ft_bzero(i, sizeof(ssize_t) * 2);
 	split_len = shell_strchr(s, 0, c);
 	while (out && split_len != -1)
 	{
-		out = ft_realloc(out, sizeof(char *) * i[0] + 1,
-			sizeof(char *) * i[0] + 2,  TRUE);
+		out = ft_realloc(out, sizeof(char *) * (i[0] + 1),
+			sizeof(char *) * (i[0] + 2),  TRUE);
 		tmp = ft_substr(s, i[1], split_len);
 		if (!tmp || !out)
 			return (handle_error(out, tmp));
 		out[i[0]] = tmp;
 		i[1] += split_len;
-		split_len = shell_strchr(s, i[1], c) - i[1];
+		skip_dups(s, i + 1);
+		split_len = shell_strchr(s, i[1], c);
+		if (split_len >= 0)
+			split_len -= i[1];
 		i[0]++;
 	}
-	return (out);
+	return (add_last(out, i[0], s, i[1]));
 }

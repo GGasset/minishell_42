@@ -42,6 +42,7 @@ int main(int argc, char  *argv[], char **envp)
 		printf("%s\n", splitted[i]);
 	}
 	printf("\n");
+	ft_free_splitted(splitted);
 
 	char delimiter = 1;
 	size_t i = 0;

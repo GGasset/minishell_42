@@ -16,6 +16,7 @@ void	create_empty_file(char *path, t_shell *shell)
 {
 	int	fd;
 
+	shell = 0;
 	if (!access(path, F_OK) && access(path, W_OK))
 	{
 		ft_putstr_fd(path, 2);

@@ -42,7 +42,6 @@ char	**shell_split(char *s, char c)
 {
 	char	**out;
 	char	*tmp;
-	char	quote;
 	ssize_t	i[2];
 	ssize_t	split_len;
 

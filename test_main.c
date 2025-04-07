@@ -34,7 +34,14 @@ int main(int argc, char  *argv[], char **envp)
 
 	out = ft_normalize_spaces(out, TRUE);
 	printf("Normalized->%s| end\n\n", out);
-	
+
+	char **splitted = shell_split(out, '|');
+	printf("Splitted..\n");
+	for (size_t i = 0; splitted && splitted[i]; i++)
+	{
+		printf("%s\n", splitted[i]);
+	}
+	printf("\n");
 
 	char delimiter = 1;
 	size_t i = 0;

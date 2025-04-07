@@ -68,6 +68,7 @@ static t_raw_cmd	tokenize_command(char *command, int *err, t_shell *shell)
 
 	ft_bzero(&out, sizeof(out));
 	current_op = 0;
+	operator = 0;
 	i = 0;
 	while (operator && err && !*err)
 	{
@@ -92,7 +93,7 @@ t_raw_line	tokenize_line(char *line, int *err, t_shell *shell)
 	t_raw_line	out;
 	size_t		i;
 
-	commands = minishell_split(line, '|');
+	commands = shell_split(line, '|');
 	out.len = ft_get_split_count(commands);
 	out.raw_commands = malloc(sizeof(t_raw_cmd) * out.len);
 	ft_bzero(out.raw_commands, sizeof(t_raw_cmd) * out.len);

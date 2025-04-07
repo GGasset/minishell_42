@@ -70,7 +70,7 @@ typedef struct s_raw_line
 	size_t			len;
 }		t_raw_line;
 
-void	free_raw_line(t_raw_line line);
+void	free_raw_line(t_raw_line *line, int free_line);
 
 typedef struct s_shell
 {
@@ -84,6 +84,7 @@ char	*get_envp(char *key, char *envp[]);
 
 // Checks for errors and can search in path
 // TODO: Test for calls for not created directories
+// TODO: does not currently search in path
 void	create_empty_file(char *path, t_shell *shell);
 
 // If has filename is set to 0, everything will be considered a directory name

@@ -42,8 +42,8 @@ static char	**add_last(char **out, ssize_t out_len, char *s, ssize_t start)
 {
 	char	*tmp;
 
-	out = ft_realloc(out, out_len * sizeof(char **),
-		(out_len + 1) * sizeof(char **), TRUE);
+	out = ft_realloc(out, (out_len + 1) * sizeof(char *),
+		(out_len + 2) * sizeof(char *), TRUE);
 	tmp = ft_strdup(s + start);
 	if (!out || !tmp)
 		return (handle_error(out, tmp));
@@ -75,7 +75,7 @@ char	**shell_split(char *s, char c)
 	while (out && split_len != -1)
 	{
 		out = ft_realloc(out, sizeof(char *) * (i[0] + 1),
-			sizeof(char *) * (i[0] + 2),  TRUE);
+			sizeof(char *) * (i[0] + 2), TRUE);
 		tmp = ft_substr(s, i[1], split_len);
 		if (!tmp || !out)
 			return (handle_error(out, tmp));

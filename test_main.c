@@ -37,15 +37,16 @@ int main(int argc, char  *argv[], char **envp)
 
 	char **splitted = shell_split(out, '|');
 	printf("Splitted..\n");
-	for (size_t i = 0; splitted && splitted[i]; i++)
+	size_t i = 0;
+	for (i = 0; splitted && splitted[i]; i++)
 	{
 		printf("%s\n", splitted[i]);
 	}
-	printf("\n");
+	printf("%s\n", splitted[i]);
 	ft_free_splitted(splitted);
 
 	char delimiter = 1;
-	size_t i = 0;
+	i = 0;
 	while (delimiter)
 	{
 		char *word = shell_get_word(out, i, &delimiter);

@@ -44,22 +44,11 @@ static char	**add_last(char **out, ssize_t out_len, char *s, ssize_t start)
 
 	out = ft_realloc(out, (out_len + 1) * sizeof(char *),
 		(out_len + 2) * sizeof(char *), TRUE);
-	tmp = ft_strdup(s + start);
+	tmp = ft_normalize_spaces(s + start, FALSE);
 	if (!out || !tmp)
 		return (handle_error(out, tmp));
 	out[out_len] = tmp;
 	return (out);
-}
-
-static void	skip_dups(char *s, ssize_t *start)
-{
-	char	starting_char;
-
-	if (!start || !start)
-		return ;
-	starting_char = s[*start];
-	while (s[*start] == starting_char && starting_char)
-		start[0]++;
 }
 
 char	**shell_split(char *s, char c)
@@ -77,11 +66,11 @@ char	**shell_split(char *s, char c)
 		out = ft_realloc(out, sizeof(char *) * (i[0] + 1),
 			sizeof(char *) * (i[0] + 2), TRUE);
 		tmp = ft_substr(s, i[1], split_len);
-		if (!tmp || !out)
+		if (!tmp || !out || (i[0] && !out[i[0] - 1]))
 			return (handle_error(out, tmp));
-		out[i[0]] = tmp;
+		out[i[0]] = ft_normalize_spaces(tmp, TRUE);
 		i[1] += split_len;
-		skip_dups(s, i + 1);
+		i[1]++;
 		split_len = shell_strchr(s, i[1], c);
 		if (split_len >= 0)
 			split_len -= i[1];

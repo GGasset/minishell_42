@@ -110,6 +110,6 @@ t_raw_line	tokenize_line(char *line, int *err, t_shell *shell)
 	}
 	ft_free_splitted(commands);
 	if ((err && *err) || (!commands))
-		free_raw_line(out);
+		free_raw_line(&out, FALSE);
 	return (out);
 }

@@ -40,7 +40,7 @@ int main(int argc, char  *argv[], char **envp)
 	size_t i = 0;
 	for (i = 0; splitted && splitted[i]; i++)
 	{
-		printf("%s\n", splitted[i]);
+		printf("Split_out=\"%s\"\n", splitted[i]);
 	}
 	printf("%s\n", splitted[i]);
 	ft_free_splitted(splitted);

@@ -17,9 +17,9 @@ char	**argv_append(char **argv, char *s, int free_s)
 	char	**out;
 	size_t	len;
 
+	len = ft_get_split_count(argv) + 1;
 	if (!argv)
-		return (NULL);
-	len = ft_get_split_count(argv);
+		argv = ft_calloc(1, sizeof(char *));
 	out = ft_realloc(argv, sizeof(char *) * len,
 		sizeof(char *) * (len + 1), TRUE);
 	len++;
@@ -58,6 +58,17 @@ static void	set_redirect(char *word, t_raw_cmd *cmd, int e_operator, t_shell *s)
 	(*redirect)->file = ft_strdup(word);
 }
 
+static void	set_file(t_raw_cmd *out, char *tmp_s, char current_op)
+{
+	if (tmp_s && !is_e_operator(current_op))
+	{
+		if (!out->argv)
+			out->file = ft_strdup(tmp_s);
+		out->argv = argv_append(out->argv, tmp_s, FALSE);
+	}
+	free(tmp_s);
+}
+
 static t_raw_cmd	tokenize_command(char *command, int *err, t_shell *shell)
 {
 	t_raw_cmd	out;
@@ -70,19 +81,16 @@ static t_raw_cmd	tokenize_command(char *command, int *err, t_shell *shell)
 	current_op = 0;
 	operator = 0;
 	i = 0;
-	while (operator && err && !*err)
+	while (err && !*err)
 	{
 		tmp_s = shell_get_word(command, i, &operator);
 		*err = current_op && !tmp_s;
 		set_redirect(tmp_s, &out, current_op, shell);
-		if (tmp_s && !is_e_operator(current_op))
-		{
-			if (!out.file)
-				out.file = ft_strdup(tmp_s);
-			out.argv = argv_append(out.argv, tmp_s, FALSE);
-		}
+		set_file(&out, tmp_s, current_op);
+		i = get_next_word_start_i(command, i);
+		if (!operator)
+			break ;
 		current_op = operator;
-		free(tmp_s);
 	}
 	return (out);
 }

@@ -55,6 +55,10 @@ int main(int argc, char  *argv[], char **envp)
 
 		i = get_next_word_start_i(out, i);
 	}
+
+	int err = 0;
+	t_raw_line tokenized = tokenize_line(out, &err, &shell);
+	free_raw_line(&tokenized, FALSE);
 	free(out);
 }
 

@@ -25,7 +25,11 @@ void	free_raw_line(t_raw_line *line, int free_line)
 		command = line->raw_commands[i];
 		free(command.file);
 		ft_free_splitted(command.argv);
+		if (command.input_redirect)
+			free(command.input_redirect->file);
 		free(command.input_redirect);
+		if (command.output_redirect)
+			free(command.output_redirect->file);
 		free(command.output_redirect);
 		ft_bzero(line->raw_commands + i, sizeof(t_raw_cmd));
 		i++;

@@ -1,0 +1,8 @@
+## TO DO
+
+- [ ]  LEAK
+- [ ]  EJECUCION ENTERA
+- [ ]  SEÑALES
+- [ ]  MAIN
+- [ ]  BUILTINS
+- [ ]  PARA EL FINAL, CHECKEAR MIL VECES TODO

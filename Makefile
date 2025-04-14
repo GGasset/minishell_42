@@ -20,9 +20,9 @@ O_FILES=dealloc.o file_utils.o shell_split.o is_operator.o tokenizer.o shell_get
 MAIN_O=
 TEST_MAIN_O=test_main.o
 
-CC_SECURITY_FLAGS= -Wall -Wextra -Werror
+CC_SECURITY_FLAGS= -Wall -Wextra -Werror -fsanitize=address
 CC_FLAGS= -g -I ./libft/
-LINKING_FLAGS= -I ./libft/
+LINKING_FLAGS= -I ./libft/ -fsanitize=address
 
 LOGO=\n ▗▄▄▄▄▖    ▗▄▄▄▄▖\n▐▌        ▐▌ \n▐▌ ▝▝▜▌   ▐▌ ▝▝▜▌\n▝▚▄▄▄▞▘   ▝▚▄▄▄▞▘     \n
 

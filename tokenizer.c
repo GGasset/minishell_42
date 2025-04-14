@@ -108,7 +108,7 @@ t_raw_line	tokenize_line(char *line, int *err, t_shell *shell)
 	i = 0;
 	while (err && !*err && commands && out.raw_commands && commands[i])
 	{
-		if (!commands[i][0] || !commands[i][1])
+		if (!commands[i][0])
 		{
 			*err = 1;
 			break ;

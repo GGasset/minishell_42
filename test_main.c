@@ -58,6 +58,7 @@ int main(int argc, char  *argv[], char **envp)
 
 	int err = 0;
 	t_raw_line tokenized = tokenize_line(out, &err, &shell);
+	printf("error: %i\n", err);
 	free_raw_line(&tokenized, FALSE);
 	free(out);
 }

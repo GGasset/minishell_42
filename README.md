@@ -1,6 +1,7 @@
 ## TO DO
 
 - [X]  LEAK
+- [ ]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
 - [ ]  EJECUCION ENTERA
 - [ ]  SEÑALES
 - [ ]  MAIN

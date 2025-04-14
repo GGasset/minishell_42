@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   common_header.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/03 20:35:22 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:27:27 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef COMMON_HEADER_H
 # define COMMON_HEADER_H
@@ -16,6 +16,7 @@
 # include <stddef.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <stdbool.h>
 
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -89,5 +90,8 @@ void	create_empty_file(char *path, t_shell *shell);
 
 // If has filename is set to 0, everything will be considered a directory name
 void	create_directory(char *path, int has_filename);
+
+
+int execpipex(t_raw_line *cmd, char **envp);
 
 #endif

@@ -42,7 +42,7 @@ int main(int argc, char  *argv[], char **envp)
 	{
 		printf("Split_out=\"%s\"\n", splitted[i]);
 	}
-	printf("%s\n", splitted[i]);
+	//printf("%s\n", splitted[i]);
 	ft_free_splitted(splitted);
 
 	char delimiter = 1;
@@ -58,6 +58,7 @@ int main(int argc, char  *argv[], char **envp)
 
 	int err = 0;
 	t_raw_line tokenized = tokenize_line(out, &err, &shell);
+	execpipex(&tokenized, envp);
 	free_raw_line(&tokenized, FALSE);
 	free(out);
 }

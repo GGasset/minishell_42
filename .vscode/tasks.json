@@ -1,0 +1,28 @@
+// .vscode/tasks.json
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Compilar",
+        "type": "shell",
+        "command": "gcc",
+        "args": [
+          "-I",
+          "./libft/",
+          "-o", "minishell",
+          "-g",
+          "*.c",
+          "-Wall",
+          "-Wextra",
+          "./libft/libft.a"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": [],
+        "detail": "Compila minishell directamente con gcc"
+      }
+    ]
+  }
+  

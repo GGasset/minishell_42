@@ -1,14 +1,14 @@
-# **************************************************************************** #
+#******************************************************************************#
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+         #
+#    By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/04/03 15:04:37 by ggasset-         ###   ########.fr        #
+#    Updated: 2025/04/14 14:28:22 by apaz-pri         ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
+#******************************************************************************#
 
 NAME=minishell
 TEST_NAME=test
@@ -16,7 +16,7 @@ TEST_NAME=test
 libft_NAME=./libft/libft.a
 ARCHIVES= ${libft_NAME}
 
-O_FILES=dealloc.o file_utils.o shell_split.o is_operator.o tokenizer.o shell_get_word.o ft_shell_replace.o ft_normalize_spaces.o envp_search.o text_utils.o
+O_FILES=dealloc.o file_utils.o run.o shell_split.o is_operator.o tokenizer.o shell_get_word.o ft_shell_replace.o ft_normalize_spaces.o envp_search.o text_utils.o
 MAIN_O=
 TEST_MAIN_O=test_main.o
 
@@ -29,7 +29,7 @@ LOGO=\n ▗▄▄▄▄▖    ▗▄▄▄▄▖\n▐▌        ▐▌ \n▐▌ 
 all: libft ${NAME}
 
 ${NAME}: ${MAIN_O} ${O_FILES} ${ARCHIVES}
-	cc ${LINKING_FLAGS} -o ${NAME} ${MAIN_O} ${O_FILES} ${ARCHIVES}
+	cc -I ./libft/ -fsanitize=address -o ${NAME} ${MAIN_O} ${O_FILES} ${ARCHIVES}
 
 ${TEST_NAME}: libft ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
 	cc ${LINKING_FLAGS} -o ${TEST_NAME} ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}

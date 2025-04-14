@@ -1,6 +1,6 @@
 ## TO DO
 
-- [ ]  LEAK
+- [X]  LEAK
 - [ ]  EJECUCION ENTERA
 - [ ]  SEÑALES
 - [ ]  MAIN

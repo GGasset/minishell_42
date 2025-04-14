@@ -24,7 +24,7 @@ char	**argv_append(char **argv, char *s, int free_s)
 		sizeof(char *) * (len + 1), TRUE);
 	len++;
 	if (out)
-		out[len - 1] = ft_strdup_free(s, free_s);
+		out[len - 2] = ft_strdup_free(s, free_s);
 	return (out);
 }
 

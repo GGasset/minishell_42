@@ -120,11 +120,11 @@ size_t			skip_word(char *s, size_t start);
 // Handles null argv parameter
 // Free's old argv
 // Dup's s
-char			**argv_append(char **argv, char *s, int free_s);// NEEDS TESTING
+char			**argv_append(char **argv, char *s, int free_s);
 
 // Split but skips delimiter characters inside quotes
-char			**shell_split(char *s, char c);// NEEDS TESTING
-t_raw_line		tokenize_line(char *line, int *err, t_shell *shell);// NEEDS TESTING
+char			**shell_split(char *s, char c);
+t_raw_line		tokenize_line(char *line, int *err, t_shell *shell);
 
 void			remove_quotes(t_raw_line tokens);// NEEDS TESTING
 

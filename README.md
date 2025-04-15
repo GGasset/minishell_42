@@ -1,6 +1,7 @@
 ## TO DO
 
 - [ ]  Parsing
+	- [ ]  Funcion principal de parsing (Le pasas el input tal y como llega y sale parseado)
 	- [ ]  Gestionar Heredoc
 	- [X]  LEAK
 	- [ ]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS

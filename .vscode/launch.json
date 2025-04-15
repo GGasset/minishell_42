@@ -33,7 +33,7 @@
             "name": "HOME",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "program": "${fileDirname}/test",
             "args": ["infiles/empty.txt","grep nonexistingword","cat -e","outfiles/outfile"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -53,6 +53,18 @@
                 }
             ],
             "preLaunchTask": "Compilar" // Aquí se asegura de que compile antes de ejecutar
+        },
+		{
+            "name": "HOME MAKE",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/test",
+            "args": ["cat | cat > out"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb"
         }
 	]
 }

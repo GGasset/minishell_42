@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:57:44 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/04/15 19:29:56 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/04/15 23:40:21 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,25 @@ t_exe	prepare(t_raw_line rwcmd, t_shell *shell)
 
 	i = 0;
 	cmd.command_count = 0;
-	while (rwcmd.raw_commands->file != NULL)
+	cmd.commands = malloc(sizeof(t_cmd) * rwcmd.len);
+    if (!cmd.commands)
+    {
+        perror("Memory alloc Error");
+        exit(EXIT_FAILURE);
+    }
+	while (/*Exitan los comandos*/)
 	{
-		cmd.commands[i].path = get_from_path(rwcmd.raw_commands->file,
+		cmd.commands[i].path = get_from_path(rwcmd.raw_commands[i].file,
 		shell->envp);
-		cmd.commands[i].argv = rwcmd.raw_commands->argv;
-		if (rwcmd.raw_commands->input_redirect)
-			cmd.commands[i].input_fd = open(rwcmd.raw_commands->input_redirect->file, 
+		cmd.commands[i].argv = rwcmd.raw_commands[i].argv;
+		if (rwcmd.raw_commands[i].input_redirect)
+			cmd.commands[i].input_fd = open(rwcmd.raw_commands[i].input_redirect->file, 
 			O_RDONLY);
-		if (rwcmd.raw_commands->output_redirect)
-			cmd.commands[i].output_fd = open(rwcmd.raw_commands->output_redirect->file, 
+		if (rwcmd.raw_commands[i].output_redirect)
+			cmd.commands[i].output_fd = open(rwcmd.raw_commands[i].output_redirect->file, 
 			O_CREAT | O_RDWR | O_TRUNC);
 		cmd.command_count++;
+		i++;
 	}
 	return (cmd);
 }

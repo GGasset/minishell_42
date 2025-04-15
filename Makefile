@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+         #
+#    By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/04/15 19:20:42 by apaz-pri         ###   ########.fr        #
+#    Updated: 2025/04/15 22:53:48 by apaz-pri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ O_FILES=execution.o dealloc.o file_utils.o shell_split.o is_operator.o tokenizer
 MAIN_O=
 TEST_MAIN_O=test_main.o
 
-CC_SECURITY_FLAGS= -Wall -Wextra -Werror -fsanitize=address
+CC_SECURITY_FLAGS= -Wall -Wextra -fsanitize=address
 CC_FLAGS= -g -I ./libft/
 LINKING_FLAGS= -I ./libft/ -fsanitize=address
 

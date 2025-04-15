@@ -15,8 +15,8 @@
 1. Buscar archivos
 2. checkeo de errores e imprimir errores
 	* En caso de error dejar la flag error en 1
-		- Permisos
-		- Existencia de archivos
+		- Permisos (Input files, Output files, Comandos)
+		- Existencia de archivos (Infiles, y comandos si no son builtin)
 		- File es Null (No imprime)
 3. Preparar ejecucion
 	* Crear pipes

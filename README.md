@@ -19,6 +19,8 @@
 		- [ ] Durante ejecucion
 		- [ ] Durante Lectura
 - [ ]  MAIN
+	- [ ] Mensaje para enunciar que se espera un comando nuevo
+	- [ ] Historial
 - [ ]  BUILTINS
 	- [ ] echo
 		- [ ] -n

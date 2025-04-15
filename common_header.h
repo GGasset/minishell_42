@@ -82,9 +82,8 @@ int		file_exists(char *file_path);
 char	*get_from_path(char *filename, char *envp[]);
 char	*get_envp(char *key, char *envp[]);
 
-// Checks for errors and can search in path
+// Checks for errors and accepts relative routes, with pwd in shell, check for missing pwd
 // TODO: Test for calls for not created directories
-// TODO: does not currently search in path
 void	create_empty_file(char *path, t_shell *shell);
 
 // If has filename is set to 0, everything will be considered a directory name

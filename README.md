@@ -19,6 +19,16 @@
 		- [ ] Durante Lectura
 - [ ]  MAIN
 - [ ]  BUILTINS
+	- [ ] echo
+		- [ ] -n
+	- [ ] cd
+		- [ ] ruta relativa
+		- [ ] ruta absoluta
+	- [ ] pwd
+	- [ ] export ("export var=val", check "export var = val", "export var= val" y "export var=a val")
+	- [ ] unset
+	- [ ] env
+	- [ ] exit
 - [ ]  PARA EL FINAL, CHECKEAR MIL VECES TODO
 	- [ ] Norminette
 	- [ ] Exit status

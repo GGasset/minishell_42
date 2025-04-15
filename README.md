@@ -6,7 +6,17 @@
 	- [ ]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
 - [ ]  EJECUCION ENTERA
   - [ ] ENCONTRAR BINARIO
+  - [ ] Setear exit status al ultimo comando ejecutado (El ultimo de la linea)
 - [ ]  SEÑALES
+	- [ ] Ctrl + \
+		- [ ] Durante ejecucion
+		- [ ] Durante Lectura
+	- [ ] Ctrl + C
+		- [ ] Durante ejecucion
+		- [ ] Durante Lectura
+	- [ ] Ctrl + d
+		- [ ] Durante ejecucion
+		- [ ] Durante Lectura
 - [ ]  MAIN
 - [ ]  BUILTINS
 - [ ]  PARA EL FINAL, CHECKEAR MIL VECES TODO

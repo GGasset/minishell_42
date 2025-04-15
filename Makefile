@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+         #
+#    By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/04/03 15:04:37 by ggasset-         ###   ########.fr        #
+#    Updated: 2025/04/15 19:20:42 by apaz-pri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,13 @@ TEST_NAME=test
 libft_NAME=./libft/libft.a
 ARCHIVES= ${libft_NAME}
 
-O_FILES=dealloc.o file_utils.o shell_split.o is_operator.o tokenizer.o shell_get_word.o ft_shell_replace.o ft_normalize_spaces.o envp_search.o text_utils.o
+O_FILES=execution.o dealloc.o file_utils.o shell_split.o is_operator.o tokenizer.o shell_get_word.o ft_shell_replace.o ft_normalize_spaces.o envp_search.o text_utils.o
 MAIN_O=
 TEST_MAIN_O=test_main.o
 
-CC_SECURITY_FLAGS= -Wall -Wextra -Werror
+CC_SECURITY_FLAGS= -Wall -Wextra -Werror -fsanitize=address
 CC_FLAGS= -g -I ./libft/
-LINKING_FLAGS= -I ./libft/
+LINKING_FLAGS= -I ./libft/ -fsanitize=address
 
 LOGO=\n ▗▄▄▄▄▖    ▗▄▄▄▄▖\n▐▌        ▐▌ \n▐▌ ▝▝▜▌   ▐▌ ▝▝▜▌\n▝▚▄▄▄▞▘   ▝▚▄▄▄▞▘     \n
 

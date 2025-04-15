@@ -59,6 +59,8 @@ int main(int argc, char  *argv[], char **envp)
 	int err = 0;
 	t_raw_line tokenized = tokenize_line(out, &err, &shell);
 	printf("error: %i\n", err);
+	t_exe exxxe = prepare(tokenized, &shell);
+	exxxe.command_count = exxxe.command_count;
 	free_raw_line(&tokenized, FALSE);
 	free(out);
 }

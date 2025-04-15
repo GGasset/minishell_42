@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "common_header.h": "c",
+        "parsing_header.h": "c"
+    },
+    "editor.insertSpaces": false
+}

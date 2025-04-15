@@ -1,0 +1,58 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+		{
+			"name": "CLUSTER",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/minishell",
+			"args": ["cat -e < hola.txt"],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "Enable funcy printing to gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				},
+				{   "description":"In this mode GDB will be attached to both processes after a call to fork() or vfork().",
+					"text": "-gdb-set detach-on-fork off",
+					"ignoreFailures": true
+				},
+				{   "description": "The new process is debugged after a fork. The parent process runs unimpeded.",
+					"text": "-gdb-set follow-fork-mode child",
+					"ignoreFailures": true
+				}
+			],
+			"preLaunchTask": "Compilar"
+		},
+        {
+            "name": "HOME",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": ["infiles/empty.txt","grep nonexistingword","cat -e","outfiles/outfile"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+			"setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set follow-fork-mode to child",
+                    "text": "process handle -p true -s false -n false SIGCHLD",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "Compilar" // Aquí se asegura de que compile antes de ejecutar
+        }
+	]
+}

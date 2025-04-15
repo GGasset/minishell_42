@@ -6,6 +6,7 @@
 	- [ ]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
 - [ ]  EJECUCION ENTERA
   - [ ] ENCONTRAR BINARIO
+	- [ ] Checkear que no sea un built-in
   - [ ] Setear exit status al ultimo comando ejecutado (El ultimo de la linea)
 - [ ]  SEÑALES
 	- [ ] Ctrl + \

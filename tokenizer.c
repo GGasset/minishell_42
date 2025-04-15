@@ -54,8 +54,10 @@ static void	set_redirect(char *word, t_raw_cmd *cmd, int e_operator, t_shell *s)
 	*redirect = malloc(sizeof(t_raw_redirect));
 	if (!*redirect)
 		return ;
-	(*redirect)->type = e_operator;
-	(*redirect)->file = ft_strdup(word);
+	if (e_operator == stdin_delimiter)
+		word = do_heredoc(word);
+	(*redirect)->file = ft_strdup_free(word, e_operator == stdin_delimiter);
+	(*redirect)->type = e_operator - (e_operator == stdin_delimiter);
 }
 
 static void	set_file(t_raw_cmd *out, char *tmp_s, char current_op)
@@ -69,7 +71,7 @@ static void	set_file(t_raw_cmd *out, char *tmp_s, char current_op)
 	free(tmp_s);
 }
 
-static t_raw_cmd	tokenize_command(char *command, int *err, t_shell *shell)
+static t_raw_cmd	tokenize_command(char *command, int *err, t_shell *shell, size_t command_i)
 {
 	t_raw_cmd	out;
 	char		operator;
@@ -113,7 +115,7 @@ t_raw_line	tokenize_line(char *line, int *err, t_shell *shell)
 			*err = 1;
 			break ;
 		}
-		out.raw_commands[i] = tokenize_command(commands[i], err, shell);
+		out.raw_commands[i] = tokenize_command(commands[i], err, shell, i);
 		i++;
 	}
 	ft_free_splitted(commands);

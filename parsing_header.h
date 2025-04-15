@@ -15,6 +15,8 @@
 
 # include "common_header.h"
 
+# define heredoc_prompt "\n> "
+
 // Common Utils
 
 /*
@@ -127,5 +129,8 @@ char			**shell_split(char *s, char c);
 t_raw_line		tokenize_line(char *line, int *err, t_shell *shell);
 
 void			remove_quotes(t_raw_line tokens);// NEEDS TESTING
+
+// If something is wrong do nothing
+char			*do_heredoc(char *delimiter, size_t i); // Needs Testing
 
 #endif

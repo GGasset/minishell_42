@@ -2,7 +2,7 @@
 
 - [ ]  Parsing
 	- [ ]  Funcion principal de parsing (Le pasas el input tal y como llega y sale parseado)
-	- [ ]  Gestionar Heredoc
+	- [ ]  Gestionar Heredoc -- En proceso Germán
 	- [X]  LEAK
 	- [ ]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
 - [ ]  EJECUCION ENTERA

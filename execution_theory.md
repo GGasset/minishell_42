@@ -26,4 +26,6 @@
 	* Cuando halla un input o output _redirect ignorar pipe y setearlo en el archivo
 5. Ejecucion
 	* Ejecutar los t_cmd que tengan error a cero
+	* En la funcion de ejecucion checkear si es un builtin, despues del fork y en ese caso ejecutar una funcion en vez de un execve
+		* En caso de parametros invalidos en builtin, escribir en stderr y no hacer nada, dentro del builtin
 

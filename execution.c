@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:57:44 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/04/15 23:40:21 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:03:29 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,13 @@ t_exe	prepare(t_raw_line rwcmd, t_shell *shell)
         perror("Memory alloc Error");
         exit(EXIT_FAILURE);
     }
-	while (/*Exitan los comandos*/)
+	while (i < rwcmd.len)
 	{
 		cmd.commands[i].path = get_from_path(rwcmd.raw_commands[i].file,
 		shell->envp);
 		cmd.commands[i].argv = rwcmd.raw_commands[i].argv;
+		cmd.commands[i].input_fd = STDIN_FILENO;
+		cmd.commands[i].output_fd = STDOUT_FILENO;
 		if (rwcmd.raw_commands[i].input_redirect)
 			cmd.commands[i].input_fd = open(rwcmd.raw_commands[i].input_redirect->file, 
 			O_RDONLY);

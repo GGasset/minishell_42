@@ -1,0 +1,6 @@
+*.o
+out
+test
+libft/libft.a
+minishell.dSYM*
+*.dSYM*

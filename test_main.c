@@ -59,6 +59,14 @@ int main(int argc, char  *argv[], char **envp)
 	int err = 0;
 	t_raw_line tokenized = tokenize_line(out, &err, &shell);
 	printf("error: %i\n", err);
+	t_exe exxxe = prepare(tokenized, &shell);
+	for (i = 0; i < exxxe.command_count; i++)
+	{
+		printf("------ %d/%d ------\nPath -> %s\nInput_Fd -> %d\nOutput_Fd -> %d\n", i+1, exxxe.command_count, 
+			exxxe.commands[i].path, exxxe.commands[i].input_fd, exxxe.commands[i].output_fd);
+		for (int w = 0; exxxe.commands[i].argv[w] != NULL; w++)
+			printf("Argv -> %s\n", exxxe.commands[i].argv[w]);
+	}
 	free_raw_line(&tokenized, FALSE);
 	free(out);
 }

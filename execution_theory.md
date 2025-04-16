@@ -1,6 +1,6 @@
 # Notas
 
-## casos extremos
+## casos extremos (ONLY ZSH)
 
 <archivo (Imprimir archivo entero normal)
 >archivo

@@ -53,6 +53,7 @@ static void	heredoc_loop(char *delimiter, int write_fd)
 char	*do_heredoc(char *delimiter, size_t i, t_shell *shell)
 {
 	char	*path;
+	int		fd;
 
 	path = get_user_home(shell);
 	if (!path)
@@ -65,8 +66,14 @@ char	*do_heredoc(char *delimiter, size_t i, t_shell *shell)
 		return (path);
 	if (!shell->tmp_files)
 		shell->tmp_files = ft_calloc(1, 1);
-	shell->tmp_files = ft_strjoin_free(shell->tmp_files, "|",
-		TRUE, FALSE);
+	else
+		shell->tmp_files = ft_strjoin_free(shell->tmp_files, "|",
+			TRUE, FALSE);
 	shell->tmp_files = ft_strjoin_free(shell->tmp_files, path, TRUE, FALSE);
-	
+	fd = open(path, O_WRONLY | O_CREAT | O_TRUNC);
+	if (fd == -1)
+		return (path);
+	heredoc_loop(delimiter, fd);
+	close(fd);
+	return (path);
 }

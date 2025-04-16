@@ -22,6 +22,7 @@
 - [ ]  MAIN
 	- [ ] Mensaje para enunciar que se espera un comando nuevo
 	- [ ] Historial
+	- [ ] Eliminar archivos temporales despues de la ejecucion
 - [ ]  BUILTINS
 	- [ ] echo
 		- [ ] -n

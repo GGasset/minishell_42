@@ -16,7 +16,9 @@ TEST_NAME=test
 libft_NAME=./libft/libft.a
 ARCHIVES= ${libft_NAME}
 
-O_FILES=execution.o dealloc.o file_utils.o shell_split.o is_operator.o tokenizer.o shell_get_word.o ft_shell_replace.o ft_normalize_spaces.o envp_search.o text_utils.o
+
+O_FILES=execution.o heredoc.o dealloc.o file_utils.o shell_split.o is_operator.o tokenizer.o shell_get_word.o ft_shell_replace.o ft_normalize_spaces.o envp_search.o text_utils.o
+
 MAIN_O=
 TEST_MAIN_O=test_main.o
 

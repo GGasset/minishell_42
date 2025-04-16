@@ -50,11 +50,23 @@ static void	heredoc_loop(char *delimiter, int write_fd)
 	}
 }
 
-char	*do_heredoc(char *delimiter, size_t i)
+char	*do_heredoc(char *delimiter, size_t i, t_shell *shell)
 {
 	char	*path;
 
-	
-	if (access(path, F_OK) || !access(path, W_OK))
+	path = get_user_home(shell);
+	if (!path)
+		path = get_pwd(shell);
+	if (!path)
+		path = ft_strdup("/tmp/");
+	path = ft_strjoin_free(path, ".minishell_heredoc_@&xfb$@_", TRUE, FALSE);
+	path = ft_strjoin_free(path, ft_itoa((int)i), TRUE, TRUE);
+	if (access(path, F_OK) && !access(path, W_OK))
 		return (path);
+	if (!shell->tmp_files)
+		shell->tmp_files = ft_calloc(1, 1);
+	shell->tmp_files = ft_strjoin_free(shell->tmp_files, "|",
+		TRUE, FALSE);
+	shell->tmp_files = ft_strjoin_free(shell->tmp_files, path, TRUE, FALSE);
+	
 }

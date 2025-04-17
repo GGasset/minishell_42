@@ -29,5 +29,5 @@ char	*get_user_home(t_shell *shell)
 
 char	*get_pwd(t_shell *shell)
 {
-	return (0);
+	return (ft_strjoin(get_envp("PWD", shell->envp), "/"));
 }

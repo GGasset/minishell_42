@@ -48,8 +48,8 @@ static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s, size_t i)
 		return ;
 	if (*redirect)
 	{
+		free(redirect[0]->file);
 		free(*redirect);
-		*redirect = 0;
 	}
 	*redirect = malloc(sizeof(t_raw_redirect));
 	if (!*redirect)
@@ -68,7 +68,6 @@ static void	set_file(t_raw_cmd *out, char *tmp_s, char current_op)
 			out->file = ft_strdup(tmp_s);
 		out->argv = argv_append(out->argv, tmp_s, FALSE);
 	}
-	free(tmp_s);
 }
 
 static t_raw_cmd	tokenize_cmd(char *cmd, int *err, t_shell *shell, size_t cmd_i)
@@ -90,6 +89,7 @@ static t_raw_cmd	tokenize_cmd(char *cmd, int *err, t_shell *shell, size_t cmd_i)
 		set_redirect(tmp_s, &out, current_op, shell, cmd_i);
 		set_file(&out, tmp_s, current_op);
 		i = get_next_word_start_i(cmd, i);
+		free(tmp_s);
 		if (!operator)
 			break ;
 		current_op = operator;

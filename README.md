@@ -1,8 +1,8 @@
 ## TO DO
 
 - [ ]  Parsing
-	- [ ]  Funcion principal de parsing (Le pasas el input tal y como llega y sale parseado)
-	- [ ]  Gestionar Heredoc -- En proceso Germán
+	- [X]  Funcion principal de parsing (Le pasas el input tal y como llega y sale parseado)
+	- [X]  Gestionar Heredoc
 	- [X]  LEAK
 	- [ ]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
 - [ ]  EJECUCION ENTERA

@@ -130,7 +130,7 @@ t_raw_line		tokenize_line(char *line, int *err, t_shell *shell);
 
 void			remove_quotes(t_raw_line tokens);// NEEDS TESTING
 
-// If something is wrong do nothing
-char			*do_heredoc(char *delimiter, size_t i); // Needs Testing
+// If something is wrong do nothing  Needs Testing
+char			*do_heredoc(char *delimiter, size_t i, t_shell *shell);
 
 #endif

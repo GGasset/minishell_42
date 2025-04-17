@@ -72,21 +72,28 @@ typedef struct s_raw_line
 
 void	free_raw_line(t_raw_line *line, int free_line);
 
+// tmp_files are separated by '|' character
 typedef struct s_shell
 {
 	char			**envp;
-	char			*files_to_delete;
+	char			*tmp_files;
 }		t_shell;
 
 int		file_exists(char *file_path);
 char	*get_from_path(char *filename, char *envp[]);
 char	*get_envp(char *key, char *envp[]);
 
-// Checks for errors and accepts relative routes, with pwd in shell, check for missing pwd
-// TODO: Test for calls for not created directories
+// Checks for errors
+// accepts relative routes, with pwd in shell TODO
+// checks for missing pwd TODO
+// Creates directories TODO
 void	create_empty_file(char *path, t_shell *shell);
 
 // If has filename is set to 0, everything will be considered a directory name
 void	create_directory(char *path, int has_filename);
+
+// If it fails to get HOME var, tries /home/$USER/, else returns 0
+char	*get_user_home(t_shell *shell);
+char	*get_pwd(t_shell *shell);
 
 #endif

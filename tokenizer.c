@@ -31,18 +31,18 @@ char	**argv_append(char **argv, char *s, int free_s)
 // i is the start of the word after the operator
 // just let the thing do the thing
 // free your stuff
-static void	set_redirect(char *word, t_raw_cmd *cmd, int e_operator, t_shell *s)
+static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s, size_t i)
 {
 	t_raw_redirect	**redirect;
 
-	if (!word)
+	if (!w)
 		return ;
-	if (is_input_e_operator(e_operator))
+	if (is_input_e_operator(op))
 		redirect = &cmd->input_redirect;
-	else if (is_output_e_operator(e_operator))
+	else if (is_output_e_operator(op))
 	{
 		redirect = &cmd->output_redirect;
-		create_empty_file(word, s);
+		create_empty_file(w, s);
 	}
 	else
 		return ;
@@ -54,10 +54,10 @@ static void	set_redirect(char *word, t_raw_cmd *cmd, int e_operator, t_shell *s)
 	*redirect = malloc(sizeof(t_raw_redirect));
 	if (!*redirect)
 		return ;
-	if (e_operator == stdin_delimiter)
-		word = do_heredoc(word);
-	(*redirect)->file = ft_strdup_free(word, e_operator == stdin_delimiter);
-	(*redirect)->type = e_operator - (e_operator == stdin_delimiter);
+	if (op == stdin_delimiter)
+		w = do_heredoc(w, i, s);
+	(*redirect)->file = ft_strdup_free(w, op == stdin_delimiter);
+	(*redirect)->type = op - (op == stdin_delimiter);
 }
 
 static void	set_file(t_raw_cmd *out, char *tmp_s, char current_op)
@@ -87,7 +87,7 @@ static t_raw_cmd	tokenize_command(char *command, int *err, t_shell *shell, size_
 	{
 		tmp_s = shell_get_word(command, i, &operator);
 		*err = current_op && !tmp_s;
-		set_redirect(tmp_s, &out, current_op, shell);
+		set_redirect(tmp_s, &out, current_op, shell, command_i);
 		set_file(&out, tmp_s, current_op);
 		i = get_next_word_start_i(command, i);
 		if (!operator)

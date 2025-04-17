@@ -32,5 +32,6 @@ int main(int argc, char  *argv[], char **envp)
 			printf("Argv -> %s\n", exxxe.commands[i].argv[w]);
 	}
 	free_raw_line(&tokenized, FALSE);
+	remove_tmp_files(&shell);
 }
 

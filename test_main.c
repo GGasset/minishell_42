@@ -15,7 +15,7 @@ int main(int argc, char  *argv[], char **envp)
 	ft_bzero(&shell, sizeof(t_shell));
 	shell.envp = envp;
 
-	printf("ARGV[1]=%s| end\n\n", argv[1]);
+	printf("ARGV[1]=%s| end\n", argv[1]);
 
 	int err = 0;
 	t_raw_line tokenized = parse_input(argv[1], &err, &shell);

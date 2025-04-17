@@ -15,52 +15,15 @@ int main(int argc, char  *argv[], char **envp)
 	ft_bzero(&shell, sizeof(t_shell));
 	shell.envp = envp;
 
-	printf("ARGV[1]=%s| end\n", argv[1]);
-
-	if (check_invalid_quotes(argv[1]))
-	{
-		printf("Invalid quotes. Exiting...\n");
-		return TRUE;
-	}
-
-	char *tmp = ft_replace(argv[1], "$ ", "$", FALSE);
-	printf("Replacing \"$ \" with \"$\"...\nNew ARGV[1]=%s| end\n\n", tmp);
-
-	
-	char *out = ft_shell_replace(tmp, &shell);
-	printf("Expanded->%s| end\n", out);
-
-	free(tmp);
-
-	out = ft_normalize_spaces(out, TRUE);
-	printf("Normalized->%s| end\n\n", out);
-
-	char **splitted = shell_split(out, '|');
-	printf("Splitted..\n");
-	size_t i = 0;
-	for (i = 0; splitted && splitted[i]; i++)
-	{
-		printf("Split_out=\"%s\"\n", splitted[i]);
-	}
-	printf("%s\n", splitted[i]);
-	ft_free_splitted(splitted);
-
-	char delimiter = 1;
-	i = 0;
-	while (delimiter)
-	{
-		char *word = shell_get_word(out, i, &delimiter);
-		printf("Word=[%s] Next_token=[%i, %c]\n", word, delimiter, delimiter);
-		free(word);
-
-		i = get_next_word_start_i(out, i);
-	}
+	printf("ARGV[1]=%s| end\n\n", argv[1]);
 
 	int err = 0;
-	t_raw_line tokenized = tokenize_line(out, &err, &shell);
+	t_raw_line tokenized = parse_input(argv[1], &err, &shell);
 	printf("error: %i\n", err);
+
+
 	t_exe exxxe = prepare(tokenized, &shell);
-	for (i = 0; i < exxxe.command_count; i++)
+	for (size_t i = 0; i < exxxe.command_count; i++)
 	{
 		printf("------ %d/%d ------\nPath -> %s\nInput_Fd -> %d\nOutput_Fd -> %d\n", i+1, exxxe.command_count, 
 			exxxe.commands[i].path, exxxe.commands[i].input_fd, exxxe.commands[i].output_fd);
@@ -68,6 +31,5 @@ int main(int argc, char  *argv[], char **envp)
 			printf("Argv -> %s\n", exxxe.commands[i].argv[w]);
 	}
 	free_raw_line(&tokenized, FALSE);
-	free(out);
 }
 

@@ -71,7 +71,7 @@ char	*do_heredoc(char *delimiter, size_t i, t_shell *shell)
 		shell->tmp_files = ft_strjoin_free(shell->tmp_files, "|",
 			TRUE, FALSE);
 	shell->tmp_files = ft_strjoin_free(shell->tmp_files, path, TRUE, FALSE);
-	fd = open(path, O_WRONLY | O_CREAT | O_TRUNC);
+	fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	if (fd == -1)
 		return (path);
 	heredoc_loop(delimiter, fd);

@@ -54,7 +54,7 @@ t_exe	prepare(t_raw_line rwcmd, t_shell *shell)
 			O_RDONLY);
 		if (rwcmd.raw_commands[i].output_redirect)
 			cmd.commands[i].output_fd = open(rwcmd.raw_commands[i].output_redirect->file, 
-			O_CREAT | O_RDWR | O_TRUNC);
+			O_CREAT | O_RDWR | O_TRUNC, 0644);
 		cmd.command_count++;
 		i++;
 	}

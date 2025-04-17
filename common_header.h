@@ -78,6 +78,7 @@ typedef struct s_shell
 	char			**envp;
 	char			*tmp_files;
 }		t_shell;
+void	remove_tmp_files(t_shell *shell);
 
 int		file_exists(char *file_path);
 char	*get_from_path(char *filename, char *envp[]);

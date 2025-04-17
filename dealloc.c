@@ -39,3 +39,22 @@ void	free_raw_line(t_raw_line *line, int free_line)
 	if (free_line)
 		free(line);
 }
+
+void	remove_tmp_files(t_shell *shell)
+{
+	char	**files;
+	size_t	i;
+
+	if (!shell || !shell->tmp_files)
+		return ;
+	files = ft_split(shell->tmp_files, '|');
+	i = 0;
+	while (files && files[i])
+	{
+		unlink(files[i]);
+		i++;
+	}
+	ft_free_splitted(files);
+	free(shell->tmp_files);
+	shell->tmp_files = 0;
+}

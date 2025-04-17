@@ -59,7 +59,8 @@ char	*do_heredoc(char *delimiter, size_t i, t_shell *shell)
 	if (!path)
 		path = get_pwd(shell);
 	if (!path)
-		path = ft_strdup("/tmp/");
+		path = ft_strdup("/tmp");
+	path = ft_strjoin_free(path, "/", TRUE, FALSE);
 	path = ft_strjoin_free(path, ".minishell_heredoc_@&xfb$@_", TRUE, FALSE);
 	path = ft_strjoin_free(path, ft_itoa((int)i), TRUE, TRUE);
 	if (access(path, F_OK) && !access(path, W_OK))

@@ -19,5 +19,7 @@ ssize_t	 ft_strchr_i(const char *s, char c)
 	i = 0;
 	while (s && s[i] && s[i] != c)
 		i++;
-	return (-1 + ((int)c + 1) * (s[i] == c));
+	if (s[i] == c)
+		return (i);
+	return (-1);
 }

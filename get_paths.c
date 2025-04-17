@@ -14,7 +14,17 @@
 
 char	*get_user_home(t_shell *shell)
 {
-	return (0);
+	char	*out;
+	
+	out = get_envp("HOME", shell->envp);
+	if (out)
+		return (ft_strdup(out));
+	out = get_envp("USER", shell->envp);
+	if (!out)
+		return (0);
+	out = ft_strjoin("/home/", out);
+	out = ft_strjoin_free(out, "/", TRUE, FALSE);
+	return (out);
 }
 
 char	*get_pwd(t_shell *shell)

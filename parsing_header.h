@@ -133,4 +133,9 @@ void			remove_quotes(t_raw_line tokens);// NEEDS TESTING
 // If something is wrong do nothing  Needs Testing
 char			*do_heredoc(char *delimiter, size_t i, t_shell *shell);
 
+// All combined
+
+// Does not free line
+t_raw_line		parse_input(char *line, int *err, t_shell *shell);
+
 #endif

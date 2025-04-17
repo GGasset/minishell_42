@@ -18,7 +18,7 @@ static char	set_delimiter(char *s, size_t start, size_t len)
 	size_t	i;
 
 	i = start + len;
-	if (is_word_delimiter(s[i]) && is_word_delimiter(s[i + 1]))
+	if (s[i] && is_word_delimiter(s[i]) && is_word_delimiter(s[i + 1]))
 	{
 		if (ft_isspace(s[i]))
 			i++;

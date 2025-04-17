@@ -17,14 +17,14 @@ static char	set_delimiter(char *s, size_t start, size_t len)
 	char	out;
 	size_t	i;
 
-	i = start + len + 1;
-	if (ft_isspace(s[start + len]) && is_word_delimiter(s[i]))
+	i = start + len;
+	if (is_word_delimiter(s[i]) && is_word_delimiter(s[i + 1]))
 	{
-		out = s[i];
-		if (!s[i] || !is_operator(s[i]))
-			return (0);
-		if (ft_isspace(s[i + 1]))
+		if (ft_isspace(s[i]))
 			i++;
+		out = s[i];
+		if (!s[i])
+			return (0);
 		i++;
 		if (s[i] == out && is_redirect_operator(s[i]))
 			out++;

@@ -71,7 +71,7 @@ static void	set_file(t_raw_cmd *out, char *tmp_s, char current_op)
 	free(tmp_s);
 }
 
-static t_raw_cmd	tokenize_command(char *command, int *err, t_shell *shell, size_t command_i)
+static t_raw_cmd	tokenize_cmd(char *cmd, int *err, t_shell *shell, size_t cmd_i)
 {
 	t_raw_cmd	out;
 	char		operator;
@@ -85,11 +85,11 @@ static t_raw_cmd	tokenize_command(char *command, int *err, t_shell *shell, size_
 	i = 0;
 	while (err && !*err)
 	{
-		tmp_s = shell_get_word(command, i, &operator);
+		tmp_s = shell_get_word(cmd, i, &operator);
 		*err = current_op && !tmp_s;
-		set_redirect(tmp_s, &out, current_op, shell, command_i);
+		set_redirect(tmp_s, &out, current_op, shell, cmd_i);
 		set_file(&out, tmp_s, current_op);
-		i = get_next_word_start_i(command, i);
+		i = get_next_word_start_i(cmd, i);
 		if (!operator)
 			break ;
 		current_op = operator;
@@ -115,7 +115,7 @@ t_raw_line	tokenize_line(char *line, int *err, t_shell *shell)
 			*err = 1;
 			break ;
 		}
-		out.raw_commands[i] = tokenize_command(commands[i], err, shell, i);
+		out.raw_commands[i] = tokenize_cmd(commands[i], err, shell, i);
 		i++;
 	}
 	ft_free_splitted(commands);

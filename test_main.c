@@ -20,7 +20,8 @@ int main(int argc, char  *argv[], char **envp)
 	int err = 0;
 	t_raw_line tokenized = parse_input(argv[1], &err, &shell);
 	printf("error: %i\n", err);
-
+	if (err)
+		return (free_raw_line(&tokenized, FALSE), 1);
 
 	t_exe exxxe = prepare(tokenized, &shell);
 	for (size_t i = 0; i < exxxe.command_count; i++)

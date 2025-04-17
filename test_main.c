@@ -14,6 +14,7 @@ int main(int argc, char  *argv[], char **envp)
 	t_shell shell;
 	ft_bzero(&shell, sizeof(t_shell));
 	shell.envp = envp;
+	argv[1] = "ca't' > o'\"uti'";
 
 	printf("ARGV[1]=%s| end\n", argv[1]);
 

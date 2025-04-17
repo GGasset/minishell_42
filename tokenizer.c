@@ -24,7 +24,7 @@ char	**argv_append(char **argv, char *s, int free_s)
 		sizeof(char *) * (len + 1), TRUE);
 	len++;
 	if (out)
-		out[len - 2] = ft_strdup_free(s, free_s);
+		out[len - 2] = remove_outer_quotes(s, free_s);
 	return (out);
 }
 
@@ -40,10 +40,7 @@ static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s, size_t i)
 	if (is_input_e_operator(op))
 		redirect = &cmd->input_redirect;
 	else if (is_output_e_operator(op))
-	{
 		redirect = &cmd->output_redirect;
-		create_empty_file(w, s);
-	}
 	else
 		return ;
 	if (*redirect)
@@ -56,7 +53,7 @@ static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s, size_t i)
 		return ;
 	if (op == stdin_delimiter)
 		w = do_heredoc(w, i, s);
-	(*redirect)->file = ft_strdup_free(w, op == stdin_delimiter);
+	(*redirect)->file = remove_outer_quotes(w, op == stdin_delimiter);
 	(*redirect)->type = op - (op == stdin_delimiter);
 }
 
@@ -65,7 +62,7 @@ static void	set_file(t_raw_cmd *out, char *tmp_s, char current_op)
 	if (tmp_s && !is_e_operator(current_op))
 	{
 		if (!out->argv)
-			out->file = ft_strdup(tmp_s);
+			out->file = remove_outer_quotes(tmp_s, FALSE);
 		out->argv = argv_append(out->argv, tmp_s, FALSE);
 	}
 }

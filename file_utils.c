@@ -23,7 +23,7 @@ void	create_empty_file(char *path, t_shell *shell)
 		ft_putstr_fd(": Permission denied\n", 2);
 		return ;
 	}
-	fd = open(path, O_WRONLY | O_TRUNC | O_CREAT);
+	fd = open(path, O_WRONLY | O_TRUNC | O_CREAT, 0666);
 	if (fd == -1)
 	{
 		ft_putstr_fd("ERROR\n", 2);

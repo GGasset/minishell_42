@@ -128,7 +128,7 @@ char			**argv_append(char **argv, char *s, int free_s);
 char			**shell_split(char *s, char c);
 t_raw_line		tokenize_line(char *line, int *err, t_shell *shell);
 
-void			remove_quotes(t_raw_line tokens);// NEEDS TESTING
+char			*remove_outer_quotes(char *s, int free_s);
 
 // If something is wrong do nothing  Needs Testing
 char			*do_heredoc(char *delimiter, size_t i, t_shell *shell);

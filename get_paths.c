@@ -16,9 +16,9 @@ char	*get_user_home(t_shell *shell)
 {
 	char	*out;
 	
-	out = get_envp("HOME", shell->envp);
+	out = ft_strjoin(get_envp("HOME", shell->envp), "/");
 	if (out)
-		return (ft_strdup(out));
+		return (out);
 	out = get_envp("USER", shell->envp);
 	if (!out)
 		return (0);

@@ -55,7 +55,7 @@ static void	readline_loop(t_shell *shell)
 		tokenized = tokenize_line(line, &err, shell);
 		if (err)
 		{
-			write(2, PARSE_ERR, ft_strlen(parse_err));
+			write(2, PARSE_ERR, ft_strlen(PARSE_ERR));
 			free(line);
 			continue ;
 		}

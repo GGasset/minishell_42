@@ -19,10 +19,10 @@
 	- [ ] Ctrl + d
 		- [ ] Durante ejecucion
 		- [ ] Durante Lectura
-- [ ]  MAIN
-	- [ ] Mensaje para enunciar que se espera un comando nuevo
+- [X]  MAIN
+	- [X] Mensaje para enunciar que se espera un comando nuevo
 	- [X] Historial
-	- [ ] Eliminar archivos temporales despues de la ejecucion
+	- [X] Eliminar archivos temporales despues de la ejecucion
 - [ ]  BUILTINS
 	- [ ] echo
 		- [ ] -n

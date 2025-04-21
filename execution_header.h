@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution_header.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:35:57 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/15 19:17:47 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/04/21 00:34:56 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ typedef struct s_exe
 t_exe	prepare(t_raw_line rwcmd, t_shell *shell);
 void	execute(t_exe commands);
 void	free_execution_env(t_exe exe);
+int		b_pwd(void);
+void	b_echo(t_exe cmd);
 
 #endif

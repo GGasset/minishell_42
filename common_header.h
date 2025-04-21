@@ -14,6 +14,7 @@
 # define COMMON_HEADER_H
 
 # include <stddef.h>
+# include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
 

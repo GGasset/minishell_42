@@ -28,6 +28,8 @@
 # define prompt_end "\n$"
 # define parse_err "Parse error: incorrect syntax\n"
 
+extern unsigned char	g_last_return_code;
+
 enum e_operators
 {
 	none = 0,

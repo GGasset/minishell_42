@@ -33,24 +33,45 @@ static char	*readline_abstraction(t_shell *shell)
 		prompt = ft_strjoin_free(prompt, ":", TRUE, FALSE);
 		prompt = ft_strjoin_free(prompt, get_envp("PWD", shell->envp), 1, 0);
 	}
+	prompt = ft_strjoin_free(prompt, prompt_end, TRUE, FALSE);
+	rl_on_new_line();
 	out = readline(prompt);
+	add_history(out);
 	free(prompt);
 	return (out);
 }
 
-int	main(int argc, char *argv[], char **envp)
+static void	readline_loop(t_shell *shell)
 {
-	t_shell	shell;
-	int		err;
-	char	*line;
+	t_raw_line	tokenized;
+	t_exe		exe_struct;
+	int			err;
+	char		*line;
 
 	err = 0;
-	shell.envp = envp;
-	if (setup())
-		return (errno);
 	while (TRUE)
 	{
 		line = readline_abstraction(&shell);
+		tokenized = tokenize_line(line, &err, &shell);
+		if (err)
+		{
+			write(2, parse_err, ft_strlen(parse_err));
+			free(line);
+			continue ;
+		}
 		free(line);
+		ft_bzero(&exe_struct, sizeof(t_exe));
+		free_execution_env(exe_struct);
+		free_raw_line(&tokenized, FALSE);
 	}
+}
+
+int	main(int argc, char *argv[], char **envp)
+{
+	t_shell		shell;
+
+	shell.envp = envp;
+	if (setup())
+		return (errno);
+	readline_loop(&shell);
 }

@@ -62,7 +62,7 @@ void	remove_tmp_files(t_shell *shell)
 
 void	free_execution_env(t_exe exe)
 {
-	
+
 }
 
 void	exit_call(t_shell *s, t_raw_line *lines, t_exe *structure, int code)
@@ -71,5 +71,6 @@ void	exit_call(t_shell *s, t_raw_line *lines, t_exe *structure, int code)
 	free_execution_env(*structure);
 	remove_tmp_files(s);
 	ft_free_splitted(s->envp);
+	rl_clear_history();
 	exit(code);
 }

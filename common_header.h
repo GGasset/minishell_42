@@ -24,8 +24,8 @@
 # include "libft.h"
 
 # define heredoc_prompt "> "
-# define line_prompt ""
-# define prompt_end "\n$"
+# define line_prompt "mini🐚 "
+# define prompt_end "\n$ "
 # define parse_err "Parse error: incorrect syntax\n"
 
 extern unsigned char	g_last_return_code;

@@ -12,11 +12,11 @@
 
 #include "parsing_header.h"
 
-static int	handle_nl(char *d, char **buff, ssize_t nline_i, int fd)
+static int	handle_nl(char *d, char **buff, size_t nline_i, int fd)
 {
 	if (!*buff)
 		return (TRUE);
-	if (!ft_strncmp(d, *buff, ft_strlen(buff)))
+	if (!ft_strncmp(d, *buff, nline_i) && nline_i == ft_strlen(d))
 	{
 		free(*buff);
 		*buff = 0;

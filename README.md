@@ -21,7 +21,7 @@
 		- [ ] Durante Lectura
 - [ ]  MAIN
 	- [ ] Mensaje para enunciar que se espera un comando nuevo
-	- [ ] Historial
+	- [X] Historial
 	- [ ] Eliminar archivos temporales despues de la ejecucion
 - [ ]  BUILTINS
 	- [ ] echo

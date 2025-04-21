@@ -51,8 +51,8 @@ static void	readline_loop(t_shell *shell)
 	err = 0;
 	while (TRUE)
 	{
-		line = readline_abstraction(&shell);
-		tokenized = tokenize_line(line, &err, &shell);
+		line = readline_abstraction(shell);
+		tokenized = tokenize_line(line, &err, shell);
 		if (err)
 		{
 			write(2, parse_err, ft_strlen(parse_err));
@@ -63,6 +63,7 @@ static void	readline_loop(t_shell *shell)
 		ft_bzero(&exe_struct, sizeof(t_exe));
 		free_execution_env(exe_struct);
 		free_raw_line(&tokenized, FALSE);
+		remove_tmp_files(shell);
 	}
 }
 
@@ -70,6 +71,7 @@ int	main(int argc, char *argv[], char **envp)
 {
 	t_shell		shell;
 
+	ft_bzero(&shell, sizeof(t_shell));
 	shell.envp = envp;
 	if (setup())
 		return (errno);

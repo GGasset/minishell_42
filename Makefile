@@ -23,7 +23,7 @@ TEST_MAIN_O=test_main.o
 
 CC_SECURITY_FLAGS= -Wall -Wextra -fsanitize=address
 CC_FLAGS= -g -I ./libft/
-LINKING_FLAGS= -I ./libft/ -fsanitize=address
+LINKING_FLAGS= -I ./libft/ -lreadline -fsanitize=address
 
 LOGO=\n ▗▄▄▄▄▖    ▗▄▄▄▄▖\n▐▌        ▐▌ \n▐▌ ▝▝▜▌   ▐▌ ▝▝▜▌\n▝▚▄▄▄▞▘   ▝▚▄▄▄▞▘     \n
 

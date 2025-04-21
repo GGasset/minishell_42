@@ -16,7 +16,7 @@ static int	handle_nl(char *d, char **buff, ssize_t nline_i, int fd)
 {
 	if (!*buff)
 		return (TRUE);
-	if (!ft_strncmp(d, *buff, ft_strlen(d)))
+	if (!ft_strncmp(d, *buff, ft_strlen(buff)))
 	{
 		free(*buff);
 		*buff = 0;

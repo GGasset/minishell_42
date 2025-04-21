@@ -1,6 +1,6 @@
 ## TO DO
 
-- [ ]  Parsing
+- [X]  Parsing
 	- [X]  Funcion principal de parsing (Le pasas el input tal y como llega y sale parseado)
 	- [X]  Gestionar Heredoc
 	- [X]  LEAK
@@ -19,10 +19,12 @@
 	- [ ] Ctrl + d
 		- [ ] Durante ejecucion
 		- [ ] Durante Lectura
-- [X]  MAIN
+- [ ]  MAIN
 	- [X] Mensaje para enunciar que se espera un comando nuevo
 	- [X] Historial
 	- [X] Eliminar archivos temporales despues de la ejecucion
+	- [ ] Add execution function
+	- [ ] Add signal setup
 - [ ]  BUILTINS
 	- [ ] echo
 		- [ ] -n

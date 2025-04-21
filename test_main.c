@@ -4,6 +4,8 @@
 #include "parsing_header.h"
 #include "execution_header.h"
 
+unsigned char	g_last_return_code = 0;
+
 int main(int argc, char  *argv[], char **envp)
 {
 	if (argc != 2 && 1)

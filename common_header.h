@@ -23,6 +23,9 @@
 
 # include "libft.h"
 
+# define heredoc_prompt "> "
+# define line_prompt ""
+
 enum e_operators
 {
 	none = 0,

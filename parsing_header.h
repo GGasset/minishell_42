@@ -15,8 +15,6 @@
 
 # include "common_header.h"
 
-# define heredoc_prompt "> "
-
 // Common Utils
 
 /*

@@ -14,6 +14,7 @@
 # define COMMON_HEADER_H
 
 # include <stddef.h>
+# include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
 
@@ -21,6 +22,13 @@
 # include <readline/history.h>
 
 # include "libft.h"
+
+# define heredoc_prompt "> "
+# define line_prompt ""
+# define prompt_end "\n$"
+# define parse_err "Parse error: incorrect syntax\n"
+
+extern unsigned char	g_last_return_code;
 
 enum e_operators
 {

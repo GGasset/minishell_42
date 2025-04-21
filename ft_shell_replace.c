@@ -12,8 +12,6 @@
 
 #include "parsing_header.h"
 
-unsigned char	g_last_return_code = 0;
-
 static int	is_valid_env_char(char c)
 {
 	return (ft_isalnum(c) || c == '?');

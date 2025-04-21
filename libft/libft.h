@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:06:22 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/03 15:46:11 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/21 13:05:48 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strcmp(char *s1, char *s2);
 
 size_t	ft_strlen(const char *s);
 

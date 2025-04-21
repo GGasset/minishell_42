@@ -6,33 +6,32 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 23:56:29 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/04/21 00:22:20 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/04/21 13:38:00 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execution_header.h"
 
 /*
-	1- Comprobar q argv con -n siempre tiene el tamaño de 2
 	2- Comprobar si la bash acepta el -n en cualquier lado 
-		si lo acepta esta funcion es un mojon porq no imprime
-		los argumentos de antes del -n
+		si lo acepta esta funcion es un mojon
 */
-void	b_echo(t_exe cmd)
+void	b_echo(t_cmd cmd)
 {
 	int	i;
 	int	parameter;
 
-	i = 0;
-	while (ft_strncmp(cmd.commands->argv[i], "-n", 2) && cmd.commands->argv[i])
+	i = 1;
+	parameter = 0;
+	while (cmd.argv[i] && ft_strcmp(cmd.argv[i], "-n") == 0)
 	{
 		parameter = 1;
 		i++;
 	}
-	while (cmd.commands->argv[i])
+	while (cmd.argv[i])
 	{
-		printf("%s", cmd.commands->argv[i]);
-		if (cmd.commands->argv[i+1] && cmd.commands->argv[i][0] != '\0')
+		printf("%s", cmd.argv[i]);
+		if (cmd.argv[i+1] && cmd.argv[i][0] != '\0')
 			printf(" ");
 		i++;
 	}

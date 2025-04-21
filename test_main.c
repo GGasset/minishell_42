@@ -31,12 +31,16 @@ int main(int argc, char  *argv[], char **envp)
 			exxxe.commands[i].path, exxxe.commands[i].input_fd, exxxe.commands[i].output_fd);
 		for (int w = 0; exxxe.commands[i].argv[w] != NULL; w++)
 			printf("Argv -> %s\n", exxxe.commands[i].argv[w]);
-		/*if (exxxe.commands[i].argv[0] == "echo")
+		if (ft_strcmp(exxxe.commands[i].argv[0], "echo") == 0)
+		{
 			printf("ECHO 👇 \n");
-			b_echo(exxxe);
-		if (exxxe.commands[i].argv[0] == "pwd")
-			printf("PWD 👇 ");
-			b_pwd();*/
+			b_echo(exxxe.commands[i]);
+		}
+		if (ft_strcmp(exxxe.commands[i].argv[0], "pwd") == 0)
+		{
+			printf("PWD 👇\n");
+			b_pwd();
+		}
 	}
 	free_raw_line(&tokenized, FALSE);
 	remove_tmp_files(&shell);

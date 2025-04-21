@@ -25,6 +25,8 @@
 
 # define heredoc_prompt "> "
 # define line_prompt ""
+# define prompt_end "\n$"
+# define parse_err "Parse error: incorrect syntax\n"
 
 enum e_operators
 {

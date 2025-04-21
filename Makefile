@@ -18,7 +18,7 @@ ARCHIVES= ${libft_NAME}
 
 O_FILES=parser.o get_paths.o execution.o heredoc.o dealloc.o file_utils.o shell_split.o is_operator.o tokenizer.o shell_get_word.o ft_shell_replace.o ft_normalize_spaces.o envp_search.o text_utils.o
 
-MAIN_O=
+MAIN_O=main.o
 TEST_MAIN_O=test_main.o
 
 CC_SECURITY_FLAGS= -Wall -Wextra -fsanitize=address

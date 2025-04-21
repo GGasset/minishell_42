@@ -15,8 +15,8 @@
 
 void	free_raw_line(t_raw_line *line, int free_line)
 {
-	size_t      i;
-	t_raw_cmd   command;
+	size_t		i;
+	t_raw_cmd	command;
 
 	if (!line)
 		return ;
@@ -62,7 +62,6 @@ void	remove_tmp_files(t_shell *shell)
 
 void	free_execution_env(t_exe exe)
 {
-
 }
 
 void	exit_call(t_shell *s, t_raw_line *lines, t_exe *structure, int code)

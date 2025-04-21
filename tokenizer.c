@@ -21,7 +21,7 @@ char	**argv_append(char **argv, char *s, int free_s)
 	if (!argv)
 		argv = ft_calloc(1, sizeof(char *));
 	out = ft_realloc(argv, sizeof(char *) * len,
-		sizeof(char *) * (len + 1), TRUE);
+			sizeof(char *) * (len + 1), TRUE);
 	len++;
 	if (out)
 		out[len - 2] = remove_outer_quotes(s, free_s);
@@ -31,7 +31,7 @@ char	**argv_append(char **argv, char *s, int free_s)
 // i is the start of the word after the operator
 // just let the thing do the thing
 // free your stuff
-static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s, size_t i)
+static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s)
 {
 	t_raw_redirect	**redirect;
 
@@ -52,7 +52,7 @@ static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s, size_t i)
 	if (!*redirect)
 		return ;
 	if (op == stdin_delimiter)
-		w = do_heredoc(w, i, s);
+		w = do_heredoc(w, cmd->i, s);
 	(*redirect)->file = remove_outer_quotes(w, op == stdin_delimiter);
 	if (is_output_e_operator(op))
 		create_empty_file((*redirect)->file, s);
@@ -69,7 +69,7 @@ static void	set_file(t_raw_cmd *out, char *tmp_s, char current_op)
 	}
 }
 
-static t_raw_cmd	tokenize_cmd(char *cmd, int *err, t_shell *shell, size_t cmd_i)
+static t_raw_cmd	tokenize_cmd(char *cmd, int *er, t_shell *shell, size_t c_i)
 {
 	t_raw_cmd	out;
 	char		operator;
@@ -78,14 +78,15 @@ static t_raw_cmd	tokenize_cmd(char *cmd, int *err, t_shell *shell, size_t cmd_i)
 	size_t		i;
 
 	ft_bzero(&out, sizeof(out));
+	out.i = c_i;
 	current_op = 0;
 	operator = 0;
 	i = 0;
-	while (err && !*err)
+	while (er && !*er)
 	{
 		tmp_s = shell_get_word(cmd, i, &operator);
-		*err = current_op && !tmp_s;
-		set_redirect(tmp_s, &out, current_op, shell, cmd_i);
+		*er = current_op && !tmp_s;
+		set_redirect(tmp_s, &out, current_op, shell);
 		set_file(&out, tmp_s, current_op);
 		i = get_next_word_start_i(cmd, i);
 		free(tmp_s);

@@ -25,7 +25,7 @@ static int	handle_nl(char *d, char **buff, size_t nline_i, int fd)
 	write(fd, *buff, nline_i + 1);
 	free(*buff);
 	*buff = ft_calloc(1, 1);
-	write(1, heredoc_prompt, ft_strlen(heredoc_prompt));
+	write(1, HEREDOC_PROMPT, ft_strlen(HEREDOC_PROMPT));
 	return (FALSE);
 }
 
@@ -38,7 +38,7 @@ static void	heredoc_loop(char *delimiter, int write_fd)
 
 	buff_len = 0;
 	buff = ft_calloc(1, 1);
-	write(1, heredoc_prompt, ft_strlen(heredoc_prompt));
+	write(1, HEREDOC_PROMPT, ft_strlen(HEREDOC_PROMPT));
 	while (buff && delimiter && write_fd != -1 && read(0, &tmp, 1) > 0)
 	{
 		buff = ft_realloc(buff, buff_len + 1, buff_len + 2, TRUE);
@@ -70,7 +70,7 @@ char	*do_heredoc(char *delimiter, size_t i, t_shell *shell)
 		shell->tmp_files = ft_calloc(1, 1);
 	else
 		shell->tmp_files = ft_strjoin_free(shell->tmp_files, "|",
-			TRUE, FALSE);
+				TRUE, FALSE);
 	shell->tmp_files = ft_strjoin_free(shell->tmp_files, path, TRUE, FALSE);
 	fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	if (fd == -1)

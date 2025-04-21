@@ -15,7 +15,7 @@
 char	*get_user_home(t_shell *shell)
 {
 	char	*out;
-	
+
 	out = ft_strjoin(get_envp("HOME", shell->envp), "/");
 	if (out)
 		return (out);

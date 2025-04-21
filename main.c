@@ -15,7 +15,7 @@
 
 unsigned char	g_last_return_code = 0;
 
-static int	setup()
+static int	setup(void)
 {
 	return (0);
 }
@@ -25,7 +25,7 @@ static char	*readline_abstraction(t_shell *shell)
 	char	*out;
 	char	*prompt;
 
-	prompt = ft_strdup(line_prompt);
+	prompt = ft_strdup(LINE_PROMPT);
 	if (get_envp("USER", shell->envp))
 		prompt = ft_strjoin_free(prompt, get_envp("USER", shell->envp), 1, 0);
 	if (get_envp("PWD", shell->envp))
@@ -33,7 +33,7 @@ static char	*readline_abstraction(t_shell *shell)
 		prompt = ft_strjoin_free(prompt, ":", TRUE, FALSE);
 		prompt = ft_strjoin_free(prompt, get_envp("PWD", shell->envp), 1, 0);
 	}
-	prompt = ft_strjoin_free(prompt, prompt_end, TRUE, FALSE);
+	prompt = ft_strjoin_free(prompt, PROMPT_END, TRUE, FALSE);
 	rl_on_new_line();
 	out = readline(prompt);
 	add_history(out);
@@ -55,7 +55,7 @@ static void	readline_loop(t_shell *shell)
 		tokenized = tokenize_line(line, &err, shell);
 		if (err)
 		{
-			write(2, parse_err, ft_strlen(parse_err));
+			write(2, PARSE_ERR, ft_strlen(parse_err));
 			free(line);
 			continue ;
 		}

@@ -56,7 +56,7 @@ size_t	ft_strlen(const char *s);
 
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
-ssize_t	 ft_strchr_i(const char *s, char c);
+ssize_t	ft_strchr_i(const char *s, char c);
 
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_substr(char const *s, unsigned int start, size_t len);

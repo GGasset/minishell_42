@@ -23,10 +23,10 @@
 
 # include "libft.h"
 
-# define heredoc_prompt "> "
-# define line_prompt "mini🐚 "
-# define prompt_end "\n$ "
-# define parse_err "Parse error: incorrect syntax\n"
+# define HEREDOC_PROMPT "> "
+# define LINE_PROMPT "mini🐚 "
+# define PROMPT_END "\n$ "
+# define PARSE_ERR "Parse error: incorrect syntax\n"
 
 extern unsigned char	g_last_return_code;
 
@@ -66,6 +66,7 @@ typedef struct t_raw_redirect
 // Input and output _redirect are nullable
 typedef struct s_raw_cmd
 {
+	size_t			i;
 	char			*file;
 	char			**argv;
 	t_raw_redirect	*input_redirect;

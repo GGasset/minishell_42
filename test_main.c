@@ -16,7 +16,7 @@ int main(int argc, char  *argv[], char **envp)
 	t_shell shell;
 	ft_bzero(&shell, sizeof(t_shell));
 	shell.envp = envp;
-	argv[1] = "ca't' > o'\"uti'";
+	//argv[1] = "ca't' > o'\"uti'";
 
 	printf("ARGV[1]=%s| end\n", argv[1]);
 
@@ -33,6 +33,16 @@ int main(int argc, char  *argv[], char **envp)
 			exxxe.commands[i].path, exxxe.commands[i].input_fd, exxxe.commands[i].output_fd);
 		for (int w = 0; exxxe.commands[i].argv[w] != NULL; w++)
 			printf("Argv -> %s\n", exxxe.commands[i].argv[w]);
+		if (ft_strcmp(exxxe.commands[i].argv[0], "echo") == 0)
+		{
+			printf("ECHO 👇 \n");
+			b_echo(exxxe.commands[i]);
+		}
+		if (ft_strcmp(exxxe.commands[i].argv[0], "pwd") == 0)
+		{
+			printf("PWD 👇\n");
+			b_pwd();
+		}
 	}
 	free_raw_line(&tokenized, FALSE);
 	remove_tmp_files(&shell);

@@ -4,3 +4,4 @@ test
 libft/libft.a
 minishell.dSYM*
 *.dSYM*
+.DS_Store

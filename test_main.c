@@ -43,6 +43,11 @@ int main(int argc, char  *argv[], char **envp)
 			printf("PWD 👇\n");
 			b_pwd();
 		}
+		if (ft_strcmp(exxxe.commands[i].argv[0], "export") == 0)
+		{
+			printf("EXPORT 👇\n");
+			b_export(exxxe, i);
+		}
 	}
 	free_raw_line(&tokenized, FALSE);
 	remove_tmp_files(&shell);

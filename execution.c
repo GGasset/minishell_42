@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:57:44 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/04/16 17:03:29 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:33:43 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_exe	prepare(t_raw_line rwcmd, t_shell *shell)
 
 	i = 0;
 	cmd.command_count = 0;
+	cmd.shell = shell;
 	cmd.commands = malloc(sizeof(t_cmd) * rwcmd.len);
     if (!cmd.commands)
     {

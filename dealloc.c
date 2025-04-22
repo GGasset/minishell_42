@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dealloc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggasset- <ggasset-@student.42.fr>          #+#  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-07 12:07:23 by ggasset-          #+#    #+#             */
-/*   Updated: 2025-04-07 12:07:23 by ggasset-         ###   ########.fr       */
+/*   Created: 2025/04/07 12:07:23 by ggasset-          #+#    #+#             */
+/*   Updated: 2025/04/21 16:24:57 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ void	exit_call(t_shell *s, t_raw_line *lines, t_exe *structure, int code)
 	free_execution_env(*structure);
 	remove_tmp_files(s);
 	ft_free_splitted(s->envp);
-	rl_clear_history();
+	clear_history();
 	exit(code);
 }

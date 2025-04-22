@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:35:57 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/21 13:36:02 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/04/22 09:24:50 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_cmd
 typedef struct s_exe
 {
 	t_cmd	*commands;
+	t_shell *shell;
 	size_t	command_count;
 }		t_exe;
 
@@ -49,5 +50,6 @@ void	execute(t_exe commands);
 void	free_execution_env(t_exe exe);
 int		b_pwd(void);
 void	b_echo(t_cmd cmd);
+void	b_export(t_exe exe, int i);
 
 #endif

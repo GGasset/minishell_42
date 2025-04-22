@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:27:10 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/04/22 09:25:53 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/04/22 19:08:14 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	update_envp(t_shell *shell, char *var)
         i++;
     }
     free(key);
-    shell->envp = ft_realloc(shell->envp, sizeof(char *) * (i + 1), sizeof(char *) * (i + 2), 1);
+    shell->envp = ft_realloc(shell->envp, sizeof(char *) * (i + 1), sizeof(char *) * (i + 2), 0); //TODO: duplicar envp
     shell->envp[i] = ft_strdup(var);
     shell->envp[i + 1] = NULL;
 }

@@ -15,7 +15,7 @@ int main(int argc, char  *argv[], char **envp)
 	}
 	t_shell shell;
 	ft_bzero(&shell, sizeof(t_shell));
-	shell.envp = envp;
+	shell.envp = ft_splitdup(envp);
 	//argv[1] = "ca't' > o'\"uti'";
 
 	printf("ARGV[1]=%s| end\n", argv[1]);
@@ -51,5 +51,6 @@ int main(int argc, char  *argv[], char **envp)
 	}
 	free_raw_line(&tokenized, FALSE);
 	remove_tmp_files(&shell);
+	ft_free_splitted(shell.envp);
 }
 

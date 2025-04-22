@@ -112,7 +112,7 @@ t_raw_line	tokenize_line(char *line, int *err, t_shell *shell)
 	{
 		if (!commands[i][0])
 		{
-			*err = 1;
+			*err = out.len != 1;
 			break ;
 		}
 		out.raw_commands[i] = tokenize_cmd(commands[i], err, shell, i);

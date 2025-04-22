@@ -48,9 +48,9 @@ static void	readline_loop(t_shell *shell)
 	int			err;
 	char		*line;
 
-	err = 0;
 	while (TRUE)
 	{
+		err = 0;
 		line = readline_abstraction(shell);
 		tokenized = tokenize_line(line, &err, shell);
 		if (err)

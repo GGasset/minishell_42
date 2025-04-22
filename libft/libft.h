@@ -82,6 +82,7 @@ char	*ft_argv_join(char **argv, char *separator, int free_argv);
 char	**ft_split(char const *s1, char c);
 void	ft_free_splitted(char **split_output);
 size_t	ft_get_split_count(char **split_out);
+char	**ft_splitdup(char **splitted);
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));

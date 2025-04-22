@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:27:10 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/04/22 19:08:14 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/04/22 19:13:35 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	is_valid_identifier(char *str)
     return (1);
 }
 
-static void	update_envp(t_shell *shell, char *var)
+void	update_envp(t_shell *shell, char *var)
 {
     int		i;
     char	*key;

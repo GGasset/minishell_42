@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:57:44 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/04/23 18:52:09 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/04/23 19:16:43 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,15 @@ t_exe	prepare(t_raw_line r, t_shell *shell)
 	}
 	while (i < r.len)
 	{
-		c.commands[i].path = get_from_path(r.raw_commands[i].file, shell->envp);
-		c.commands[i].argv = r.raw_commands[i].argv;
+		c.commands[i].path = get_from_path(r.rwcmds[i].file, shell->envp);
+		c.commands[i].argv = r.rwcmds[i].argv;
 		c.commands[i].input_fd = STDIN_FILENO;
 		c.commands[i].output_fd = STDOUT_FILENO;
-		if (r.raw_commands[i].input_redirect)
-			c.commands[i].input_fd = open(r.raw_commands[i].input_redirect->file,
+		if (r.rwcmds[i].input_redirect)
+			c.commands[i].input_fd = open(r.rwcmds[i].input_redirect->file,
 					O_RDONLY);
-		if (r.raw_commands[i].output_redirect)
-			c.commands[i].output_fd = open(r.raw_commands[i].output_redirect->file,
+		if (r.rwcmds[i].output_redirect)
+			c.commands[i].output_fd = open(r.rwcmds[i].output_redirect->file,
 					O_RDWR | O_TRUNC, 0644);
 		c.command_count++;
 		i++;
@@ -79,12 +79,17 @@ static void	execute_builtin(t_exe exe, int j)
 		b_pwd();
 	else if (ft_strcmp(exe.commands[j].argv[0], "export") == 0)
 		b_export(exe, j);
-	else if (ft_strcmp(exe.commands[j].argv[0], "unset") == 0)
+	/*else if (ft_strcmp(exe.commands[j].argv[0], "unset") == 0)
 		b_unset(exe, j);
 	else if (ft_strcmp(exe.commands[j].argv[0], "env") == 0)
 		b_env(exe.shell);
 	else if (ft_strcmp(exe.commands[j].argv[0], "exit") == 0)
-		b_exit(exe, j);
+		b_exit(exe, j);*/
+}
+
+void	execute_binary(void)
+{
+	return ;
 }
 
 void	execute(t_exe exe)
@@ -94,13 +99,13 @@ void	execute(t_exe exe)
 	i = 0;
 	while (i < exe.command_count)
 	{
-		if (is_builtin(exe.commands[i].argv[0]))
+		if (is_builtin(exe.commands[i].argv[0]) == 0)
 			execute_builtin(exe, i);
 		else if (exe.commands[i].path)
 			execute_binary();
 		else
 		{
-			printf("%s commant not found\n", exe.commands[i].argv[0]);
+			printf("%s: command not found\n", exe.commands[i].argv[0]);
 		}
 		i++;
 	}

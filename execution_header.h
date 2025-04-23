@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:35:57 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/23 18:51:27 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/04/23 19:32:03 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void				free_execution_env(t_exe exe);
 int					b_pwd(void);
 void				b_echo(t_cmd cmd);
 void				b_export(t_exe exe, int i);
-void				b_cd(t_exe exe, int i);
 void				update_envp(t_shell *shell, char *var);
+void				b_cd(t_exe exe, int i);
 
 #endif

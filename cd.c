@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:14:16 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/04/23 19:31:28 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/04/23 19:33:30 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	b_cd(t_exe exe, int j)
 	if (getcwd(cwd, PATH_MAX))
 	{
 		new_pwd = ft_strjoin("PWD=", cwd);
-		update_pwd(exe.shell, new_pwd);
+		update_envp(exe.shell, new_pwd);
 		free(new_pwd);
 	}
 }

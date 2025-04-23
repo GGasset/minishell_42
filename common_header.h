@@ -76,7 +76,7 @@ typedef struct s_raw_cmd
 
 typedef struct s_raw_line
 {
-	t_raw_cmd		*raw_commands;
+	t_raw_cmd		*rwcmds;
 	size_t			len;
 }		t_raw_line;
 

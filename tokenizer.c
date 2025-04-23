@@ -105,17 +105,17 @@ t_raw_line	tokenize_line(char *line, int *err, t_shell *shell)
 
 	commands = shell_split(line, '|');
 	out.len = ft_get_split_count(commands);
-	out.raw_commands = malloc(sizeof(t_raw_cmd) * out.len);
-	ft_bzero(out.raw_commands, sizeof(t_raw_cmd) * out.len);
+	out.rwcmds = malloc(sizeof(t_raw_cmd) * out.len);
+	ft_bzero(out.rwcmds, sizeof(t_raw_cmd) * out.len);
 	i = 0;
-	while (err && !*err && commands && out.raw_commands && commands[i])
+	while (err && !*err && commands && out.rwcmds && commands[i])
 	{
 		if (!commands[i][0])
 		{
 			*err = out.len != 1;
 			break ;
 		}
-		out.raw_commands[i] = tokenize_cmd(commands[i], err, shell, i);
+		out.rwcmds[i] = tokenize_cmd(commands[i], err, shell, i);
 		i++;
 	}
 	ft_free_splitted(commands);

@@ -73,7 +73,10 @@ int	main(int argc, char *argv[], char **envp)
 	t_shell	shell;
 
 	ft_bzero(&shell, sizeof(t_shell));
-	shell.envp = envp;
+	if (envp)
+		shell.envp = ft_splitdup(envp);
+	else
+		shell.envp = ft_calloc(1, sizeof(char *));
 	if (setup())
 		return (errno);
 	readline_loop(&shell);

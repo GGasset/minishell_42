@@ -52,7 +52,7 @@ static void	readline_loop(t_shell *shell)
 	{
 		err = 0;
 		line = readline_abstraction(shell);
-		tokenized = tokenize_line(line, &err, shell);
+		tokenized = parse_input(line, &err, shell);
 		if (err)
 		{
 			write(2, PARSE_ERR, ft_strlen(PARSE_ERR));

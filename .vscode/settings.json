@@ -5,7 +5,8 @@
 		"execution_header.h": "c",
 		"stddef.h": "c",
 		"errno.h": "c",
-		"limits.h": "c"
+		"limits.h": "c",
+		"history.h": "c"
 	},
 	"editor.insertSpaces": false
 }

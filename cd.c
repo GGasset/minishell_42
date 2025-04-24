@@ -3,27 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:14:16 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/04/23 19:33:30 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:51:00 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution_header.h"
 
 /*
-	cd libft
-	cd ../algo
-	cd /tmp
-	cd
-	cd -
+	✅ cd libft
+	✅ cd ../algo
+	✅ cd /tmp
+	✅ cd
+	(Deberia hacer lo mismo que cd a solas) -> cd -
 */
-void	b_cd(t_exe exe, int j)
+void	change_old_pwd(t_exe exe, char *cwd)
+{
+	char *old_pwd;
+
+	old_pwd = ft_strjoin("OLDPWD=", cwd);
+	update_envp(exe.shell, old_pwd);
+	free(old_pwd);
+}
+
+void	change_new_pwd(t_exe exe, char *cwd)
+{
+	char *new_pwd;
+
+	new_pwd = ft_strjoin("PWD=", cwd);
+	update_envp(exe.shell, new_pwd);
+	free(new_pwd);
+}
+
+char	*check_home(t_exe exe, int j)
 {
 	char *path;
-	char *new_pwd;
-	char cwd[PATH_MAX];
 
 	if (!exe.commands[j].argv[1])
 	{
@@ -31,17 +47,29 @@ void	b_cd(t_exe exe, int j)
 		if (!path)
 		{
 			ft_putstr_fd("cd: HOME not set\n", 2);
-			return ;
+			return (NULL);
 		}
 	}
 	else
 		path = exe.commands[j].argv[1];
-	if (chdir(exe.commands[j].argv[1]) == -1)
-		printf("%s\n", strerror(errno));
+	return (path);
+}
+
+void	b_cd(t_exe exe, int j)
+{
+	char *path;
+	char cwd[PATH_MAX];
+	char old_cwd[PATH_MAX];
+
+	path = check_home(exe, j);
+	if (!path)
+		return ;
+	getcwd(old_cwd, PATH_MAX);
+	if (chdir(path) == -1)
+		printf("cd: %s\n", strerror(errno));
 	if (getcwd(cwd, PATH_MAX))
 	{
-		new_pwd = ft_strjoin("PWD=", cwd);
-		update_envp(exe.shell, new_pwd);
-		free(new_pwd);
+		change_new_pwd(exe, cwd);
+		change_old_pwd(exe, old_cwd);
 	}
 }

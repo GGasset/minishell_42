@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:07:23 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/21 16:24:57 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:26:54 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	free_raw_line(t_raw_line *line, int free_line)
 	if (!line)
 		return ;
 	i = 0;
-	while (line->raw_commands && i < line->len)
+	while (line->rwcmds && i < line->len)
 	{
-		command = line->raw_commands[i];
+		command = line->rwcmds[i];
 		free(command.file);
 		ft_free_splitted(command.argv);
 		if (command.input_redirect)
@@ -32,11 +32,11 @@ void	free_raw_line(t_raw_line *line, int free_line)
 		if (command.output_redirect)
 			free(command.output_redirect->file);
 		free(command.output_redirect);
-		ft_bzero(line->raw_commands + i, sizeof(t_raw_cmd));
+		ft_bzero(line->rwcmds + i, sizeof(t_raw_cmd));
 		i++;
 	}
-	free(line->raw_commands);
-	line->raw_commands = 0;
+	free(line->rwcmds);
+	line->rwcmds = 0;
 	if (free_line)
 		free(line);
 }

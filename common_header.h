@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   common_header.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/03 20:35:22 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:25:58 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 # define COMMON_HEADER_H
 
 # include <stddef.h>
+# include <string.h>
 # include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <limits.h>
 
 # include <readline/readline.h>
 # include <readline/history.h>

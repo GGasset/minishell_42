@@ -48,6 +48,11 @@ int main(int argc, char  *argv[], char **envp)
 			printf("EXPORT 👇\n");
 			b_export(exxxe, i);
 		}
+		if (ft_strcmp(exxxe.commands[i].argv[0], "cd") == 0)
+		{
+			printf("cd 👇\n");
+			b_cd(exxxe, i);
+		}
 	}
 	free_raw_line(&tokenized, FALSE);
 	remove_tmp_files(&shell);

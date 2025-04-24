@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+         #
+#    By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/04/23 19:11:58 by apaz-pri         ###   ########.fr        #
+#    Updated: 2025/04/24 14:01:56 by apaz-pri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,16 @@ CC_SECURITY_FLAGS= -Wall -Wextra -fsanitize=address
 CC_FLAGS= -g -I ./libft/
 LINKING_FLAGS= -I ./libft/ -lreadline -fsanitize=address
 
+#------------- COLORS -------------
+
+NC=\033[0m
+On_UIGreen=\033[4;102m
+On_IGreen=\033[0;102m
+UGreen=\033[4;32m
+IGreen=\033[0;92m
+IYellow=\033[0;93m 
+UYellow=\033[4;33m
+
 LOGO=\n ▗▄▄▄▄▖    ▗▄▄▄▄▖\n▐▌        ▐▌ \n▐▌ ▝▝▜▌   ▐▌ ▝▝▜▌\n▝▚▄▄▄▞▘   ▝▚▄▄▄▞▘     \n
 
 all: libft ${NAME}
@@ -36,7 +46,8 @@ ${TEST_NAME}: libft ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
 	cc ${LINKING_FLAGS} -o ${TEST_NAME} ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
 
 %.o: %.c
-	cc ${CC_FLAGS} ${CC_SECURITY_FLAGS} -c $?
+	@echo "$(IGreen)Compiling: $(UGreen)$(notdir $<)${NC} 🔨"
+	@cc ${CC_FLAGS} ${CC_SECURITY_FLAGS} -c $?
 
 re: fclean all
 

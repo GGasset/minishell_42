@@ -6,8 +6,9 @@
 	- [X]  LEAK
 	- [X]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
 - [ ]  EJECUCION ENTERA
-  - [ ] ENCONTRAR BINARIO
-	- [ ] Checkear que no sea un built-in
+  - [x] ENCONTRAR BINARIO
+	- [x] Checkear que no sea un built-in
+  - [ ] Manejar redirecciones
   - [ ] Setear exit status al ultimo comando ejecutado (El ultimo de la linea)
 - [ ]  SEÑALES
 	- [ ] Ctrl + \
@@ -26,13 +27,13 @@
 	- [ ] Add execution function
 	- [ ] Add signal setup
 - [ ]  BUILTINS
-	- [ ] echo
-		- [ ] -n
-	- [ ] cd
-		- [ ] ruta relativa
-		- [ ] ruta absoluta
-	- [ ] pwd
-	- [ ] export ("export var=val", check "export var = val", "export var= val" y "export var=a val")
+	- [x] echo
+		- [x] -n
+	- [x] cd
+		- [x] ruta relativa
+		- [x] ruta absoluta
+	- [x] pwd
+	- [x] export ("export var=val", check "export var = val", "export var= val" y "export var=a val")
 	- [ ] unset
 	- [ ] env
 	- [ ] exit

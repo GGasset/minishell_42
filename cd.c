@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:14:16 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/04/24 13:51:00 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:58:31 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 	✅ cd ../algo
 	✅ cd /tmp
 	✅ cd
-	(Deberia hacer lo mismo que cd a solas) -> cd -
+	✅ cd -
 */
 void	change_old_pwd(t_exe exe, char *cwd)
 {
@@ -47,6 +47,15 @@ char	*check_home(t_exe exe, int j)
 		if (!path)
 		{
 			ft_putstr_fd("cd: HOME not set\n", 2);
+			return (NULL);
+		}
+	}
+	else if (ft_strcmp(exe.commands[j].argv[1], "-") == 0)
+	{
+		path = get_envp("OLDPWD", exe.shell->envp);
+		if (!path)
+		{
+			ft_putstr_fd("cd: No last directory\n", 2);
 			return (NULL);
 		}
 	}

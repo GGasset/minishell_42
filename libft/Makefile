@@ -6,7 +6,7 @@
 #    By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/26 15:29:33 by ggasset-          #+#    #+#              #
-#    Updated: 2025/04/21 13:07:57 by apaz-pri         ###   ########.fr        #
+#    Updated: 2025/04/24 14:02:55 by apaz-pri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,16 @@ NAME = libft.a
 
 CC_FLAGS = -g -c -Wall -Wextra -Werror
 AR_COMM = ar -rsc ${NAME}
+
+#------------- COLORS -------------
+
+NC=\033[0m
+On_UIGreen=\033[4;102m
+On_IGreen=\033[0;102m
+UGreen=\033[4;32m
+IGreen=\033[0;92m
+IYellow=\033[0;93m 
+UYellow=\033[4;33m
 
 all: ${NAME}
 
@@ -33,6 +43,7 @@ ${NAME}: ${o_files} ${bonus_o_files}
 	${AR_COMM} ${o_files} ${bonus_o_files}
 
 %.o : %.c
-	cc ${CC_FLAGS} $?
+	@echo "$(IGreen)Compiling: $(UGreen)$(notdir $<)${NC} 🔨"
+	@cc ${CC_FLAGS} $?
 
 .PHONY: all re fclean clean bonus

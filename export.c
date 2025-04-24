@@ -53,7 +53,7 @@ void	update_envp(t_shell *shell, char *var)
         i++;
     }
     free(key);
-    shell->envp = ft_realloc(shell->envp, sizeof(char *) * (i + 1), sizeof(char *) * (i + 2), 0); //TODO: duplicar envp
+    shell->envp = ft_realloc(shell->envp, sizeof(char *) * (i + 1), sizeof(char *) * (i + 2), 1);
     shell->envp[i] = ft_strdup(var);
     shell->envp[i + 1] = NULL;
 }

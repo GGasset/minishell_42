@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:57:44 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/04 11:20:26 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/05 22:32:41 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,6 @@ static void	execute_builtin(t_exe exe, int j)
 		b_exit(exe, j);*/
 }
 
-static void	execute_binary(void)
-{
-	return ;
-}
-
 static void	exec_child(t_cmd *cmd, t_exe exe, int **pipes, int idx)
 {
 	int i;
@@ -117,8 +112,8 @@ static void	exec_child(t_cmd *cmd, t_exe exe, int **pipes, int idx)
     }
 	else
 	{
-		if (execve(cmd->path, cmd->argv, exe.shell->envp) == -1)
-		{	
+		if (execve(cmd->path, cmd->argv, NULL))
+		{
 			perror("execve");
 			exit(errno);
 		}

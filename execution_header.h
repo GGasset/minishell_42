@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution_header.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:35:57 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/23 19:32:03 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/02 13:41:44 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ void				b_echo(t_cmd cmd);
 void				b_export(t_exe exe, int i);
 void				update_envp(t_shell *shell, char *var);
 void				b_cd(t_exe exe, int i);
-
+void				b_unset(t_exe exe, int j);
 #endif

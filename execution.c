@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:57:44 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/04/23 19:16:43 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/04 11:20:26 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,36 +79,86 @@ static void	execute_builtin(t_exe exe, int j)
 		b_pwd();
 	else if (ft_strcmp(exe.commands[j].argv[0], "export") == 0)
 		b_export(exe, j);
-	/*else if (ft_strcmp(exe.commands[j].argv[0], "unset") == 0)
+	else if (ft_strcmp(exe.commands[j].argv[0], "unset") == 0)
 		b_unset(exe, j);
-	else if (ft_strcmp(exe.commands[j].argv[0], "env") == 0)
+	/*else if (ft_strcmp(exe.commands[j].argv[0], "env") == 0)
 		b_env(exe.shell);
 	else if (ft_strcmp(exe.commands[j].argv[0], "exit") == 0)
 		b_exit(exe, j);*/
 }
 
-void	execute_binary(void)
+static void	execute_binary(void)
 {
 	return ;
 }
 
+static void	exec_child(t_cmd *cmd, t_exe exe, int **pipes, int idx)
+{
+	int i;
+
+	if (cmd->input_fd != STDIN_FILENO)
+		dup2(cmd->input_fd, STDIN_FILENO);
+	else if (idx > 0)
+		dup2(pipes[idx - 1][0], STDIN_FILENO);
+	if (cmd->output_fd != STDOUT_FILENO)
+		dup2(cmd->output_fd, STDOUT_FILENO);
+	else if (idx < exe.command_count-1)
+		dup2(pipes[idx][1], STDOUT_FILENO);
+	i = -1;
+	while (++i < exe.command_count - 1)
+    {
+        close(pipes[i][0]);
+        close(pipes[i][1]);
+    }
+    if (is_builtin(cmd->argv[0]) == 0)
+    {
+        execute_builtin(exe, idx);
+        exit(g_last_return_code);
+    }
+	else
+	{
+		if (execve(cmd->path, cmd->argv, exe.shell->envp) == -1)
+		{	
+			perror("execve");
+			exit(errno);
+		}
+	}
+}
+
 void	execute(t_exe exe)
 {
-	int	i;
+	int		i;
+	int		**pipes;
+	pid_t 	pid;
+	int		status;
 
-	i = 0;
-	while (i < exe.command_count)
+	pipes = malloc(sizeof(int *) * (exe.command_count -1));
+	i = -1;
+	while (++i < exe.command_count-1)
 	{
-		if (is_builtin(exe.commands[i].argv[0]) == 0)
-			execute_builtin(exe, i);
-		else if (exe.commands[i].path)
-			execute_binary();
-		else
-		{
-			printf("%s: command not found\n", exe.commands[i].argv[0]);
-		}
-		i++;
+		pipes[i] = malloc(sizeof(int) * 2);
+		if (pipe(pipes[i]) < 0)
+			perror("Pipe: ");
 	}
+	i = -1;
+	while (++i < exe.command_count)
+	{
+		pid = fork();
+		if (pid < 0)
+			perror("Fork:");
+		else if (pid == 0)
+			exec_child(&exe.commands[i], exe, pipes, i);
+		if (i > 0)
+			close(pipes[i - 1][0]);
+		if (i < exe.command_count - 1)
+			close(pipes[i][1]);
+	}
+	while (wait(&status) > 0)
+        g_last_return_code = WEXITSTATUS(status);
+    i = -1;
+	while (++i < exe.command_count - 1)
+        free(pipes[i]);
+    free(pipes);
 }
 
 void	command(t_exe exe, t_raw_line raw, t_shell *shell)

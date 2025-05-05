@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:27:10 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/04/22 19:13:35 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:39:29 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,63 +18,69 @@
 */
 static int	is_valid_identifier(char *str)
 {
-    int	i;
+	int	i;
 
-    if (!str || (!ft_isalpha(str[0]) && str[0] != '_'))
-        return (0);
-    i = 1;
-    while (str[i] && str[i] != '=')
-    {
-        if (!ft_isalnum(str[i]) && str[i] != '_')
-            return (0);
-        i++;
-    }
-    return (1);
+	if (!str || (!ft_isalpha(str[0]) && str[0] != '_'))
+		return (0);
+	i = 1;
+	while (str[i] && str[i] != '=')
+	{
+		if (!ft_isalnum(str[i]) && str[i] != '_')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 void	update_envp(t_shell *shell, char *var)
 {
-    int		i;
-    char	*key;
-    size_t	len;
+	int		i;
+	char	*key;
+	size_t	len;
 
-    len = ft_strchr(var, '=') - var;
-    key = ft_substr(var, 0, len);
-    i = 0;
-    while (shell->envp[i])
-    {
-        if (ft_strncmp(shell->envp[i], key, len) == 0 && shell->envp[i][len] == '=')
-        {
-            free(shell->envp[i]);
-            shell->envp[i] = ft_strdup(var);
-            free(key);
-            return;
-        }
-        i++;
-    }
-    free(key);
-    shell->envp = ft_realloc(shell->envp, sizeof(char *) * (i + 1), sizeof(char *) * (i + 2), 1);
-    shell->envp[i] = ft_strdup(var);
-    shell->envp[i + 1] = NULL;
+	len = ft_strchr(var, '=') - var;
+	key = ft_substr(var, 0, len);
+	i = 0;
+	while (shell->envp[i])
+	{
+		if (ft_strncmp(shell->envp[i], key, len) == 0
+			&& shell->envp[i][len] == '=')
+		{
+			free(shell->envp[i]);
+			shell->envp[i] = ft_strdup(var);
+			free(key);
+			return ;
+		}
+		i++;
+	}
+	free(key);
+	shell->envp = ft_realloc(shell->envp, sizeof(char *) * (i + 1),
+			sizeof(char *) * (i + 2), 1);
+	shell->envp[i] = ft_strdup(var);
+	shell->envp[i + 1] = NULL;
 }
 
 void	b_export(t_exe exe, int j)
 {
-    int	i;
+	int	i;
 
-    if (!exe.commands[j].argv[1])
-    {
-        for (i = 0; exe.shell->envp[i]; i++)
-            printf("%s\n", exe.shell->envp[i]);
-        return;
-    }
-    i = 1;
-    while (exe.commands[j].argv[i])
-    {
-        if (!is_valid_identifier(exe.commands[j].argv[i]))
-            return ;
-        else
-            update_envp(exe.shell, exe.commands[j].argv[i]);
-        i++;
-    }
+	if (!exe.commands[j].argv[1])
+	{
+		i = 0;
+		while (exe.shell->envp[i] != NULL)
+		{
+			printf("%s\n", exe.shell->envp[i]);
+			i++;
+		}
+		return ;
+	}
+	i = 1;
+	while (exe.commands[j].argv[i])
+	{
+		if (!is_valid_identifier(exe.commands[j].argv[i]))
+			return ;
+		else
+			update_envp(exe.shell, exe.commands[j].argv[i]);
+		i++;
+	}
 }

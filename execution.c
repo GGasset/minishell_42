@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:57:44 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/05 22:32:41 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:17:44 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ static void	execute_builtin(t_exe exe, int j)
 		b_export(exe, j);
 	else if (ft_strcmp(exe.commands[j].argv[0], "unset") == 0)
 		b_unset(exe, j);
-	/*else if (ft_strcmp(exe.commands[j].argv[0], "env") == 0)
-		b_env(exe.shell);
+	else if (ft_strcmp(exe.commands[j].argv[0], "env") == 0)
+		b_env(exe.shell->envp);
 	else if (ft_strcmp(exe.commands[j].argv[0], "exit") == 0)
-		b_exit(exe, j);*/
+		b_exit(exe);
 }
 
 static void	exec_child(t_cmd *cmd, t_exe exe, int **pipes, int idx)

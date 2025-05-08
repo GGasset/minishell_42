@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 10:16:05 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/05/08 16:13:22 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/08 17:01:47 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ static void	readline_loop(t_shell *shell)
 			continue ;
 		}
 		free(line);
-		ft_bzero(&exe_struct, sizeof(t_exe));
-		command(exe_struct, tokenized, shell);
+		if (tokenized.len)
+			command(exe_struct, tokenized, shell);
+		// ft_bzero(&exe_struct, sizeof(t_exe)); // AQUI VA LA EJECUCION
 		free_execution_env(exe_struct);
 		free_raw_line(&tokenized, FALSE);
 		remove_tmp_files(shell);

@@ -10,19 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <execution_header.h>
+#include "common_header.h"
+
+void	prompt_signal_handler(int sig)
+{
+	if (sig == SIGINT)
+	{
+		printf("\n");
+		rl_on_new_line();
+		rl_redisplay();
+	}
+}
+
+void	waiting_signal_handler(int sig)
+{
+	if (sig == SIGINT)
+	{
+		printf("\n");
+	}
+}
 
 void	prompt_signal_behaviour(void)
 {
-	
+	signal(SIGINT, prompt_signal_handler);
 }
 
 void	child_signal_behaviour(void)
 {
-
+	signal(SIGINT, SIG_DFL);
 }
 
 void	waiting_signal_behaviour(void)
 {
-
+	signal(SIGINT, waiting_signal_handler);
 }

@@ -62,7 +62,8 @@ static void	readline_loop(t_shell *shell)
 			continue ;
 		}
 		free(line);
-		command(exe_struct, tokenized, shell);
+		if (tokenized.len)
+			command(exe_struct, tokenized, shell);
 		// ft_bzero(&exe_struct, sizeof(t_exe)); // AQUI VA LA EJECUCION
 		free_execution_env(exe_struct);
 		free_raw_line(&tokenized, FALSE);

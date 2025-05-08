@@ -53,7 +53,10 @@ t_raw_line	parse_input(char *line, int *err, t_shell *shell)
 		*err = TRUE;
 		return (out);
 	}
-	out = tokenize_line(line, err, shell);
+	if (line[0])
+		out = tokenize_line(line, err, shell);
+	else
+		ft_bzero(&out, sizeof(t_raw_line));
 	free(line);
 	return (out);
 }

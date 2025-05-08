@@ -134,6 +134,7 @@ void	execute(t_exe exe)
 		if (pipe(pipes[i]) < 0)
 			perror("Pipe: ");
 	}
+	child_signal_behaviour();
 	i = -1;
 	while (++i < exe.command_count)
 	{
@@ -147,6 +148,7 @@ void	execute(t_exe exe)
 		if (i < exe.command_count - 1)
 			close(pipes[i][1]);
 	}
+	waiting_signal_behaviour();
 	while (wait(&status) > 0)
 		g_last_return_code = WEXITSTATUS(status);
 	i = -1;

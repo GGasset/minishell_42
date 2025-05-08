@@ -17,6 +17,7 @@ unsigned char	g_last_return_code = 0;
 
 static int	setup(void)
 {
+	prompt_signal_behaviour();
 	return (0);
 }
 
@@ -50,6 +51,7 @@ static void	readline_loop(t_shell *shell)
 
 	while (TRUE)
 	{
+		prompt_signal_behaviour();
 		err = 0;
 		line = readline_abstraction(shell);
 		tokenized = parse_input(line, &err, shell);

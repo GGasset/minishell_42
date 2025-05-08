@@ -26,7 +26,7 @@
 
 # define HEREDOC_PROMPT "> "
 # define LINE_PROMPT "mini🐚 "
-# define PROMPT_END "\n$ "
+# define PROMPT_END " $ "
 # define PARSE_ERR "Parse error: incorrect syntax\n"
 
 extern unsigned char	g_last_return_code;
@@ -106,5 +106,11 @@ void					create_directory(char *path, int has_filename);
 // If it fails to get HOME var, tries /home/$USER/, else returns 0
 char					*get_user_home(t_shell *shell);
 char					*get_pwd(t_shell *shell);
+
+// Signals
+
+void					prompt_signal_behaviour(void);
+void					child_signal_behaviour(void);
+void					waiting_signal_behaviour(void);
 
 #endif

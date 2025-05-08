@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:57:44 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/08 15:51:45 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/08 16:24:54 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	free2(char **str)
 t_exe	prepare(t_raw_line r, t_shell *shell)
 {
 	t_exe	c;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	c.command_count = 0;
@@ -86,9 +86,9 @@ static void	execute_builtin(t_exe exe, int j)
 		b_env(exe.shell->envp);
 }
 
-static void	exec_child(t_cmd *cmd, t_exe exe, int **pipes, int idx)
+static void	exec_child(t_cmd *cmd, t_exe exe, int **pipes, size_t idx)
 {
-	int	i;
+	size_t	i;
 
 	if (cmd->input_fd != STDIN_FILENO)
 		dup2(cmd->input_fd, STDIN_FILENO);
@@ -121,7 +121,7 @@ static void	exec_child(t_cmd *cmd, t_exe exe, int **pipes, int idx)
 
 void	execute(t_exe exe)
 {
-	int		i;
+	size_t	i;
 	int		**pipes;
 	pid_t	pid;
 	int		status;

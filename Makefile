@@ -6,7 +6,7 @@
 #    By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/04/24 14:01:56 by apaz-pri         ###   ########.fr        #
+#    Updated: 2025/05/07 12:16:05 by apaz-pri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,14 @@ TEST_NAME=test
 libft_NAME=./libft/libft.a
 ARCHIVES= ${libft_NAME}
 
-O_FILES=cd.o export.o pwd.o echo.o parser.o get_paths.o execution.o heredoc.o dealloc.o file_utils.o shell_split.o is_operator.o tokenizer.o shell_get_word.o ft_shell_replace.o ft_normalize_spaces.o envp_search.o text_utils.o
+O_FILES=exit.o env.o unset.o cd.o export.o pwd.o echo.o parser.o get_paths.o execution.o heredoc.o dealloc.o file_utils.o shell_split.o is_operator.o tokenizer.o shell_get_word.o ft_shell_replace.o ft_normalize_spaces.o envp_search.o text_utils.o
 
 MAIN_O=main.o
 TEST_MAIN_O=test_main.o
 
-CC_SECURITY_FLAGS= -Wall -Wextra -fsanitize=address
+CC_SECURITY_FLAGS= -Wall -Wextra #-fsanitize=address
 CC_FLAGS= -g -I ./libft/
-LINKING_FLAGS= -I ./libft/ -lreadline -fsanitize=address
+LINKING_FLAGS= -I ./libft/ -lreadline #-fsanitize=address
 
 #------------- COLORS -------------
 

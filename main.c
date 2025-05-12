@@ -66,7 +66,6 @@ static void	readline_loop(t_shell *shell)
 		if (tokenized.len)
 			command(exe_struct, tokenized, shell);
 		free_execution_env(exe_struct);
-		free_raw_line(&tokenized, FALSE);
 		remove_tmp_files(shell);
 	}
 }

@@ -14,6 +14,7 @@
   - [ ] Checkeo de errores
 	- [X] Ejecutable invalido
 	- [ ] Infile o Outfile invalido
+	- [ ] Ejecutable nulo
 - [ ]  SEÑALES
 	- [ ] Ctrl + \
 		- [ ] Durante ejecucion

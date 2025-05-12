@@ -6,7 +6,7 @@
 #    By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/05/12 18:27:28 by apaz-pri         ###   ########.fr        #
+#    Updated: 2025/05/12 18:57:30 by apaz-pri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ all: libft ${NAME}
 
 ${NAME}: ${MAIN_O} ${O_FILES} ${ARCHIVES}
 	@cc ${LINKING_FLAGS} -o ${NAME} ${MAIN_O} ${O_FILES} ${ARCHIVES}
+	@echo "\r\n${IYellow}Compilation Finished"
 
 ${TEST_NAME}: libft ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
 	@cc ${LINKING_FLAGS} -o ${TEST_NAME} ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}

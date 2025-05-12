@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:07:23 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/05/12 18:15:36 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:12:08 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,17 @@ void	remove_tmp_files(t_shell *shell)
 
 void	free_execution_env(t_exe exe)
 {
-	int	i;
+	size_t	i;
 
-	i = -1;
-	while (exe.commands[++i].argv)
-		free2(exe.commands[i].argv);
+	i = 0;
+	while (exe.commands && i < exe.command_count)
+	{
+		ft_free_splitted(exe.commands[i].argv);
+		i++;
+	}
 	if (exe.commands->path)
 		free(exe.commands->path);
+	free(exe.commands);
 }
 
 void	exit_call(t_shell *s, t_raw_line *lines, t_exe *structure, int code)
@@ -77,6 +81,6 @@ void	exit_call(t_shell *s, t_raw_line *lines, t_exe *structure, int code)
 	free_execution_env(*structure);
 	remove_tmp_files(s);
 	ft_free_splitted(s->envp);
-	clear_history();
+	rl_clear_history();
 	exit(code);
 }

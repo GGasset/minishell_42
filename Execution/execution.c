@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:57:44 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/12 18:13:21 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:26:56 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_exe	prepare(t_raw_line r, t_shell *shell)
 	while (i < r.len)
 	{
 		c.commands[i].path = get_from_path(r.rwcmds[i].file, shell->envp);
-		c.commands[i].argv = r.rwcmds[i].argv;
+		c.commands[i].argv = ft_splitdup(r.rwcmds[i].argv);
 		c.commands[i].input_fd = STDIN_FILENO;
 		c.commands[i].output_fd = STDOUT_FILENO;
 		if (r.rwcmds[i].input_redirect)
@@ -116,6 +116,8 @@ static void	exec_child(t_cmd *cmd, t_exe exe, int **pipes, size_t idx)
 		if (execve(cmd->path, cmd->argv, exe.shell->envp))
 		{
 			perror("execve");
+			if (!cmd->path)
+				exit(127);
 			exit(errno);
 		}
 	}
@@ -163,10 +165,13 @@ void	command(t_exe exe, t_raw_line raw, t_shell *shell)
 {
 	exe = prepare(raw, shell);
 	free_raw_line(&raw, FALSE);
+	if (exe.command_count == 1 && !exe.commands[0].path)
+		return ((free_execution_env(exe)));
 	if (exe.command_count == 1 && !is_builtin(exe.commands[0].argv[0]))
 	{
 		execute_builtin(exe, 0);
 	}
 	else
 		execute(exe);
+	free_execution_env(exe);
 }

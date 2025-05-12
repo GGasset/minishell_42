@@ -14,14 +14,15 @@
   - [ ] Checkeo de errores
 	- [X] Ejecutable invalido
 	- [ ] Infile o Outfile invalido (Se imprime el error y no se ejecuta ese comando)
-	- [ ] Ejecutable nulo (No ejecutar ese comando)
+	- [X] Ejecutable no especificado (No ejecutar ese comando)
 - [ ]  SEÑALES
 	- [X] Ctrl + \
 		- [ ] Durante ejecucion
 		- [ ] Durante Lectura
 	- [X] Ctrl + C
 		- [X] Durante ejecucion
-		- [X] Durante Lectura
+		- [ ] Durante Lectura
+			- [ ] Con cosas escritos
 	- [X] Ctrl + d
 		- [X] Durante ejecucion
 		- [X] Durante Lectura

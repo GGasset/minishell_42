@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggasset- <ggasset-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 12:47:55 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/04/03 18:42:37 by ggasset-         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:31:06 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ char	**argv_append(char **argv, char *s, int free_s)
 	len = ft_get_split_count(argv) + 1;
 	if (!argv)
 		argv = ft_calloc(1, sizeof(char *));
-	out = ft_realloc(argv, sizeof(char *) * len,
-			sizeof(char *) * (len + 1), TRUE);
+	out = ft_realloc(argv, sizeof(char *) * len, sizeof(char *) * (len + 1),
+			TRUE);
 	len++;
 	if (out)
 		out[len - 2] = remove_outer_quotes(s, free_s);
@@ -80,7 +80,7 @@ static t_raw_cmd	tokenize_cmd(char *cmd, int *er, t_shell *shell, size_t c_i)
 	ft_bzero(&out, sizeof(out));
 	out.i = c_i;
 	current_op = 0;
-	operator = 0;
+	operator= 0;
 	i = 0;
 	while (er && !*er)
 	{
@@ -116,6 +116,8 @@ t_raw_line	tokenize_line(char *line, int *err, t_shell *shell)
 			break ;
 		}
 		out.rwcmds[i] = tokenize_cmd(commands[i], err, shell, i);
+		if (!out.rwcmds[i].argv)
+			out.rwcmds[i].argv = ft_calloc(1, sizeof(char *));
 		i++;
 	}
 	ft_free_splitted(commands);

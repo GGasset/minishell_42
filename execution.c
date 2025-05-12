@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:57:44 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/08 15:51:45 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/08 17:41:17 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	free2(char **str)
 t_exe	prepare(t_raw_line r, t_shell *shell)
 {
 	t_exe	c;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	c.command_count = 0;
@@ -84,11 +84,13 @@ static void	execute_builtin(t_exe exe, int j)
 		b_unset(exe, j);
 	else if (ft_strcmp(exe.commands[j].argv[0], "env") == 0)
 		b_env(exe.shell->envp);
+	else if (ft_strcmp(exe.commands[j].argv[0], "exit") == 0)
+		b_exit();
 }
 
-static void	exec_child(t_cmd *cmd, t_exe exe, int **pipes, int idx)
+static void	exec_child(t_cmd *cmd, t_exe exe, int **pipes, size_t idx)
 {
-	int	i;
+	size_t	i;
 
 	if (cmd->input_fd != STDIN_FILENO)
 		dup2(cmd->input_fd, STDIN_FILENO);
@@ -121,7 +123,7 @@ static void	exec_child(t_cmd *cmd, t_exe exe, int **pipes, int idx)
 
 void	execute(t_exe exe)
 {
-	int		i;
+	size_t	i;
 	int		**pipes;
 	pid_t	pid;
 	int		status;
@@ -160,10 +162,10 @@ void	execute(t_exe exe)
 void	command(t_exe exe, t_raw_line raw, t_shell *shell)
 {
 	exe = prepare(raw, shell);
-	if (exe.command_count == 1 && !ft_strcmp(exe.commands[0].argv[0], "exit"))
+	if (exe.command_count == 1 && !is_builtin(exe.commands[0].argv[0]))
 	{
-		printf("exit\n");
-		exit(0);
+		execute_builtin(exe, 0);
 	}
-	execute(exe);
+	else
+		execute(exe);
 }

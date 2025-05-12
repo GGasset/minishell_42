@@ -6,7 +6,7 @@
 #    By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/26 15:29:33 by ggasset-          #+#    #+#              #
-#    Updated: 2025/04/24 14:02:55 by apaz-pri         ###   ########.fr        #
+#    Updated: 2025/05/12 14:03:15 by apaz-pri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ ${NAME}: ${o_files} ${bonus_o_files}
 	${AR_COMM} ${o_files} ${bonus_o_files}
 
 %.o : %.c
-	@echo "$(IGreen)Compiling: $(UGreen)$(notdir $<)${NC} 🔨"
+	@printf "🔨$(IGreen)Compiling: $(UGreen)%-30s${NC}\r" $<
 	@cc ${CC_FLAGS} $?
 
 .PHONY: all re fclean clean bonus

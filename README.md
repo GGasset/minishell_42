@@ -19,9 +19,9 @@
 	- [ ] Ctrl + \
 		- [ ] Durante ejecucion
 		- [ ] Durante Lectura
-	- [ ] Ctrl + C
-		- [ ] Durante ejecucion
-		- [ ] Durante Lectura
+	- [X] Ctrl + C
+		- [X] Durante ejecucion
+		- [X] Durante Lectura
 	- [ ] Ctrl + d
 		- [ ] Durante ejecucion
 		- [ ] Durante Lectura

@@ -11,6 +11,9 @@
   - [X] Ejecutar binarios
   - [X] Manejar redirecciones
   - [X] Setear exit status al ultimo comando ejecutado (El ultimo de la linea)
+  - [ ] Checkeo de errores
+	- [X] Ejecutable invalido
+	- [ ] Infile o Outfile invalido
 - [ ]  SEÑALES
 	- [ ] Ctrl + \
 		- [ ] Durante ejecucion

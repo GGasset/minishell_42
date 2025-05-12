@@ -5,9 +5,9 @@
 	- [X]  Gestionar Heredoc
 	- [X]  LEAK
 	- [X]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
-- [ ]  EJECUCION ENTERA
-  - [ ] Ejecutar buil-in
-	- [ ] Built-in de exit
+- [X]  EJECUCION ENTERA
+  - [X] Ejecutar buil-in
+	- [X] Built-in de exit
   - [X] Ejecutar binarios
   - [X] Manejar redirecciones
   - [X] Setear exit status al ultimo comando ejecutado (El ultimo de la linea)
@@ -16,22 +16,22 @@
 	- [ ] Infile o Outfile invalido (Se imprime el error y no se ejecuta ese comando)
 	- [ ] Ejecutable nulo (No ejecutar ese comando)
 - [ ]  SEÑALES
-	- [ ] Ctrl + \
+	- [X] Ctrl + \
 		- [ ] Durante ejecucion
 		- [ ] Durante Lectura
 	- [X] Ctrl + C
 		- [X] Durante ejecucion
 		- [X] Durante Lectura
-	- [ ] Ctrl + d
-		- [ ] Durante ejecucion
-		- [ ] Durante Lectura
+	- [X] Ctrl + d
+		- [X] Durante ejecucion
+		- [X] Durante Lectura
 - [X]  MAIN
 	- [X] Mensaje para enunciar que se espera un comando nuevo
 	- [X] Historial
 	- [X] Eliminar archivos temporales despues de la ejecucion
 	- [X] Add execution function
 	- [X] Add signal setup
-- [ ]  BUILTINS
+- [X]  BUILTINS
 	- [x] echo
 		- [x] -n
 	- [x] cd
@@ -41,10 +41,10 @@
 	- [x] export ("export var=val", check "export var = val", "export var= val" y "export var=a val")
 	- [X] unset
 	- [X] env
-	- [ ] exit
+	- [X] exit
 		- Solo debe imprimir cuando sea el unico comando
 - [ ]  PARA EL FINAL, CHECKEAR MIL VECES TODO
-	- [ ] Compro
+	- [ ] Organizar directorio
 	- [ ] Norminette
 	- [ ] Exit status
 	- [ ] Leaks

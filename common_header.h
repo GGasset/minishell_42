@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   common_header.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/05/08 15:19:07 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/12 13:33:42 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ char					*get_pwd(t_shell *shell);
 void					prompt_signal_behaviour(void);
 void					child_signal_behaviour(void);
 void					waiting_signal_behaviour(void);
+void					cntr_d(char *str, t_raw_line tokenized, t_shell *shell);
 
 #endif

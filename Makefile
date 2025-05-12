@@ -36,7 +36,7 @@ O_FILES += ${FUNCTIONALITY_O_FILES}
 MAIN_O=main.o
 TEST_MAIN_O=test_main.o
 
-INCLUDE= -I . -I ./libft/ -I ./Parsing/ -I ./Parsing/Functionality/
+INCLUDE= -I . -I ./libft/ -I ./headers/
 
 CC_SECURITY_FLAGS= -Wall -Wextra #-fsanitize=address
 CC_FLAGS= -g ${INCLUDE}

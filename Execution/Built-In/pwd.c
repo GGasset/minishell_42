@@ -6,12 +6,11 @@
 /*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 23:56:24 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/08 16:13:48 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/12 17:41:01 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../execution_header.h"
-#include <limits.h>
+#include "execution_header.h"
 
 int	b_pwd(void)
 {

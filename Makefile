@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/05/07 12:16:05 by apaz-pri         ###   ########.fr        #
+#    Updated: 2025/05/12 17:43:02 by apaz-pri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ TEST_NAME=test
 libft_NAME=./libft/libft.a
 ARCHIVES= ${libft_NAME}
 
-O_FILES=signal_prep.o execution.o  envp_search.o
+O_FILES=signal_prep.o envp_search.o
 
 
 PARSING_FUNCTIONALITY_O_FILES=shell_get_word.o ft_shell_replace.o ft_normalize_spaces.o shell_split.o heredoc.o
@@ -27,11 +27,14 @@ O_FILES += $(addprefix Parsing/, ${PARSING_O_FILES})
 
 
 FUNCTIONALITY_O_FILES=dealloc.o file_utils.o is_operator.o text_utils.o get_paths.o
-BUILTIN_O_FILES=exit.o env.o unset.o cd.o export.o pwd.o echo.o
-
 
 O_FILES += ${BUILTIN_O_FILES}
 O_FILES += ${FUNCTIONALITY_O_FILES}
+
+BUILT_IN_O_FILES=cd.o echo.o env.o exit.o export.o pwd.o unset.o
+EXECUTION_O_FILES=execution.o
+EXECUTION_O_FILES += $(addprefix Built-In/, ${BUILT_IN_O_FILES})
+O_FILES += $(addprefix Execution/, ${EXECUTION_O_FILES})
 
 MAIN_O=main.o
 TEST_MAIN_O=test_main.o
@@ -57,35 +60,35 @@ LOGO=\n ▗▄▄▄▄▖    ▗▄▄▄▄▖\n▐▌        ▐▌ \n▐▌ 
 all: libft ${NAME}
 
 ${NAME}: ${MAIN_O} ${O_FILES} ${ARCHIVES}
-	cc ${LINKING_FLAGS} -o ${NAME} ${MAIN_O} ${O_FILES} ${ARCHIVES}
+	@cc ${LINKING_FLAGS} -o ${NAME} ${MAIN_O} ${O_FILES} ${ARCHIVES}
 
 ${TEST_NAME}: libft ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
-	cc ${LINKING_FLAGS} -o ${TEST_NAME} ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
+	@cc ${LINKING_FLAGS} -o ${TEST_NAME} ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
 
 %.o: %.c
-	@echo "$(IGreen)Compiling: $(UGreen)$(notdir $<)${NC} 🔨"
+	@printf "$(IGreen)Compiling: $(IGreen)%-23s🔨${NC}\r" $<
 	@cc ${CC_FLAGS} ${CC_SECURITY_FLAGS} -o $@ -c $?
 
 re: fclean all
 
 fclean: clean
-	rm -f ${NAME}
+	@rm -f ${NAME}
 
 clean: libft-fclean
-	rm -f ${O_FILES} ${TEST_MAIN_O} ${MAIN_O}
+	@rm -f ${O_FILES} ${TEST_MAIN_O} ${MAIN_O}
 
 # LIBFT
 
 libft:
-	make --directory=./libft/ all
+	@make --no-print-directory --directory=./libft/ all
 
 libft-re: libft-fclean libft
 
 libft-clean:
-	make --directory=./libft/ clean
+	@make --no-print-directory --directory=./libft/ clean
 
 libft-fclean:
-	make --directory=./libft/ fclean
+	@make --no-print-directory --directory=./libft/ fclean
 
 logo:
 	@echo "${LOGO}"

@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   common_header.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/05/12 18:02:28 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/12 22:19:00 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COMMON_HEADER_H
 # define COMMON_HEADER_H
+
+# ifndef HAVE_RL_CLEAR_HISTORY
+#  define rl_clear_history clear_history
+# endif
 
 # include "libft.h"
 # include <errno.h>

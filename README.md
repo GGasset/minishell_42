@@ -13,8 +13,8 @@
   - [X] Setear exit status al ultimo comando ejecutado (El ultimo de la linea)
   - [ ] Checkeo de errores
 	- [X] Ejecutable invalido
-	- [ ] Infile o Outfile invalido
-	- [ ] Ejecutable nulo
+	- [ ] Infile o Outfile invalido (Se imprime el error y no se ejecuta ese comando)
+	- [ ] Ejecutable nulo (No ejecutar ese comando)
 - [ ]  SEÑALES
 	- [ ] Ctrl + \
 		- [ ] Durante ejecucion

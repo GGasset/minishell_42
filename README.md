@@ -5,7 +5,6 @@
 	- [X]  Gestionar Heredoc
 	- [X]  LEAK
 	- [X]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
-	- [ ]  Crear carpetas con outfiles
 - [ ]  EJECUCION ENTERA
   - [ ] Ejecutar buil-in
 	- [ ] Built-in de exit
@@ -22,12 +21,12 @@
 	- [ ] Ctrl + d
 		- [ ] Durante ejecucion
 		- [ ] Durante Lectura
-- [ ]  MAIN
+- [X]  MAIN
 	- [X] Mensaje para enunciar que se espera un comando nuevo
 	- [X] Historial
 	- [X] Eliminar archivos temporales despues de la ejecucion
-	- [ ] Add execution function
-	- [ ] Add signal setup
+	- [X] Add execution function
+	- [X] Add signal setup
 - [ ]  BUILTINS
 	- [x] echo
 		- [x] -n
@@ -39,6 +38,7 @@
 	- [X] unset
 	- [X] env
 	- [ ] exit
+		- Solo debe imprimir cuando sea el unico comando
 - [ ]  PARA EL FINAL, CHECKEAR MIL VECES TODO
 	- [ ] Compro
 	- [ ] Norminette

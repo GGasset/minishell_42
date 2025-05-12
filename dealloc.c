@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 12:07:23 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/05/08 15:32:49 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:15:36 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,13 @@ void	remove_tmp_files(t_shell *shell)
 
 void	free_execution_env(t_exe exe)
 {
+	int	i;
+
+	i = -1;
+	while (exe.commands[++i].argv)
+		free2(exe.commands[i].argv);
+	if (exe.commands->path)
+		free(exe.commands->path);
 }
 
 void	exit_call(t_shell *s, t_raw_line *lines, t_exe *structure, int code)

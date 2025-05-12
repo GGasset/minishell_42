@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_prep.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 14:11:18 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/05/12 13:35:16 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/12 17:55:42 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	prompt_signal_behaviour(void)
 void	child_signal_behaviour(void)
 {
 	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_IGN);
 }
 
 void	waiting_signal_behaviour(void)
@@ -47,13 +48,11 @@ void	waiting_signal_behaviour(void)
 	signal(SIGINT, waiting_signal_handler);
 }
 
-
-void	cntr_d(char *str, t_raw_line tokenized, t_shell *shell)
+void	cntr_d(char *str, t_raw_line r, t_exe exe)
 {
 	if (str == NULL)
 	{
 		printf("exit\n");
-		remove_tmp_files(shell);
-        exit(0);
+		exit_call(exe.shell, &r, &exe, 0);
 	}
 }

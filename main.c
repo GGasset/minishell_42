@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 10:16:05 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/05/12 13:33:36 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/12 17:57:20 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	readline_loop(t_shell *shell)
 		prompt_signal_behaviour();
 		err = 0;
 		line = readline_abstraction(shell);
-		cntr_d(line, tokenized, shell);
+		cntr_d(line, tokenized, exe_struct);
 		tokenized = parse_input(line, &err, shell);
 		if (err)
 		{

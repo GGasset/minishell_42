@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution_header.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:35:57 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/05/12 13:29:24 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:12:57 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct s_cmd
 	char			**argv;
 	int				input_fd;
 	int				output_fd;
-	pid_t			pid;
 	enum e_builtin	is_builtin;
 }					t_cmd;
 
@@ -49,6 +48,7 @@ t_exe				prepare(t_raw_line rwcmd, t_shell *shell);
 void				command(t_exe exe, t_raw_line raw, t_shell *shell);
 void				execute(t_exe exe);
 void				free_execution_env(t_exe exe);
+void				free2(char **str);
 
 void				update_envp(t_shell *shell, char *var);
 
@@ -60,8 +60,11 @@ int					b_pwd(void);
 void				b_cd(t_exe exe, int i);
 void				b_unset(t_exe exe, int j);
 void				b_env(char **envp);
-void				b_exit(void);
+void				b_exit(t_exe exe);
 void				b_echo(t_cmd cmd);
 void				b_export(t_exe exe, int i);
+
+// * CONTROL + D *
+void				cntr_d(char *str, t_raw_line r, t_exe exe);
 
 #endif

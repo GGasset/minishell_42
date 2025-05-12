@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   common_header.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/05/12 13:33:42 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:02:28 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <stddef.h>
 # include <stdio.h>
 # include <string.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 
 # define HEREDOC_PROMPT "> "
 # define LINE_PROMPT "mini🐚 "
@@ -112,6 +114,5 @@ char					*get_pwd(t_shell *shell);
 void					prompt_signal_behaviour(void);
 void					child_signal_behaviour(void);
 void					waiting_signal_behaviour(void);
-void					cntr_d(char *str, t_raw_line tokenized, t_shell *shell);
 
 #endif

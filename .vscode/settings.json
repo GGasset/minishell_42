@@ -6,7 +6,8 @@
 		"stddef.h": "c",
 		"errno.h": "c",
 		"limits.h": "c",
-		"history.h": "c"
+		"history.h": "c",
+		"types.h": "c"
 	},
 	"editor.insertSpaces": false
 }

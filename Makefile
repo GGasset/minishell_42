@@ -6,7 +6,7 @@
 #    By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/05/12 17:43:02 by apaz-pri         ###   ########.fr        #
+#    Updated: 2025/05/12 18:27:28 by apaz-pri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ ${TEST_NAME}: libft ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
 	@cc ${LINKING_FLAGS} -o ${TEST_NAME} ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
 
 %.o: %.c
-	@printf "$(IGreen)Compiling: $(IGreen)%-23s🔨${NC}\r" $<
+	@len=$$(printf "%s" "$<" | wc -c); printf "$(IGreen)\rCompiling: $(UGREEN)%*s$(NC) 🔨\033[K" "$$len" "$<"
 	@cc ${CC_FLAGS} ${CC_SECURITY_FLAGS} -o $@ -c $?
 
 re: fclean all

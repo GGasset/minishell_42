@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/05/12 14:03:30 by apaz-pri         ###   ########.fr        #
+#    Updated: 2025/05/12 17:27:46 by apaz-pri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,15 +40,14 @@ LOGO=\n ▗▄▄▄▄▖    ▗▄▄▄▄▖\n▐▌        ▐▌ \n▐▌ 
 all: libft ${NAME}
 
 ${NAME}: ${MAIN_O} ${O_FILES} ${ARCHIVES}
-	cc ${LINKING_FLAGS} -o ${NAME} ${MAIN_O} ${O_FILES} ${ARCHIVES}
+	@cc ${LINKING_FLAGS} -o ${NAME} ${MAIN_O} ${O_FILES} ${ARCHIVES}
 
 ${TEST_NAME}: libft ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
-	cc ${LINKING_FLAGS} -o ${TEST_NAME} ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
+	@cc ${LINKING_FLAGS} -o ${TEST_NAME} ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
 
 %.o: %.c
-	@printf "🔨$(IGreen)Compiling: $(UGreen)%-30s${NC}\r" $<
-#@echo "$(IGreen)Compiling: $(UGreen)$(notdir $<)${NC} 🔨"
-	@cc ${CC_FLAGS} ${CC_SECURITY_FLAGS} -c $?>/dev/null 2>&1
+	@printf "$(IGreen)Compiling: $(IGreen)%-23s🔨${NC}\r" $<
+	@cc ${CC_FLAGS} ${CC_SECURITY_FLAGS} -c $?
 
 re: fclean all
 

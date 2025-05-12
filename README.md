@@ -1,14 +1,16 @@
 ## TO DO
 
-- [ ]  Parsing
-	- [ ]  Funcion principal de parsing (Le pasas el input tal y como llega y sale parseado)
-	- [ ]  Gestionar Heredoc -- En proceso Germán
+- [X]  Parsing
+	- [X]  Funcion principal de parsing (Le pasas el input tal y como llega y sale parseado)
+	- [X]  Gestionar Heredoc
 	- [X]  LEAK
-	- [ ]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
+	- [X]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
 - [ ]  EJECUCION ENTERA
-  - [ ] ENCONTRAR BINARIO
-	- [ ] Checkear que no sea un built-in
-  - [ ] Setear exit status al ultimo comando ejecutado (El ultimo de la linea)
+  - [ ] Ejecutar buil-in
+	- [ ] Built-in de exit
+  - [X] Ejecutar binarios
+  - [X] Manejar redirecciones
+  - [X] Setear exit status al ultimo comando ejecutado (El ultimo de la linea)
 - [ ]  SEÑALES
 	- [ ] Ctrl + \
 		- [ ] Durante ejecucion
@@ -19,22 +21,26 @@
 	- [ ] Ctrl + d
 		- [ ] Durante ejecucion
 		- [ ] Durante Lectura
-- [ ]  MAIN
-	- [ ] Mensaje para enunciar que se espera un comando nuevo
-	- [ ] Historial
-	- [ ] Eliminar archivos temporales despues de la ejecucion
+- [X]  MAIN
+	- [X] Mensaje para enunciar que se espera un comando nuevo
+	- [X] Historial
+	- [X] Eliminar archivos temporales despues de la ejecucion
+	- [X] Add execution function
+	- [X] Add signal setup
 - [ ]  BUILTINS
-	- [ ] echo
-		- [ ] -n
-	- [ ] cd
-		- [ ] ruta relativa
-		- [ ] ruta absoluta
-	- [ ] pwd
-	- [ ] export ("export var=val", check "export var = val", "export var= val" y "export var=a val")
-	- [ ] unset
-	- [ ] env
+	- [x] echo
+		- [x] -n
+	- [x] cd
+		- [x] ruta relativa
+		- [x] ruta absoluta
+	- [x] pwd
+	- [x] export ("export var=val", check "export var = val", "export var= val" y "export var=a val")
+	- [X] unset
+	- [X] env
 	- [ ] exit
+		- Solo debe imprimir cuando sea el unico comando
 - [ ]  PARA EL FINAL, CHECKEAR MIL VECES TODO
+	- [ ] Compro
 	- [ ] Norminette
 	- [ ] Exit status
 	- [ ] Leaks

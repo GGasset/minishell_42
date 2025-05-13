@@ -5,7 +5,6 @@
 	- [X]  Gestionar Heredoc
 	- [X]  LEAK
 	- [X]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
-	- [ ]  Expandir nombres de archivos
 - [X]  EJECUCION ENTERA
   - [X] Ejecutar buil-in
 	- [X] Built-in de exit

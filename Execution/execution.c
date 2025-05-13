@@ -62,6 +62,8 @@ t_exe	prepare(t_raw_line r, t_shell *shell)
 
 static int	is_builtin(char *cmd)
 {
+	if (!cmd)
+		return (1);
 	if (ft_strcmp(cmd, "cd") == 0 || ft_strcmp(cmd, "echo") == 0
 		|| ft_strcmp(cmd, "pwd") == 0 || ft_strcmp(cmd, "export") == 0
 		|| ft_strcmp(cmd, "unset") == 0 || ft_strcmp(cmd, "env") == 0

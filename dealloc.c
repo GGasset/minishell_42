@@ -79,7 +79,8 @@ void	exit_call(t_shell *s, t_raw_line *lines, t_exe *structure, int code)
 	free_raw_line(lines, FALSE);
 	free_execution_env(*structure);
 	remove_tmp_files(s);
-	ft_free_splitted(s->envp);
+	if (s)
+		ft_free_splitted(s->envp);
 	rl_clear_history();
 	exit(code);
 }

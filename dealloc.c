@@ -68,10 +68,9 @@ void	free_execution_env(t_exe exe)
 	while (exe.commands && i < exe.command_count)
 	{
 		ft_free_splitted(exe.commands[i].argv);
+		free(exe.commands[i].path);
 		i++;
 	}
-	if (exe.commands->path)
-		free(exe.commands->path);
 	free(exe.commands);
 }
 

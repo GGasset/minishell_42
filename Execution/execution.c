@@ -169,7 +169,7 @@ void	command(t_exe exe, t_raw_line raw, t_shell *shell)
 	free_raw_line(&raw, FALSE);
 	if (exe.command_count == 1 && !is_builtin(exe.commands[0].argv[0]))
 		execute_builtin(exe, 0);
-	else if (!(exe.command_count == 1 && !exe.commands[0].path))
+	else if (!(exe.command_count == 1 && !exe.commands[0].argv[0]))
 		execute(exe);
 	free_execution_env(exe);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+         #
+#    By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/26 15:29:33 by ggasset-          #+#    #+#              #
-#    Updated: 2025/05/12 17:42:27 by apaz-pri         ###   ########.fr        #
+#    Updated: 2025/05/12 22:35:31 by apaz-pri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ ${NAME}: ${o_files} ${bonus_o_files}
 	@${AR_COMM} ${o_files} ${bonus_o_files}
 
 %.o : %.c
-	@printf "$(IGreen)Compiling: $(IGreen)%-23s🔨${NC}\r" $<
+	@len=$$(printf "%s" "$<" | wc -c); printf "$(IGreen)\rCompiling: $(UGreen)%*s$(NC) 🔨\033[K" "$$len" "$<"
 	@cc ${CC_FLAGS} $?
 
 .PHONY: all re fclean clean bonus

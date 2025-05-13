@@ -11,10 +11,12 @@
   - [X] Ejecutar binarios
   - [X] Manejar redirecciones
   - [X] Setear exit status al ultimo comando ejecutado (El ultimo de la linea)
+  - [ ] Con aperturas recursivas de minishell, cerrarlas una a una, y no todas de una
   - [ ] Checkeo de errores
 	- [X] Ejecutable invalido
 	- [ ] Infile o Outfile invalido (Se imprime el error y no se ejecuta ese comando)
-	- [ ] Ejecutable nulo (No ejecutar ese comando)
+	- [X] Ejecutable no especificado (No ejecutar ese comando)
+	- [ ] PATH nulo con ruta relativas, y absolutas
 - [ ]  SEÑALES
 	- [X] Ctrl + \
 		- [ ] Durante ejecucion
@@ -22,6 +24,7 @@
 	- [X] Ctrl + C
 		- [X] Durante ejecucion
 		- [X] Durante Lectura
+			- [X] Con cosas escritos
 	- [X] Ctrl + d
 		- [X] Durante ejecucion
 		- [X] Durante Lectura

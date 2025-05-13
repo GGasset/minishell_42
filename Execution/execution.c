@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:57:44 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/08 17:41:17 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:26:56 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_exe	prepare(t_raw_line r, t_shell *shell)
 	while (i < r.len)
 	{
 		c.commands[i].path = get_from_path(r.rwcmds[i].file, shell->envp);
-		c.commands[i].argv = r.rwcmds[i].argv;
+		c.commands[i].argv = ft_splitdup(r.rwcmds[i].argv);
 		c.commands[i].input_fd = STDIN_FILENO;
 		c.commands[i].output_fd = STDOUT_FILENO;
 		if (r.rwcmds[i].input_redirect)
@@ -62,6 +62,8 @@ t_exe	prepare(t_raw_line r, t_shell *shell)
 
 static int	is_builtin(char *cmd)
 {
+	if (!cmd)
+		return (1);
 	if (ft_strcmp(cmd, "cd") == 0 || ft_strcmp(cmd, "echo") == 0
 		|| ft_strcmp(cmd, "pwd") == 0 || ft_strcmp(cmd, "export") == 0
 		|| ft_strcmp(cmd, "unset") == 0 || ft_strcmp(cmd, "env") == 0
@@ -85,7 +87,7 @@ static void	execute_builtin(t_exe exe, int j)
 	else if (ft_strcmp(exe.commands[j].argv[0], "env") == 0)
 		b_env(exe.shell->envp);
 	else if (ft_strcmp(exe.commands[j].argv[0], "exit") == 0)
-		b_exit();
+		b_exit(exe);
 }
 
 static void	exec_child(t_cmd *cmd, t_exe exe, int **pipes, size_t idx)
@@ -116,6 +118,8 @@ static void	exec_child(t_cmd *cmd, t_exe exe, int **pipes, size_t idx)
 		if (execve(cmd->path, cmd->argv, exe.shell->envp))
 		{
 			perror("execve");
+			if (!cmd->path)
+				exit(127);
 			exit(errno);
 		}
 	}
@@ -164,9 +168,8 @@ void	command(t_exe exe, t_raw_line raw, t_shell *shell)
 	exe = prepare(raw, shell);
 	free_raw_line(&raw, FALSE);
 	if (exe.command_count == 1 && !is_builtin(exe.commands[0].argv[0]))
-	{
 		execute_builtin(exe, 0);
-	}
-	else
+	else if (!(exe.command_count == 1 && !exe.commands[0].argv[0]))
 		execute(exe);
+	free_execution_env(exe);
 }

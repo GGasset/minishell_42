@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 10:16:05 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/05/12 13:33:36 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:51:26 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,11 @@ static void	readline_loop(t_shell *shell)
 	while (TRUE)
 	{
 		prompt_signal_behaviour();
+		ft_bzero(&tokenized, sizeof(t_raw_line));
+		ft_bzero(&exe_struct, sizeof(t_exe));
 		err = 0;
 		line = readline_abstraction(shell);
-		cntr_d(line, tokenized, shell);
+		cntr_d(line, tokenized, exe_struct);
 		tokenized = parse_input(line, &err, shell);
 		if (err)
 		{
@@ -65,7 +67,6 @@ static void	readline_loop(t_shell *shell)
 		free(line);
 		if (tokenized.len)
 			command(exe_struct, tokenized, shell);
-		free_execution_env(exe_struct);
 		remove_tmp_files(shell);
 	}
 }

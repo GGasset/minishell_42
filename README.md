@@ -5,10 +5,12 @@
 	- [X]  Gestionar Heredoc
 	- [X]  LEAK
 	- [X]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
+	- [ ]  Expandir nombres de archivos
 - [X]  EJECUCION ENTERA
   - [X] Ejecutar buil-in
 	- [X] Built-in de exit
   - [X] Ejecutar binarios
+  - [ ] Rutas relativas y absolutas
   - [X] Manejar redirecciones
   - [X] Setear exit status al ultimo comando ejecutado (El ultimo de la linea)
   - [ ] Con aperturas recursivas de minishell, cerrarlas una a una, y no todas de una

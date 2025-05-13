@@ -36,6 +36,7 @@ void	prompt_signal_behaviour(void)
 {
 	signal(SIGINT, prompt_signal_handler);
 	signal(SIGQUIT, SIG_IGN);
+	signal(SIGCHLD, SIG_IGN);
 }
 
 void	child_signal_behaviour(void)

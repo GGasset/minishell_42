@@ -52,6 +52,8 @@ static void	readline_loop(t_shell *shell)
 	while (TRUE)
 	{
 		prompt_signal_behaviour();
+		ft_bzero(&tokenized, sizeof(t_raw_line));
+		ft_bzero(&exe_struct, sizeof(t_exe));
 		err = 0;
 		line = readline_abstraction(shell);
 		cntr_d(line, tokenized, exe_struct);

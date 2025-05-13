@@ -15,14 +15,15 @@
 	- [X] Ejecutable invalido
 	- [ ] Infile o Outfile invalido (Se imprime el error y no se ejecuta ese comando)
 	- [X] Ejecutable no especificado (No ejecutar ese comando)
+	- [ ] PATH nulo con ruta relativas, y absolutas
 - [ ]  SEÑALES
 	- [X] Ctrl + \
 		- [ ] Durante ejecucion
 		- [ ] Durante Lectura
 	- [X] Ctrl + C
 		- [X] Durante ejecucion
-		- [ ] Durante Lectura
-			- [ ] Con cosas escritos
+		- [X] Durante Lectura
+			- [X] Con cosas escritos
 	- [X] Ctrl + d
 		- [X] Durante ejecucion
 		- [X] Durante Lectura

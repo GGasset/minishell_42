@@ -36,6 +36,7 @@
 	- [X] Add execution function
 	- [X] Add signal setup
 - [X]  BUILTINS
+	- [ ] exit status
 	- [x] echo
 		- [x] -n
 	- [x] cd

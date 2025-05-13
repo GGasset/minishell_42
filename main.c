@@ -75,6 +75,8 @@ int	main(int argc, char *argv[], char **envp)
 	t_shell	shell;
 
 	ft_bzero(&shell, sizeof(t_shell));
+	argc = 0;
+	argv[0] = argv[0];
 	if (envp)
 		shell.envp = ft_splitdup(envp);
 	else

@@ -44,7 +44,6 @@ typedef struct s_exe
 	size_t			command_count;
 }					t_exe;
 
-
 // * Preparation *
 t_exe				prepare(t_raw_line rwcmd, t_shell *shell);
 
@@ -72,8 +71,5 @@ void				update_envp(t_shell *shell, char *var);
 void				free_execution_env(t_exe exe);
 void				exit_call(t_shell *s, t_raw_line *lines, t_exe *structure,
 						int code);
-						
-// * CONTROL + D *
-void				cntr_d(char *str, t_raw_line r, t_exe exe);
 
 #endif

@@ -113,8 +113,9 @@ char					*get_pwd(t_shell *shell);
 // Signals
 
 void					prompt_signal_behaviour(void);
-void					heredoc_signal_handler(int sig);
 void					child_signal_behaviour(void);
 void					waiting_signal_behaviour(void);
+void					waiting_signal_handler(int sig);
+void					heredoc_signal_handler(int sig);
 
 #endif

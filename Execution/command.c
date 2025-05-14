@@ -93,7 +93,9 @@ void	e_run(t_exe exe)
 	p_create(pipes, exe);
 	child_signal_behaviour();
 	e_exec(exe, pipes);
-	waiting_signal_behaviour();
+	signal(SIGINT, waiting_signal_handler);
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGCHLD, SIG_DFL);
 	e_wait(exe);
 	p_free(pipes, exe.command_count);
 }

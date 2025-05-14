@@ -57,19 +57,3 @@ void	child_signal_behaviour(void)
 	signal(SIGQUIT, SIG_DFL);
 	signal(SIGCHLD, SIG_IGN);
 }
-
-void	waiting_signal_behaviour(void)
-{
-	signal(SIGINT, waiting_signal_handler);
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGCHLD, SIG_DFL);
-}
-
-void	cntr_d(char *str, t_raw_line r, t_exe exe)
-{
-	if (str == NULL)
-	{
-		printf("exit\n");
-		exit_call(exe.shell, &r, &exe, 0);
-	}
-}

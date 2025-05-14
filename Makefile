@@ -6,12 +6,13 @@
 #    By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/05/12 22:34:36 by apaz-pri         ###   ########.fr        #
+#    Updated: 2025/05/14 12:44:11 by apaz-pri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=minishell
 TEST_NAME=test
+UNAME := $(shell uname)
 
 libft_NAME=./libft/libft.a
 ARCHIVES= ${libft_NAME}
@@ -32,7 +33,7 @@ O_FILES += ${BUILTIN_O_FILES}
 O_FILES += ${FUNCTIONALITY_O_FILES}
 
 BUILT_IN_O_FILES=cd.o echo.o env.o exit.o export.o pwd.o unset.o
-EXECUTION_O_FILES=execution.o
+EXECUTION_O_FILES=execution.o built-in.o command.o pipes.o previusly.o
 EXECUTION_O_FILES += $(addprefix Built-In/, ${BUILT_IN_O_FILES})
 O_FILES += $(addprefix Execution/, ${EXECUTION_O_FILES})
 
@@ -44,6 +45,11 @@ INCLUDE= -I . -I ./libft/ -I ./headers/
 CC_SECURITY_FLAGS= -Wall -Wextra #-fsanitize=address
 CC_FLAGS= -g ${INCLUDE}
 LINKING_FLAGS= ${INCLUDE} -lreadline #-fsanitize=address
+
+ifeq ($(UNAME),Darwin)
+	INCLUDE += -I/usr/local/opt/readline/include
+    LINKING_FLAGS += -L/usr/local/opt/readline/lib
+endif
 
 #------------- COLORS -------------
 

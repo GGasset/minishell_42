@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:14:16 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/04/24 13:58:31 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/14 12:55:43 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 */
 void	change_old_pwd(t_exe exe, char *cwd)
 {
-	char *old_pwd;
+	char	*old_pwd;
 
 	old_pwd = ft_strjoin("OLDPWD=", cwd);
 	update_envp(exe.shell, old_pwd);
@@ -30,7 +30,7 @@ void	change_old_pwd(t_exe exe, char *cwd)
 
 void	change_new_pwd(t_exe exe, char *cwd)
 {
-	char *new_pwd;
+	char	*new_pwd;
 
 	new_pwd = ft_strjoin("PWD=", cwd);
 	update_envp(exe.shell, new_pwd);
@@ -39,7 +39,7 @@ void	change_new_pwd(t_exe exe, char *cwd)
 
 char	*check_home(t_exe exe, int j)
 {
-	char *path;
+	char	*path;
 
 	if (!exe.commands[j].argv[1])
 	{
@@ -66,9 +66,9 @@ char	*check_home(t_exe exe, int j)
 
 void	b_cd(t_exe exe, int j)
 {
-	char *path;
-	char cwd[PATH_MAX];
-	char old_cwd[PATH_MAX];
+	char	*path;
+	char	cwd[PATH_MAX];
+	char	old_cwd[PATH_MAX];
 
 	path = check_home(exe, j);
 	if (!path)

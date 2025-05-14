@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 23:56:29 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/12 17:40:37 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/14 12:56:58 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 */
 void	b_echo(t_cmd cmd)
 {
-	int i;
-	int parameter;
+	int	i;
+	int	parameter;
 
 	i = 1;
 	parameter = 0;

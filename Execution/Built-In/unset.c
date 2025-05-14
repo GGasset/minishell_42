@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:38:41 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/12 17:41:01 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/14 12:56:34 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	remove_env_var(t_shell *shell, int index)
 
 void	b_unset(t_exe exe, int j)
 {
-	int i;
-	int index;
+	int	i;
+	int	index;
 
 	if (!exe.commands[j].argv[1])
 		return ;

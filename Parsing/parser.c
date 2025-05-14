@@ -39,25 +39,25 @@ char	*remove_outer_quotes(char *s, int free_s)
 static char	*replace_squiggly(char *s, int free_s, t_shell *shell)
 {
 	char	*out;
-	size_t	out_len;
 	char	*replacer;
+	char	quote;
 	size_t	i;
 
 	replacer = get_user_home(shell);
 	out = ft_calloc(1, sizeof(char));
-	out_len = 0;
+	quote = 0;
 	i = 0;
 	while (s && out && s[i])
 	{
-		if (s[i] == '~' && (!i || is_word_delimiter(s[i - 1]))
+		if (s[i] == '~' && (!i || is_word_delimiter(s[i - 1])) && !quote
 			&& (s[i + 1] == '/' || is_word_delimiter(s[i + 1])) && replacer)
 			out = ft_strjoin_free(out, replacer, TRUE, FALSE);
 		else
 		{
-			out = ft_realloc(out, out_len + 1, out_len + 2, TRUE);
-			out[out_len] = s[i];
+			out = ft_realloc(out, ft_strlen(out) + 1, ft_strlen(out) + 2, TRUE);
+			out[ft_strlen(out)] = s[i];
 		}
-		out_len = ft_strlen(out);
+		handle_quotes(s[i], &quote);
 		i++;
 	}
 	free(replacer);

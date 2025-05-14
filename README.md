@@ -39,6 +39,7 @@
 	- [X] Add signal setup
 - [X]  BUILTINS
 	- [ ] exit status
+	- [ ] argumentos invalidos
 	- [x] echo
 		- [x] -n
 	- [x] cd

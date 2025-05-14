@@ -6,11 +6,21 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:59:24 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/14 12:00:44 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/14 13:52:35 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution_header.h"
+
+static void set_path(t_exe *c, t_raw_line r,  size_t i, t_shell *shell)
+{
+	if (access(r.rwcmds[i].file, F_OK) == 0)
+	{
+		c->commands[i].path = ft_strdup(r.rwcmds[i].file);
+	}
+	else
+		c->commands[i].path = get_from_path(r.rwcmds[i].file, shell->envp);
+}
 
 t_exe	prepare(t_raw_line r, t_shell *shell)
 {
@@ -25,7 +35,7 @@ t_exe	prepare(t_raw_line r, t_shell *shell)
 		exit(EXIT_FAILURE);
 	while (i < r.len)
 	{
-		c.commands[i].path = get_from_path(r.rwcmds[i].file, shell->envp);
+		set_path(&c, r, i, shell);
 		c.commands[i].argv = ft_splitdup(r.rwcmds[i].argv);
 		c.commands[i].input_fd = STDIN_FILENO;
 		c.commands[i].output_fd = STDOUT_FILENO;

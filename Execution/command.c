@@ -6,14 +6,15 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 12:02:04 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/14 12:55:06 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/14 13:09:55 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution_header.h"
 
-static void	e_child(t_cmd *cmd, t_exe exe, size_t idx)
+static void	e_child(t_cmd *cmd, t_exe exe, int **pipes, size_t idx)
 {
+	p_run(cmd, exe, pipes, idx);
 	if (is_builtin(cmd->argv[0]) == 0)
 	{
 		b_run(exe, idx);
@@ -58,7 +59,7 @@ static void	e_exec(t_exe exe, int **pipes)
 		if (pid < 0)
 			perror("Fork:");
 		else if (pid == 0)
-			e_child(&exe.commands[i], exe, i);
+			e_child(&exe.commands[i], exe, pipes, i);
 		if (i > 0)
 			close(pipes[i - 1][0]);
 		if (i < exe.command_count - 1)

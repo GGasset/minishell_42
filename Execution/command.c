@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 12:02:04 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/14 13:09:55 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/14 13:18:38 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 static void	e_child(t_cmd *cmd, t_exe exe, int **pipes, size_t idx)
 {
+	if (cmd->input_fd < 0 || cmd->output_fd < 0)
+	{
+		perror("File descriptor");
+		exit(1);
+	}
 	p_run(cmd, exe, pipes, idx);
 	if (is_builtin(cmd->argv[0]) == 0)
 	{

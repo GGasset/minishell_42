@@ -15,7 +15,7 @@
   - [X] Con aperturas recursivas de minishell, cerrarlas una a una, y no todas de una
   - [ ] Checkeo de errores
 	- [X] Ejecutable invalido
-	- [ ] Infile o Outfile invalido (Se imprime el error y no se ejecuta ese comando)
+	- [X] Infile o Outfile invalido (Se imprime el error y no se ejecuta ese comando)
 	- [X] Ejecutable no especificado (No ejecutar ese comando)
 	- [ ] PATH nulo con ruta relativas, y absolutas
 - [ ]  SEÑALES

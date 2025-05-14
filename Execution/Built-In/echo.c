@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 23:56:29 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/14 12:56:58 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/14 12:57:31 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 */
 void	b_echo(t_cmd cmd)
 {
-	int	i;
+	int		i;
 	int	parameter;
 
 	i = 1;

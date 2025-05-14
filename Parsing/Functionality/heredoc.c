@@ -70,7 +70,7 @@ static void	heredoc_loop(char *delimiter, int write_fd)
 		wait(0);
 	else
 	{
-		heredoc_signal_behaviour();
+		signal(SIGINT, heredoc_signal_handler);
 		_exit = 0;
 		while (!_exit && delimiter && write_fd > 0)
 		{

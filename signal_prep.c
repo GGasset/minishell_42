@@ -65,11 +65,6 @@ void	waiting_signal_behaviour(void)
 	signal(SIGCHLD, SIG_DFL);
 }
 
-void	heredoc_signal_behaviour(void)
-{
-	signal(SIGINT, heredoc_signal_handler);
-}
-
 void	cntr_d(char *str, t_raw_line r, t_exe exe)
 {
 	if (str == NULL)

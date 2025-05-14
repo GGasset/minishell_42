@@ -80,7 +80,7 @@ static t_raw_cmd	tokenize_cmd(char *cmd, int *er, t_shell *shell, size_t c_i)
 	ft_bzero(&out, sizeof(out));
 	out.i = c_i;
 	current_op = 0;
-	operator= 0;
+	operator = 0;
 	i = 0;
 	while (er && !*er)
 	{

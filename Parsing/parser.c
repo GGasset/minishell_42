@@ -36,6 +36,35 @@ char	*remove_outer_quotes(char *s, int free_s)
 	return (out);
 }
 
+static char	*replace_squiggly(char *s, int free_s, t_shell *shell)
+{
+	char	*out;
+	size_t	out_len;
+	char	*replacer;
+	size_t	i;
+
+	replacer = get_user_home(shell);
+	out = ft_calloc(1, sizeof(char));
+	out_len = 0;
+	i = 0;
+	while (s && out && s[i])
+	{
+		if (s[i] == '~' && (!i || is_word_delimiter(s[i - 1]))
+			&& (s[i + 1] == '/' || is_word_delimiter(s[i + 1])) && replacer)
+			out = ft_strjoin_free(out, replacer, TRUE, FALSE);
+		else
+		{
+			out = ft_realloc(out, out_len + 1, out_len + 2, TRUE);
+			out[out_len] = s[i];
+		}
+		out_len = ft_strlen(out);
+		i++;
+	}
+	free(replacer);
+	free((void *)((free_s != 0) * (size_t)s));
+	return (out);
+}
+
 t_raw_line	parse_input(char *line, int *err, t_shell *shell)
 {
 	t_raw_line	out;
@@ -48,6 +77,8 @@ t_raw_line	parse_input(char *line, int *err, t_shell *shell)
 	}
 	line = ft_shell_replace(line, shell);
 	line = ft_normalize_spaces(line, TRUE);
+	if (line)
+		line = replace_squiggly(line, TRUE, shell);
 	if (!line)
 	{
 		*err = TRUE;

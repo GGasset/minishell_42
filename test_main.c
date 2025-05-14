@@ -18,7 +18,8 @@ int main(int argc, char  *argv[], char **envp)
 	shell.envp = ft_splitdup(envp);
 	//argv[1] = "ca't' > o'\"uti'";
 
-	printf("ARGV[1]=%s| end\n", argv[1]);
+	for (size_t i = 0; i < argc; i++)
+		printf("ARGV[%i]=%s\n", i, argv[i]);
 
 	int err = 0;
 	t_raw_line tokenized = parse_input(argv[1], &err, &shell);

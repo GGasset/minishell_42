@@ -106,7 +106,7 @@ void					create_empty_file(char *path, t_shell *shell);
 void					create_directory(char *path, int has_filename);
 
 // If it fails to get HOME var, tries /home/$USER/, else returns 0
-char					*get_user_home(t_shell *shell);
+char					*get_user_home(t_shell *shell, int add_slash);
 char					*get_pwd(t_shell *shell);
 
 // Signals

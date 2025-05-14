@@ -43,7 +43,7 @@ static char	*replace_squiggly(char *s, int free_s, t_shell *shell)
 	char	quote;
 	size_t	i;
 
-	replacer = get_user_home(shell);
+	replacer = get_user_home(shell, FALSE);
 	out = ft_calloc(1, sizeof(char));
 	quote = 0;
 	i = 0;

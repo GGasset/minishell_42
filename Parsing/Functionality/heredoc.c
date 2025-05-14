@@ -57,7 +57,7 @@ char	*do_heredoc(char *delimiter, size_t i, t_shell *shell)
 	char	*path;
 	int		fd;
 
-	path = get_user_home(shell);
+	path = get_user_home(shell, TRUE);
 	if (!path)
 		path = get_pwd(shell);
 	if (!path)

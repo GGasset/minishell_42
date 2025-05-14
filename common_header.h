@@ -20,6 +20,7 @@
 # include <limits.h>
 # include <readline/history.h>
 # include <readline/readline.h>
+# include <stdlib.h>
 # include <signal.h>
 # include <stddef.h>
 # include <string.h>
@@ -112,6 +113,7 @@ char					*get_pwd(t_shell *shell);
 // Signals
 
 void					prompt_signal_behaviour(void);
+void					heredoc_signal_behaviour(void);
 void					child_signal_behaviour(void);
 void					waiting_signal_behaviour(void);
 

@@ -5,6 +5,7 @@
 	- [X]  Gestionar Heredoc
 	- [X]  LEAK
 	- [X]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
+	- [ ]  Sustituir el prefijo "~/" o "~" por home y ~[word] por /[word] de cualquier archivo y argv fuera de comillas
 - [X]  EJECUCION ENTERA
   - [X] Ejecutar buil-in
 	- [X] Built-in de exit

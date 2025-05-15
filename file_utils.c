@@ -46,9 +46,9 @@ int	get_access(char *path, int must_exist, int operator, int *out)
 	if ((must_exist && (access(path, F_OK) || access(path, permission))))
 	{
 		output = 1;
+		if (out)
+			*out = 1;
 		printf("Tonto\n");
 	}
-	if (out)
-		*out = output;
 	return (output);
 }

@@ -86,7 +86,7 @@ static t_raw_cmd	tokenize_cmd(char *cmd, int *err, t_shell *shell)
 	current_op = 0;
 	operator = 0;
 	i = 0;
-	while (err && !*err && !out.err)
+	while (err && !*err)
 	{
 		tmp_s = shell_get_word(cmd, i, &operator);
 		*err = current_op && !tmp_s;

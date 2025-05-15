@@ -15,6 +15,7 @@
   - [X] Setear exit status al ultimo comando ejecutado (El ultimo de la linea)
   - [X] Con aperturas recursivas de minishell, cerrarlas una a una, y no todas de una
   - [ ] Checkeo de errores
+	- [ ] Un checkeo de redundancia en command antes de ejecucion estaria muy guachi
 	- [X] Ejecutable invalido
 	- [X] Infile o Outfile invalido (Se imprime el error y no se ejecuta ese comando)
 	- [X] Ejecutable no especificado (No ejecutar ese comando)

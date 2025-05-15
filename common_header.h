@@ -69,7 +69,6 @@ typedef struct t_raw_redirect
 // Input and output _redirect are nullable
 typedef struct s_raw_cmd
 {
-	size_t				i;
 	char				*file;
 	char				**argv;
 	t_raw_redirect		*input_redirect;
@@ -100,7 +99,7 @@ char					*get_envp(char *key, char *envp[]);
 // accepts relative routes, with pwd in shell TODO
 // checks for missing pwd TODO
 // Creates directories TODO
-void					create_empty_file(char *path, t_shell *shell);
+void					create_empty_file(char *path, t_shell *shell, int *err);
 
 // If has filename is set to 0, everything will be considered a directory name
 void					create_directory(char *path, int has_filename);
@@ -114,5 +113,7 @@ char					*get_pwd(t_shell *shell);
 void					prompt_signal_behaviour(void);
 void					child_signal_behaviour(void);
 void					waiting_signal_behaviour(void);
+void					waiting_signal_handler(int sig);
+void					heredoc_signal_handler(int sig);
 
 #endif

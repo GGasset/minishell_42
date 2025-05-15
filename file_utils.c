@@ -12,7 +12,7 @@
 
 #include "common_header.h"
 
-void	create_empty_file(char *path, t_shell *shell)
+void	create_empty_file(char *path, t_shell *shell, int *err)
 {
 	int	fd;
 

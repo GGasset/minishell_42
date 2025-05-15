@@ -6,7 +6,7 @@
 	- [X]  LEAK
 	- [X]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
 	- [X]  Sustituir "~" por home fuera de comillas, siempre que no este directamente precedido por una palabra le siga una palabra
-- [X]  EJECUCION ENTERA
+- [X]  EJECUCION
   - [X] Ejecutar buil-in
 	- [X] Built-in de exit
   - [X] Ejecutar binarios

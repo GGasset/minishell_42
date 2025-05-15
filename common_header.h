@@ -102,7 +102,7 @@ char	*get_envp(char *key, char *envp[]);
 // checks for missing pwd TODO
 // Creates directories TODO
 void	create_empty_file(char *path, t_shell *shell, int trunc);
-int		check_permissions(char *path, int must_exist, int permission, int *out);
+int		get_access(char *path, int must_exist, int operator, int *out);
 
 // If has filename is set to 0, everything will be considered a directory name
 void	create_directory(char *path, int has_filename);

@@ -31,15 +31,15 @@ char	**argv_append(char **argv, char *s, int free_s)
 // i is the start of the word after the operator
 // just let the thing do the thing
 // free your stuff
-static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s, int *err)
+static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s)
 {
 	t_raw_redirect	**redirect;
 
-	if (!w)
+	if (!w || !is_e_operator(op))
 		return ;
-	if (is_input_e_operator(op))
+	if (is_input_e_operator(op) && get_access(w, TRUE, op, &cmd->err))
 		redirect = &cmd->input_redirect;
-	else if (is_output_e_operator(op))
+	else if (is_output_e_operator(op) && get_access(w, FALSE, op, &cmd->err))
 		redirect = &cmd->output_redirect;
 	else
 		return ;
@@ -61,11 +61,16 @@ static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s, int *err)
 
 static void	set_file(t_raw_cmd *out, char *tmp_s, char current_op)
 {
+	int		contains_file;
+	char	*tmp;
+
 	if (tmp_s && !is_e_operator(current_op))
 	{
-		if (!out->argv)
+		contains_file = out->file != 0;
+		tmp = remove_outer_quotes(tmp_s, FALSE);
+		if (!contains_file)
 			out->file = remove_outer_quotes(tmp_s, FALSE);
-		out->argv = argv_append(out->argv, tmp_s, FALSE);
+		out->argv = argv_append(out->argv, tmp, contains_file);
 	}
 }
 
@@ -81,11 +86,11 @@ static t_raw_cmd	tokenize_cmd(char *cmd, int *err, t_shell *shell)
 	current_op = 0;
 	operator = 0;
 	i = 0;
-	while (err && !*err && out.err)
+	while (err && !*err && !out.err)
 	{
 		tmp_s = shell_get_word(cmd, i, &operator);
 		*err = current_op && !tmp_s;
-		set_redirect(tmp_s, &out, current_op, shell, out.err);
+		set_redirect(tmp_s, &out, current_op, shell);
 		set_file(&out, tmp_s, current_op);
 		i = get_next_word_start_i(cmd, i);
 		free(tmp_s);

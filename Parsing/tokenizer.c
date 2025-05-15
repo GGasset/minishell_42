@@ -55,7 +55,7 @@ static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s, int *err)
 		w = do_heredoc(w, s);
 	(*redirect)->file = remove_outer_quotes(w, op == stdin_delimiter);
 	if (is_output_e_operator(op))
-		create_empty_file((*redirect)->file, s, err);
+		create_empty_file((*redirect)->file, s, op == stdout_redirect);
 	(*redirect)->type = op - (op == stdin_delimiter);
 }
 
@@ -81,11 +81,11 @@ static t_raw_cmd	tokenize_cmd(char *cmd, int *err, t_shell *shell)
 	current_op = 0;
 	operator = 0;
 	i = 0;
-	while (err && !*err)
+	while (err && !*err && out.err)
 	{
 		tmp_s = shell_get_word(cmd, i, &operator);
 		*err = current_op && !tmp_s;
-		set_redirect(tmp_s, &out, current_op, shell, err);
+		set_redirect(tmp_s, &out, current_op, shell, out.err);
 		set_file(&out, tmp_s, current_op);
 		i = get_next_word_start_i(cmd, i);
 		free(tmp_s);

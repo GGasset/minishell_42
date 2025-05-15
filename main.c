@@ -15,6 +15,15 @@
 
 unsigned char	g_last_return_code = 0;
 
+static void	cntr_d(char *str, t_raw_line r, t_exe exe)
+{
+	if (str == NULL)
+	{
+		printf("exit\n");
+		exit_call(exe.shell, &r, &exe, 0);
+	}
+}
+
 static int	setup(void)
 {
 	prompt_signal_behaviour();

@@ -6,6 +6,7 @@
 	- [X]  LEAK
 	- [X]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
 	- [X]  Sustituir "~" por home fuera de comillas, siempre que no este directamente precedido por una palabra le siga una palabra
+	- [ ]  Si hay un outffile sin permisos, ignorar el resto
 - [X]  EJECUCION
   - [X] Ejecutar buil-in
 	- [X] Built-in de exit
@@ -39,6 +40,7 @@
 	- [X] Add signal setup
 - [X]  BUILTINS
 	- [ ] exit status
+	- [ ] argumentos invalidos
 	- [x] echo
 		- [x] -n
 	- [x] cd
@@ -49,7 +51,8 @@
 	- [X] unset
 	- [X] env
 	- [X] exit
-		- Solo debe imprimir cuando sea el unico comando
+		- [X] Solo debe imprimir cuando sea el unico comando
+		- [ ] Argumentos
 - [ ]  PARA EL FINAL, CHECKEAR MIL VECES TODO
 	- [ ] Organizar directorio
 	- [ ] Norminette

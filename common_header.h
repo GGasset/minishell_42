@@ -20,6 +20,7 @@
 # include <limits.h>
 # include <readline/history.h>
 # include <readline/readline.h>
+# include <stdlib.h>
 # include <signal.h>
 # include <stddef.h>
 # include <string.h>

@@ -32,6 +32,19 @@ void	waiting_signal_handler(int sig)
 	}
 }
 
+void	heredoc_signal_handler(int sig)
+{
+	int	fd;
+
+	if (sig == SIGINT)
+	{
+		printf("\n");
+		fd = open(".heredoco", O_WRONLY | O_CREAT | O_TRUNC, 0666);
+		close(fd);
+		close(0);
+	}
+}
+
 void	prompt_signal_behaviour(void)
 {
 	signal(SIGINT, prompt_signal_handler);
@@ -43,20 +56,4 @@ void	child_signal_behaviour(void)
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
 	signal(SIGCHLD, SIG_IGN);
-}
-
-void	waiting_signal_behaviour(void)
-{
-	signal(SIGINT, waiting_signal_handler);
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGCHLD, SIG_DFL);
-}
-
-void	cntr_d(char *str, t_raw_line r, t_exe exe)
-{
-	if (str == NULL)
-	{
-		printf("exit\n");
-		exit_call(exe.shell, &r, &exe, 0);
-	}
 }

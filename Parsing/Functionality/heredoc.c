@@ -13,53 +13,6 @@
 #include "execution_header.h"
 #include "parsing_header.h"
 
-static int	handle_nl(char *d, char **buff, size_t nline_i, int fd)
-{
-	if (!*buff)
-		return (TRUE);
-	if (!ft_strncmp(d, *buff, nline_i) && nline_i == ft_strlen(d))
-	{
-		free(*buff);
-		*buff = 0;
-		return (TRUE);
-	}
-	write(fd, *buff, nline_i + 1);
-	free(*buff);
-	*buff = ft_calloc(1, 1);
-	write(1, HEREDOC_PROMPT, ft_strlen(HEREDOC_PROMPT));
-	return (FALSE);
-}
-
-/*static void	heredoc_loop(char *delimiter, int write_fd)
-{
-	char	*buff;
-	size_t	buff_len;
-	char	tmp;
-	ssize_t	nline_i;
-
-	buff_len = 0;
-	buff = ft_calloc(1, 1);
-	write(1, HEREDOC_PROMPT, ft_strlen(HEREDOC_PROMPT));
-	//printf("\n");
-	while (buff && delimiter && write_fd != -1 && read(0, &tmp, 1) > 0)
-	{
-		//printf("%d\n", tmp);
-		if (tmp == EOF)
-		{
-			free(buff);
-			return ;
-		}
-		buff = ft_realloc(buff, buff_len + 1, buff_len + 2, TRUE);
-		buff_len++;
-		buff[buff_len - 1] = tmp;
-		nline_i = ft_strchr_i(buff, '\n');
-		if (nline_i != -1 && handle_nl(delimiter, &buff, nline_i, write_fd))
-			break ;
-		else if (nline_i != -1)
-			buff_len = 0;
-	}
-}*/
-
 static void	heredoc_loop(char *delimiter, int write_fd)
 {
 	char	*buff;
@@ -89,7 +42,7 @@ static void	heredoc_loop(char *delimiter, int write_fd)
 	prompt_signal_behaviour();
 }
 
-char	*do_heredoc(char *delimiter, size_t i, t_shell *shell)
+char	*do_heredoc(char *delimiter, t_shell *shell)
 {
 	char	*path;
 	int		fd;

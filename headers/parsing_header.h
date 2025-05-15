@@ -129,7 +129,7 @@ t_raw_line		tokenize_line(char *line, int *err, t_shell *shell);
 char			*remove_outer_quotes(char *s, int free_s);
 
 // If something is wrong do nothing  Needs Testing
-char			*do_heredoc(char *delimiter, size_t i, t_shell *shell);
+char			*do_heredoc(char *delimiter, t_shell *shell);
 
 // All combined
 

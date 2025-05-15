@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   common_header.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/05/14 12:46:20 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/15 19:28:26 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COMMON_HEADER_H
 # define COMMON_HEADER_H
 
-# include <stdio.h>
 # include "libft.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <limits.h>
 # include <readline/history.h>
 # include <readline/readline.h>
-# include <stdlib.h>
 # include <signal.h>
 # include <stddef.h>
+# include <stdio.h>
+# include <stdlib.h>
 # include <string.h>
 # include <sys/types.h>
 # include <sys/wait.h>
@@ -115,5 +115,6 @@ void					prompt_signal_behaviour(void);
 void					child_signal_behaviour(void);
 void					waiting_signal_handler(int sig);
 void					heredoc_signal_handler(int sig);
+void					core_dump(int sig);
 
 #endif

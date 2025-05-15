@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   built-in.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 12:01:02 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/14 12:57:12 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/15 18:30:18 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	is_builtin(char *cmd)
 
 void	b_run(t_exe exe, int j)
 {
+	g_last_return_code = 0;
 	if (ft_strcmp(exe.commands[j].argv[0], "cd") == 0)
 		b_cd(exe, j);
 	else if (ft_strcmp(exe.commands[j].argv[0], "echo") == 0)
@@ -39,5 +40,5 @@ void	b_run(t_exe exe, int j)
 	else if (ft_strcmp(exe.commands[j].argv[0], "env") == 0)
 		b_env(exe.shell->envp);
 	else if (ft_strcmp(exe.commands[j].argv[0], "exit") == 0)
-		b_exit(exe);
+		b_exit(exe, j);
 }

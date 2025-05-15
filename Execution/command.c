@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 12:02:04 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/14 13:18:38 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/15 19:33:53 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	e_run(t_exe exe)
 	child_signal_behaviour();
 	e_exec(exe, pipes);
 	signal(SIGINT, waiting_signal_handler);
-	signal(SIGQUIT, SIG_IGN);
+	signal(SIGQUIT, core_dump);
 	signal(SIGCHLD, SIG_DFL);
 	e_wait(exe);
 	p_free(pipes, exe.command_count);

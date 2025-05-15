@@ -12,7 +12,7 @@
 
 #include "common_header.h"
 
-void	create_empty_file(char *path, t_shell *shell, int *err)
+void	create_empty_file(char *path, t_shell *shell, int trunc)
 {
 	int	fd;
 
@@ -22,15 +22,25 @@ void	create_empty_file(char *path, t_shell *shell, int *err)
 		ft_putstr_fd(path, 2);
 		ft_putstr_fd(": Permission denied\n", 2);
 		g_last_return_code = 1;
-		*err = -1;
 		return ;
 	}
-	fd = open(path, O_WRONLY | O_TRUNC | O_CREAT, 0666);
+	fd = open(path, O_WRONLY | (O_TRUNC && trunc) | O_CREAT, 0666);
 	if (fd == -1)
 	{
 		ft_putstr_fd("ERROR\n", 2);
-		*err = -1;
 		return ;
 	}
 	close(fd);
+}
+
+int	check_permissions(char *path, int must_exist, int permission, int *out)
+{
+	int	output;
+
+	output = 0;
+	if ((must_exist && access(path, F_OK) || access(path, permission)))
+		output = 1;
+	if (out)
+		*out = output;
+	return (output);
 }

@@ -67,13 +67,12 @@ static void	readline_loop(t_shell *shell)
 		line = readline_abstraction(shell);
 		cntr_d(line, tokenized, exe_struct);
 		tokenized = parse_input(line, &err, shell);
+		free(line);
 		if (err)
 		{
-			write(2, PARSE_ERR, ft_strlen(PARSE_ERR));
-			free(line);
+			write(2, PARSE_ERR, ft_strlen(PARSE_ERR) * (err > 0));
 			continue ;
 		}
-		free(line);
 		if (tokenized.len)
 			command(exe_struct, tokenized, shell);
 		remove_tmp_files(shell);

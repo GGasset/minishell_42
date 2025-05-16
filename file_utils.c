@@ -38,17 +38,17 @@ int	get_access(char *path, int must_exist, int operator, int *out)
 	int	output;
 	int permission;
 
-	if (operator == stdin_delimiter)
+	if (operator == stdin_delimiter || (must_exist && access(path, F_OK)))
 		return (0);
 	permission = R_OK * is_input_e_operator(operator);
 	permission += W_OK * is_output_e_operator(operator);
 	output = 0;
-	if ((must_exist && access(path, F_OK)) || access(path, permission))
+	if (access(path, permission))
 	{
 		output = 1;
 		if (out && *out)
 			return (output);
-		g_last_return_code = 1;
+		g_last_return_code = !(must_exist && access(path, F_OK));
 		if (out)
 			*out = 1;
 		ft_putstr_fd(path, 2);

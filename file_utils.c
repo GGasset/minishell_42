@@ -50,9 +50,9 @@ int	get_access(char *path, int must_exist, int operator, int *out)
 			*out = 1;
 		ft_putstr_fd(path, 2);
 		if (must_exist && access(path, F_OK))
-			ft_putstr_fd(": No such file or directory", 2);
+			ft_putstr_fd(": No such file or directory\n", 2);
 		else
-			ft_putstr_fd(": Permission denied", 2);
+			ft_putstr_fd(": Permission denied\n", 2);
 	}
 	return (output);
 }

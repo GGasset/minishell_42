@@ -48,6 +48,7 @@ int	get_access(char *path, int must_exist, int operator, int *out)
 		output = 1;
 		if (out && *out)
 			return (output);
+		g_last_return_code = 1;
 		if (out)
 			*out = 1;
 		ft_putstr_fd(path, 2);

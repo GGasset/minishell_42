@@ -46,6 +46,8 @@ int	get_access(char *path, int must_exist, int operator, int *out)
 	if ((must_exist && (access(path, F_OK) || access(path, permission))))
 	{
 		output = 1;
+		if (out && *out)
+			return (output);
 		if (out)
 			*out = 1;
 		ft_putstr_fd(path, 2);

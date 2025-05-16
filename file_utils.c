@@ -38,12 +38,12 @@ int	get_access(char *path, int must_exist, int operator, int *out)
 	int	output;
 	int permission;
 
-	if (operator == stdin_delimiter || (must_exist && access(path, F_OK)))
+	if (operator == stdin_delimiter || (!must_exist || access(path, F_OK)))
 		return (0);
 	permission = R_OK * is_input_e_operator(operator);
 	permission += W_OK * is_output_e_operator(operator);
 	output = 0;
-	if (access(path, permission))
+	if ((must_exist && access(path, F_OK)) || access(path, permission))
 	{
 		output = 1;
 		if (out && *out)

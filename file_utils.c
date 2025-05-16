@@ -48,7 +48,11 @@ int	get_access(char *path, int must_exist, int operator, int *out)
 		output = 1;
 		if (out)
 			*out = 1;
-		printf("Tonto\n");
+		ft_putstr_fd(path, 2);
+		if (must_exist && access(path, F_OK))
+			ft_putstr_fd(": No such file or directory", 2);
+		else
+			ft_putstr_fd(": Permission denied", 2);
 	}
 	return (output);
 }

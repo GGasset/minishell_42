@@ -39,6 +39,7 @@
 	- [X] Add execution function
 	- [X] Add signal setup
 - [X]  BUILTINS
+	- [ ] Solo un builtin y redirecciones (salida o entrada)
 	- [ ] exit status
 	- [ ] argumentos invalidos
 	- [x] echo

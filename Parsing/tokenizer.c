@@ -24,7 +24,7 @@ char	**argv_append(char **argv, char *s, int free_s)
 			TRUE);
 	len++;
 	if (out)
-		out[len - 2] = remove_outer_quotes(s, free_s);
+		out[len - 2] = ft_strdup_free(s, free_s);
 	return (out);
 }
 

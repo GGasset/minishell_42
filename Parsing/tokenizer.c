@@ -37,9 +37,9 @@ static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s)
 
 	if (!w || !is_e_operator(op))
 		return ;
-	if (is_input_e_operator(op) && get_access(w, TRUE, op, &cmd->err))
+	if (is_input_e_operator(op) && !get_access(w, TRUE, op, &cmd->err))
 		redirect = &cmd->input_redirect;
-	else if (is_output_e_operator(op) && get_access(w, FALSE, op, &cmd->err))
+	else if (is_output_e_operator(op) && !get_access(w, FALSE, op, &cmd->err))
 		redirect = &cmd->output_redirect;
 	else
 		return ;

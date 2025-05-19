@@ -61,7 +61,7 @@ static void	e_exec(t_exe exe, int **pipes)
 	while (++i < exe.command_count)
 	{
 		if (exe.commands[i].err)
-			return ;
+			continue ;
 		pid = fork();
 		if (pid < 0)
 			perror("Fork:");

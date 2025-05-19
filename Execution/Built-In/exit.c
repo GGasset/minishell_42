@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 12:02:48 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/19 13:06:11 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:50:02 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	b_exit(t_exe exe, int j)
     {
         printf("minishell: exit: too many arguments\n");
         g_last_return_code = 1;
+		return ;
     }
     if (exe.commands[j].argv[1])
     {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:38:41 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/15 19:38:01 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:46:19 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ void	b_unset(t_exe exe, int j)
 	int	i;
 	int	index;
 
-	if (!exe.commands[j].argv[1])
-		g_last_return_code = 1;
 	i = 1;
 	while (exe.commands[j].argv[i])
 	{

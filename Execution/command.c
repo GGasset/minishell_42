@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 12:02:04 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/19 19:00:02 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:38:16 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	e_wait(t_exe exe)
 	i = 0;
 	while (i < exe.command_count)
 	{
-		waitpid(exe.commands[i].pid, &status, 0);
+		waitpid(-1, &status, 0);
 		if (WIFEXITED(status))
 			g_last_return_code = WEXITSTATUS(status);
 		i++;

@@ -1,5 +1,8 @@
 ## TO DO
 
+- [ ] Bugs
+	- [ ] <<cat cat
+
 - [X]  Parsing
 	- [X]  Funcion principal de parsing (Le pasas el input tal y como llega y sale parseado)
 	- [X]  Gestionar Heredoc
@@ -50,6 +53,7 @@
 	- [x] cd
 		- [x] ruta relativa
 		- [x] ruta absoluta
+		- [ ] cd .. hi
 	- [x] pwd
 	- [x] export ("export var=val", check "export var = val", "export var= val" y "export var=a val")
 	- [X] unset

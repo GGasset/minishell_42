@@ -8,7 +8,9 @@
 		"limits.h": "c",
 		"history.h": "c",
 		"types.h": "c",
-		"readline.h": "c"
+		"readline.h": "c",
+		"stdarg.h": "c",
+		"libft.h": "c"
 	},
 	"editor.insertSpaces": false
 }

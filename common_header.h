@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   common_header.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/05/15 19:28:26 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:04:03 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define COMMON_HEADER_H
 
 # include "libft.h"
+# include <stdio.h>
 # include <errno.h>
 # include <fcntl.h>
 # include <limits.h>
@@ -21,7 +22,6 @@
 # include <readline/readline.h>
 # include <signal.h>
 # include <stddef.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <sys/types.h>

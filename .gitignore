@@ -8,5 +8,4 @@ minishell.dSYM*
 minishell
 ola
 Pepe
-minishell_tester/
-minishell_tester
+./minishell_tester/

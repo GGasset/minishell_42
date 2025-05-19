@@ -19,6 +19,8 @@ char	*remove_outer_quotes(char *s, int free_s)
 	char	quote;
 	size_t	i;
 
+	if (!s)
+		return (0);
 	out = ft_calloc(1, 1);
 	ft_bzero(&tmp, 2);
 	quote = 0;

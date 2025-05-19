@@ -29,6 +29,7 @@ void	waiting_signal_handler(int sig)
 	if (sig == SIGINT)
 	{
 		printf("\n");
+		g_last_return_code = 127;
 	}
 }
 

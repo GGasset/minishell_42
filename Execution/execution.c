@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:57:44 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/14 12:53:15 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:43:08 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void	command(t_exe exe, t_raw_line raw, t_shell *shell)
 {
+	if (raw.rwcmds->err == 1)
+	{
+		free_raw_line(&raw, FALSE);
+		return ;
+	}
 	exe = prepare(raw, shell);
 	free_raw_line(&raw, FALSE);
 	if (exe.command_count == 1 && !is_builtin(exe.commands[0].argv[0]))

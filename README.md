@@ -6,7 +6,8 @@
 	- [X]  LEAK
 	- [X]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
 	- [X]  Sustituir "~" por home fuera de comillas, siempre que no este directamente precedido por una palabra le siga una palabra
-	- [ ]  Si hay un outffile sin permisos, ignorar el resto
+	- [X]  Redirecciones invalidas
+		- [X] Exit status
 - [X]  EJECUCION
   - [X] Ejecutar buil-in
 	- [X] Built-in de exit
@@ -16,6 +17,8 @@
   - [X] Setear exit status al ultimo comando ejecutado (El ultimo de la linea)
   - [X] Con aperturas recursivas de minishell, cerrarlas una a una, y no todas de una
   - [ ] Checkeo de errores
+	- [ ] Si llega un t_raw_cmd con flag err a 1 no ejecutar ese comando
+		- [ ] Tambien para un solo builtin
 	- [ ] Un checkeo de redundancia en command antes de ejecucion estaria muy guachi
 	- [X] Ejecutable invalido
 	- [X] Infile o Outfile invalido (Se imprime el error y no se ejecuta ese comando)
@@ -25,6 +28,7 @@
 	- [X] Ctrl + \
 		- [ ] Durante ejecucion
 		- [ ] Durante Lectura
+		- [ ] Exit status
 	- [X] Ctrl + C
 		- [X] Durante ejecucion
 		- [X] Durante Lectura
@@ -39,6 +43,7 @@
 	- [X] Add execution function
 	- [X] Add signal setup
 - [X]  BUILTINS
+	- [ ] Solo un builtin y redirecciones (salida o entrada)
 	- [ ] exit status
 	- [ ] argumentos invalidos
 	- [x] echo

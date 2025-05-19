@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:38 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/05/19 13:04:03 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:32:29 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ enum					e_operators
 	pipe_op = '|'
 };
 
-int						is_e_operator(int op);
-int						is_redirect_operator(int op);
-int						is_input_e_operator(int op);
-int						is_output_e_operator(int op);
+int		is_e_operator(int op);
+int		is_redirect_operator(int op);
+int		is_input_e_operator(int op);
+int		is_output_e_operator(int op);
 
 //* * Not used for pipes,
 // pipes will be created according to the number of commands
@@ -70,6 +70,7 @@ typedef struct t_raw_redirect
 // Input and output _redirect are nullable
 typedef struct s_raw_cmd
 {
+	int					err;
 	char				*file;
 	char				**argv;
 	t_raw_redirect		*input_redirect;
@@ -78,43 +79,43 @@ typedef struct s_raw_cmd
 
 typedef struct s_raw_line
 {
-	t_raw_cmd			*rwcmds;
-	size_t				len;
-}						t_raw_line;
+	t_raw_cmd	*rwcmds;
+	size_t		len;
+}				t_raw_line;
 
-void					free_raw_line(t_raw_line *line, int free_line);
+void	free_raw_line(t_raw_line *line, int free_line);
 
 // tmp_files are separated by '|' character
 typedef struct s_shell
 {
-	char				**envp;
-	char				*tmp_files;
-}						t_shell;
-void					remove_tmp_files(t_shell *shell);
+	char		**envp;
+	char		*tmp_files;
+}				t_shell;
+void	remove_tmp_files(t_shell *shell);
 
-int						file_exists(char *file_path);
-char					*get_from_path(char *filename, char *envp[]);
-char					*get_envp(char *key, char *envp[]);
+int		file_exists(char *file_path);
+char	*get_from_path(char *filename, char *envp[]);
+char	*get_envp(char *key, char *envp[]);
 
 // Checks for errors
 // accepts relative routes, with pwd in shell TODO
 // checks for missing pwd TODO
 // Creates directories TODO
-void					create_empty_file(char *path, t_shell *shell, int *err);
+void	create_empty_file(char *path, t_shell *shell, int trunc);
+int		get_access(char *path, int must_exist, int operator, int *out);
 
 // If has filename is set to 0, everything will be considered a directory name
-void					create_directory(char *path, int has_filename);
+void	create_directory(char *path, int has_filename);
 
 // If it fails to get HOME var, tries /home/$USER/, else returns 0
-char					*get_user_home(t_shell *shell, int add_slash);
-char					*get_pwd(t_shell *shell);
+char	*get_user_home(t_shell *shell, int add_slash);
+char	*get_pwd(t_shell *shell);
 
 // Signals
 
-void					prompt_signal_behaviour(void);
-void					child_signal_behaviour(void);
-void					waiting_signal_handler(int sig);
-void					heredoc_signal_handler(int sig);
-void					core_dump(int sig);
+void	prompt_signal_behaviour(void);
+void	child_signal_behaviour(void);
+void	waiting_signal_handler(int sig);
+void	heredoc_signal_handler(int sig);
 
 #endif

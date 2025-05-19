@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution_header.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:35:57 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/05/15 18:30:55 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:33:35 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ void				update_envp(t_shell *shell, char *var);
 void				free_execution_env(t_exe exe);
 void				exit_call(t_shell *s, t_raw_line *lines, t_exe *structure,
 						int code);
+void				core_dump(int sig);
+
 
 #endif

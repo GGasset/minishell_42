@@ -24,22 +24,22 @@ char	**argv_append(char **argv, char *s, int free_s)
 			TRUE);
 	len++;
 	if (out)
-		out[len - 2] = remove_outer_quotes(s, free_s);
+		out[len - 2] = ft_strdup_free(s, free_s);
 	return (out);
 }
 
 // i is the start of the word after the operator
 // just let the thing do the thing
 // free your stuff
-static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s, int *err)
+static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s)
 {
 	t_raw_redirect	**redirect;
 
-	if (!w)
+	if (!w || !is_e_operator(op))
 		return ;
-	if (is_input_e_operator(op))
+	if (is_input_e_operator(op) && !get_access(w, TRUE, op, &cmd->err))
 		redirect = &cmd->input_redirect;
-	else if (is_output_e_operator(op))
+	else if (is_output_e_operator(op) && !get_access(w, FALSE, op, &cmd->err))
 		redirect = &cmd->output_redirect;
 	else
 		return ;
@@ -53,17 +53,20 @@ static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s, int *err)
 		return ;
 	if (op == stdin_delimiter)
 		w = do_heredoc(w, s);
-	(*redirect)->file = remove_outer_quotes(w, op == stdin_delimiter);
+	(*redirect)->file = ft_strdup(w);
 	if (is_output_e_operator(op))
-		create_empty_file((*redirect)->file, s, err);
+		create_empty_file((*redirect)->file, s, op == stdout_redirect);
 	(*redirect)->type = op - (op == stdin_delimiter);
 }
 
 static void	set_file(t_raw_cmd *out, char *tmp_s, char current_op)
 {
+	int		contains_file;
+
 	if (tmp_s && !is_e_operator(current_op))
 	{
-		if (!out->argv)
+		contains_file = out->file != 0;
+		if (!contains_file)
 			out->file = remove_outer_quotes(tmp_s, FALSE);
 		out->argv = argv_append(out->argv, tmp_s, FALSE);
 	}
@@ -84,8 +87,9 @@ static t_raw_cmd	tokenize_cmd(char *cmd, int *err, t_shell *shell)
 	while (err && !*err)
 	{
 		tmp_s = shell_get_word(cmd, i, &operator);
+		tmp_s = remove_outer_quotes(tmp_s, TRUE);
 		*err = current_op && !tmp_s;
-		set_redirect(tmp_s, &out, current_op, shell, err);
+		set_redirect(tmp_s, &out, current_op, shell);
 		set_file(&out, tmp_s, current_op);
 		i = get_next_word_start_i(cmd, i);
 		free(tmp_s);

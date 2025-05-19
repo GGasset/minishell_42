@@ -12,7 +12,7 @@
 
 #include "common_header.h"
 
-void	create_empty_file(char *path, t_shell *shell, int *err)
+void	create_empty_file(char *path, t_shell *shell, int trunc)
 {
 	int	fd;
 
@@ -21,13 +21,41 @@ void	create_empty_file(char *path, t_shell *shell, int *err)
 	{
 		ft_putstr_fd(path, 2);
 		ft_putstr_fd(": Permission denied\n", 2);
+		g_last_return_code = 1;
 		return ;
 	}
-	fd = open(path, O_WRONLY | O_TRUNC | O_CREAT, 0666);
+	fd = open(path, O_WRONLY | (O_TRUNC && trunc) | O_CREAT, 0666);
 	if (fd == -1)
 	{
 		ft_putstr_fd("ERROR\n", 2);
 		return ;
 	}
 	close(fd);
+}
+
+int	get_access(char *path, int must_exist, int operator, int *out)
+{
+	int	output;
+	int permission;
+
+	if (operator == stdin_delimiter || (!must_exist || access(path, F_OK)))
+		return (0);
+	permission = R_OK * is_input_e_operator(operator);
+	permission += W_OK * is_output_e_operator(operator);
+	output = 0;
+	if ((must_exist && access(path, F_OK)) || access(path, permission))
+	{
+		output = 1;
+		if (out && *out)
+			return (output);
+		g_last_return_code = !(must_exist && access(path, F_OK));
+		if (out)
+			*out = 1;
+		ft_putstr_fd(path, 2);
+		if (must_exist && access(path, F_OK))
+			ft_putstr_fd(": No such file or directory\n", 2);
+		else
+			ft_putstr_fd(": Permission denied\n", 2);
+	}
+	return (output);
 }

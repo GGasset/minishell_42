@@ -54,7 +54,7 @@ static void	set_redirect(char *w, t_raw_cmd *cmd, int op, t_shell *s)
 	if (op == stdin_delimiter)
 		w = do_heredoc(w, s);
 	(*redirect)->file = ft_strdup(w);
-	if (is_output_e_operator(op))
+	if (is_output_e_operator(op) && !cmd->err)
 		create_empty_file((*redirect)->file, s, op == stdout_redirect);
 	(*redirect)->type = op - (op == stdin_delimiter);
 }

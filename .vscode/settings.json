@@ -7,7 +7,8 @@
 		"errno.h": "c",
 		"limits.h": "c",
 		"history.h": "c",
-		"types.h": "c"
+		"types.h": "c",
+		"readline.h": "c"
 	},
 	"editor.insertSpaces": false
 }

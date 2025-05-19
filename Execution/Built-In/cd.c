@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:14:16 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/15 19:37:24 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:47:15 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,10 @@ void	b_cd(t_exe exe, int j)
 		g_last_return_code = 1;
 	getcwd(old_cwd, PATH_MAX);
 	if (chdir(path) == -1)
+	{
 		printf("cd: %s\n", strerror(errno));
+		g_last_return_code = 1;
+	}
 	if (getcwd(cwd, PATH_MAX))
 	{
 		change_new_pwd(exe, cwd);

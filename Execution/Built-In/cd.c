@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:14:16 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/19 17:43:40 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:57:35 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	b_cd(t_exe exe, int j)
 	getcwd(old_cwd, PATH_MAX);
 	if (chdir(path) == -1)
 	{
-		printf("cd: %s\n", strerror(errno));
+		ft_printf_fd(2, "cd: %s\n", strerror(errno));
 		g_last_return_code = 1;
 	}
 	if (getcwd(cwd, PATH_MAX))

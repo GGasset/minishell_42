@@ -22,6 +22,21 @@ static void set_path(t_exe *c, t_raw_line r,  size_t i, t_shell *shell)
 		c->commands[i].path = get_from_path(r.rwcmds[i].file, shell->envp);
 }
 
+static void raw_cmd_prepare(t_exe *c, t_raw_line *r, t_shell *shell, size_t i)
+{
+	set_path(c, *r, i, shell);
+	c->commands[i].argv = ft_splitdup(r->rwcmds[i].argv);
+	c->commands[i].input_fd = STDIN_FILENO;
+	c->commands[i].output_fd = STDOUT_FILENO;
+	if (r->rwcmds[i].input_redirect)
+		c->commands[i].input_fd = open(r->rwcmds[i].input_redirect->file,
+				O_RDONLY);
+	if (r->rwcmds[i].output_redirect)
+		c->commands[i].output_fd = open(r->rwcmds[i].output_redirect->file,
+				O_RDWR | O_TRUNC, 0644);
+	c->commands[i].err = r->rwcmds[i].err;
+}
+
 t_exe	prepare(t_raw_line r, t_shell *shell)
 {
 	t_exe	c;
@@ -35,16 +50,7 @@ t_exe	prepare(t_raw_line r, t_shell *shell)
 		exit(EXIT_FAILURE);
 	while (i < r.len)
 	{
-		set_path(&c, r, i, shell);
-		c.commands[i].argv = ft_splitdup(r.rwcmds[i].argv);
-		c.commands[i].input_fd = STDIN_FILENO;
-		c.commands[i].output_fd = STDOUT_FILENO;
-		if (r.rwcmds[i].input_redirect)
-			c.commands[i].input_fd = open(r.rwcmds[i].input_redirect->file,
-					O_RDONLY);
-		if (r.rwcmds[i].output_redirect)
-			c.commands[i].output_fd = open(r.rwcmds[i].output_redirect->file,
-					O_RDWR | O_TRUNC, 0644);
+		raw_cmd_prepare(&c, &r, shell, i);
 		c.command_count++;
 		i++;
 	}

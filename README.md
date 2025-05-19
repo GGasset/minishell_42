@@ -1,9 +1,10 @@
 ## TO DO
 
 - [X]  Parsing
-	- [ ] <<cat cat
+	- [X] <<cat cat
 	- [X]  Funcion principal de parsing (Le pasas el input tal y como llega y sale parseado)
 	- [X]  Gestionar Heredoc
+		- [ ] LEAK
 	- [X]  LEAK
 	- [X]  ELIMINAR COMILLAS DE ARGV Y ARCHIVOS
 	- [X]  Sustituir "~" por home fuera de comillas, siempre que no este directamente precedido por una palabra le siga una palabra

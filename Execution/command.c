@@ -63,7 +63,7 @@ static void	e_exec(t_exe exe, int **pipes)
 		pid = fork();
 		if (pid < 0)
 			perror("Fork:");
-		else if (pid == 0)
+		else if (pid == 0 && !exe.commands[i].err)
 			e_child(&exe.commands[i], exe, pipes, i);
 		if (i > 0)
 			close(pipes[i - 1][0]);

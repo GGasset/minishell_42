@@ -14,14 +14,10 @@
 
 void	command(t_exe exe, t_raw_line raw, t_shell *shell)
 {
-	if (raw.rwcmds->err == 1)
-	{
-		free_raw_line(&raw, FALSE);
-		return ;
-	}
 	exe = prepare(raw, shell);
 	free_raw_line(&raw, FALSE);
-	if (exe.command_count == 1 && !is_builtin(exe.commands[0].argv[0]))
+	if (exe.command_count == 1 && !is_builtin(exe.commands[0].argv[0])
+		&& !exe.commands[0].err)
 		b_run(exe, 0);
 	else if (!(exe.command_count == 1 && !exe.commands[0].argv[0]))
 		e_run(exe);

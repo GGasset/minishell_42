@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:14:16 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/19 13:47:15 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:43:40 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,11 @@ void	b_cd(t_exe exe, int j)
 	char	cwd[PATH_MAX];
 	char	old_cwd[PATH_MAX];
 
+	if (exe.commands[j].argv[2])
+	{
+		ft_putstr_fd("cd: HOME not set\n", 2);
+		g_last_return_code = 1;
+	}
 	path = check_home(exe, j);
 	if (!path)
 		g_last_return_code = 1;

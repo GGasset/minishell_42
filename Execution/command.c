@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 12:02:04 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/15 19:33:53 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:38:16 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,12 @@ static void	e_exec(t_exe exe, int **pipes)
 	i = -1;
 	while (++i < exe.command_count)
 	{
+		if (exe.commands[i].err)
+			return ;
 		pid = fork();
 		if (pid < 0)
 			perror("Fork:");
-		else if (pid == 0 && !exe.commands[i].err)
+		else if (pid == 0)
 			e_child(&exe.commands[i], exe, pipes, i);
 		if (i > 0)
 			close(pipes[i - 1][0]);

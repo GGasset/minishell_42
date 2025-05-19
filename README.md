@@ -31,6 +31,7 @@
 	- [X] Ctrl + \
 		- [ ] Durante ejecucion
 		- [ ] Durante Lectura
+		- [ ] Exit status
 	- [X] Ctrl + C
 		- [X] Durante ejecucion
 		- [X] Durante Lectura

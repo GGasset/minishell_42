@@ -1,9 +1,7 @@
 ## TO DO
 
-- [ ] Bugs
-	- [ ] <<cat cat
-
 - [X]  Parsing
+	- [ ] <<cat cat
 	- [X]  Funcion principal de parsing (Le pasas el input tal y como llega y sale parseado)
 	- [X]  Gestionar Heredoc
 	- [X]  LEAK

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:27:10 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/14 12:56:18 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/15 19:37:52 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ void	b_export(t_exe exe, int j)
 			printf("%s\n", exe.shell->envp[i]);
 			i++;
 		}
-		return ;
+		g_last_return_code = 1;
 	}
 	i = 1;
 	while (exe.commands[j].argv[i])
 	{
 		if (!is_valid_identifier(exe.commands[j].argv[i]))
-			return ;
+			g_last_return_code = 1;
 		else
 			update_envp(exe.shell, exe.commands[j].argv[i]);
 		i++;

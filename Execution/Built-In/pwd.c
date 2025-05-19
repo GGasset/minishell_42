@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 23:56:24 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/14 12:56:24 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/15 19:37:55 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ int	b_pwd(void)
 	if (ft_strlen(pwd) > 0)
 		printf("%s\n", pwd);
 	else
-		return (1);
+		g_last_return_code = 1;
 	return (0);
 }

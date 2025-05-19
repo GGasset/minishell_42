@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/05/14 12:44:11 by apaz-pri         ###   ########.fr        #
+#    Updated: 2025/05/15 19:29:23 by apaz-pri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ UNAME := $(shell uname)
 libft_NAME=./libft/libft.a
 ARCHIVES= ${libft_NAME}
 
-O_FILES=signal_prep.o envp_search.o
+O_FILES=signal_prep2.o signal_prep.o envp_search.o
 
 
 PARSING_FUNCTIONALITY_O_FILES=shell_get_word.o ft_shell_replace.o ft_normalize_spaces.o shell_split.o heredoc.o

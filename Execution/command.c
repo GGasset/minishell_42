@@ -14,6 +14,8 @@
 
 static void	e_child(t_cmd *cmd, t_exe exe, int **pipes, size_t idx)
 {
+	if (cmd->err)
+		exit(0);
 	if (cmd->input_fd < 0 || cmd->output_fd < 0)
 	{
 		perror("File descriptor");
@@ -60,8 +62,6 @@ static void	e_exec(t_exe exe, int **pipes)
 	i = -1;
 	while (++i < exe.command_count)
 	{
-		if (exe.commands[i].err)
-			continue ;
 		pid = fork();
 		if (pid < 0)
 			perror("Fork:");

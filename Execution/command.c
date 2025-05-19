@@ -15,7 +15,7 @@
 static void	e_child(t_cmd *cmd, t_exe exe, int **pipes, size_t idx)
 {
 	if (cmd->err)
-		exit(0);
+		exit(1);
 	if (cmd->input_fd < 0 || cmd->output_fd < 0)
 	{
 		perror("File descriptor");

@@ -29,6 +29,7 @@ enum				e_builtin
 
 typedef struct s_cmd
 {
+	pid_t			pid;
 	int				err;
 	char			*path;
 	char			**argv;

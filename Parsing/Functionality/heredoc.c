@@ -47,7 +47,7 @@ char	*do_heredoc(char *delimiter, t_shell *shell)
 	char	*path;
 	int		fd;
 
-	path = ft_strdup(".heredoco");
+	path = ".heredoco";
 	if (access(path, F_OK) && !access(path, W_OK))
 		return (path);
 	if (!shell->tmp_files)

@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:59:24 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/14 13:52:35 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:10:24 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 static void set_path(t_exe *c, t_raw_line r,  size_t i, t_shell *shell)
 {
-	if (access(r.rwcmds[i].file, F_OK) == 0)
-	{
-		c->commands[i].path = ft_strdup(r.rwcmds[i].file);
-	}
-	else
-		c->commands[i].path = get_from_path(r.rwcmds[i].file, shell->envp);
+    if (ft_strchr(r.rwcmds[i].file, '/'))
+    {
+        if (access(r.rwcmds[i].file, F_OK) == 0)
+            c->commands[i].path = ft_strdup(r.rwcmds[i].file);
+        else
+            c->commands[i].path = NULL;
+    }
+    else
+        c->commands[i].path = get_from_path(r.rwcmds[i].file, shell->envp);
 }
 
 static void raw_cmd_prepare(t_exe *c, t_raw_line *r, t_shell *shell, size_t i)

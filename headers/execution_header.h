@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:35:57 by ggasset-          #+#    #+#             */
-/*   Updated: 2025/05/22 12:16:44 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:08:13 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,5 @@ void				exit_call(t_shell *s, t_raw_line *lines, t_exe *structure,
 void				core_dump(int sig);
 
 // * ERRORS *
-void 				c_error(t_exe exe);
+void 				c_error(t_exe exe, size_t i);
 #endif

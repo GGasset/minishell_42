@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 12:02:04 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/19 17:38:16 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/22 12:16:58 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ static void	e_child(t_cmd *cmd, t_exe exe, int **pipes, size_t idx)
 	{
 		if (execve(cmd->path, cmd->argv, exe.shell->envp))
 		{
-			perror("execve");
 			if (!cmd->path)
 				exit(127);
+			else
+				c_error(exe);
 			exit(errno);
 		}
 	}

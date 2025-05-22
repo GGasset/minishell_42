@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+         #
+#    By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/05/15 19:29:23 by apaz-pri         ###   ########.fr        #
+#    Updated: 2025/05/22 12:17:16 by apaz-pri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ O_FILES += ${BUILTIN_O_FILES}
 O_FILES += ${FUNCTIONALITY_O_FILES}
 
 BUILT_IN_O_FILES=cd.o echo.o env.o exit.o export.o pwd.o unset.o
-EXECUTION_O_FILES=execution.o built-in.o command.o pipes.o previusly.o
+EXECUTION_O_FILES=errors.o execution.o built-in.o command.o pipes.o previusly.o
 EXECUTION_O_FILES += $(addprefix Built-In/, ${BUILT_IN_O_FILES})
 O_FILES += $(addprefix Execution/, ${EXECUTION_O_FILES})
 

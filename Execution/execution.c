@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:57:44 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/22 14:11:14 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/22 23:16:39 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 void b_alone(t_exe exe, int j)
 {
-	int cp_in;
-
-	cp_in = dup(STDIN_FILENO);
-    if (exe.commands[j].input_fd != STDIN_FILENO)
-        dup2(exe.commands[j].input_fd, STDIN_FILENO);
-    if (exe.commands[j].output_fd != STDOUT_FILENO)
+    int og_stdout;
+	
+	og_stdout = dup(STDOUT_FILENO);
+    if (exe.commands[j].output_fd != STDOUT_FILENO && exe.commands[j].output_fd > 0)
         dup2(exe.commands[j].output_fd, STDOUT_FILENO);
     b_run(exe, j);
-    dup2(cp_in, STDIN_FILENO);
-    close(cp_in);
+    dup2(og_stdout, STDOUT_FILENO);
+    close(og_stdout);
 }
 	
 void	command(t_exe exe, t_raw_line raw, t_shell *shell)

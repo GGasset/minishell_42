@@ -22,10 +22,10 @@ static int	ft_choose(va_list args, char format, int fd)
 
 int	ft_printf_fd(int fd, char const *format, ...)
 {
-	va_list args;
-	int formatt;
-	int i;
-	int counter;
+	va_list	args;
+	int		formatt;
+	int		i;
+	int		counter;
 
 	i = -1;
 	counter = 0;

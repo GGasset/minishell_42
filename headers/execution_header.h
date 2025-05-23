@@ -75,5 +75,5 @@ void				exit_call(t_shell *s, t_raw_line *lines, t_exe *structure,
 void				core_dump(int sig);
 
 // * ERRORS *
-void 				c_error(t_exe exe, size_t i);
+void				c_error(t_exe exe, size_t i);
 #endif

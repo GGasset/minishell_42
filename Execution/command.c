@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 12:02:04 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/22 13:09:26 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/23 12:49:27 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static void	e_child(t_cmd *cmd, t_exe exe, int **pipes, size_t idx)
 	if (cmd->input_fd < 0 || cmd->output_fd < 0)
 	{
 		perror("File descriptor");
-		exit(1);
+		g_last_return_code = 1;
+		return ;
 	}
 	p_run(cmd, exe, pipes, idx);
 	if (is_builtin(cmd->argv[0]) == 0)

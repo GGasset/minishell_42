@@ -36,7 +36,7 @@ void	create_empty_file(char *path, t_shell *shell, int trunc)
 int	get_access(char *path, int must_exist, int operator, int *out)
 {
 	int	output;
-	int permission;
+	int	permission;
 
 	if (operator == stdin_delimiter || (!must_exist && access(path, F_OK)))
 		return (0);

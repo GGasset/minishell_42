@@ -12,12 +12,13 @@
 
 #include "execution_header.h"
 
-void	c_error(t_exe exe, size_t i)
+void	c_error(t_cmd *cmd, t_exe exe, size_t i)
 {
 	struct stat	fs;
 
-	stat(exe.commands[i].path, &fs);
-	if (errno == ENOENT)
+	if (cmd->path)
+		stat(exe.commands[i].path, &fs);
+	if (errno == ENOENT || !cmd->path)
 	{
 		ft_printf_fd(2, "mini: %s: command not found\n",
 			exe.commands[i].argv[0]);

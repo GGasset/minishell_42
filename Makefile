@@ -6,7 +6,7 @@
 #    By: apaz-pri <apaz-pri@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 12:49:28 by ggasset-          #+#    #+#              #
-#    Updated: 2025/05/22 12:17:16 by apaz-pri         ###   ########.fr        #
+#    Updated: 2025/05/26 12:16:19 by ggasset-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,10 @@ TEST_MAIN_O=test_main.o
 
 INCLUDE= -I . -I ./libft/ -I ./headers/
 
-CC_SECURITY_FLAGS= -Wall -Wextra #-fsanitize=address
+SHARED_FLAGS=#-fsanitize=address,undefined
+CC_SECURITY_FLAGS= ${SHARED_FLAGS} -Werror -Wall -Wextra
 CC_FLAGS= -g ${INCLUDE}
-LINKING_FLAGS= ${INCLUDE} -lreadline #-fsanitize=address
+LINKING_FLAGS= ${INCLUDE} ${SHARED_FLAGS} -lreadline
 
 ifeq ($(UNAME),Darwin)
 	INCLUDE += -I/usr/local/opt/readline/include
@@ -69,9 +70,6 @@ all: libft ${NAME}
 ${NAME}: ${MAIN_O} ${O_FILES} ${ARCHIVES}
 	@cc ${LINKING_FLAGS} -o ${NAME} ${MAIN_O} ${O_FILES} ${ARCHIVES}
 	@printf "\n$(IYellow)Executable: $(UYellow)%s$(IYellow) Created$(NC)\n" $@
-
-${TEST_NAME}: libft ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
-	@cc ${LINKING_FLAGS} -o ${TEST_NAME} ${TEST_MAIN_O} ${O_FILES} ${ARCHIVES}
 
 %.o: %.c
 	@len=$$(printf "%s" "$<" | wc -c); printf "$(IGreen)\rCompiling: $(UGreen)%*s$(NC) 🔨\033[K" "$$len" "$<"

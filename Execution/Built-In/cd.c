@@ -70,10 +70,11 @@ void	b_cd(t_exe exe, int j)
 	char	cwd[PATH_MAX];
 	char	old_cwd[PATH_MAX];
 
-	if (exe.commands[j].argv[2])
+	if (ft_get_split_count(exe.commands[j].argv) > 2)
 	{
-		ft_putstr_fd("cd: HOME not set\n", 2);
+		ft_putstr_fd("cd: too many arguments\n", 2);
 		g_last_return_code = 1;
+		return ;
 	}
 	path = check_home(exe, j);
 	if (!path)

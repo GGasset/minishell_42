@@ -30,12 +30,9 @@ static void	e_child(t_cmd *cmd, t_exe exe, int **pipes, size_t idx)
 	}
 	else
 	{
-		if (execve(cmd->path, cmd->argv, exe.shell->envp))
+		if (!cmd->path || execve(cmd->path, cmd->argv, exe.shell->envp))
 		{
-			if (!cmd->path)
-				exit(127);
-			else
-				c_error(exe, idx);
+			c_error(cmd, exe, idx);
 			exit(errno);
 		}
 	}

@@ -27,6 +27,12 @@ static void	set_path(t_exe *c, t_raw_line r, size_t i, t_shell *shell)
 
 static void	raw_cmd_prepare(t_exe *c, t_raw_line *r, t_shell *shell, size_t i)
 {
+	size_t	output_flag;
+
+	output_flag = O_TRUNC;
+	if (r->rwcmds[i].output_redirect
+		&& r->rwcmds[i].output_redirect->type == stdout_append)
+		output_flag = O_APPEND;
 	set_path(c, *r, i, shell);
 	c->commands[i].argv = ft_splitdup(r->rwcmds[i].argv);
 	c->commands[i].input_fd = STDIN_FILENO;
@@ -36,7 +42,7 @@ static void	raw_cmd_prepare(t_exe *c, t_raw_line *r, t_shell *shell, size_t i)
 				O_RDONLY);
 	if (r->rwcmds[i].output_redirect)
 		c->commands[i].output_fd = open(r->rwcmds[i].output_redirect->file,
-				O_RDWR | O_TRUNC, 0644);
+				O_RDWR | output_flag, 0644);
 	c->commands[i].err = r->rwcmds[i].err;
 }
 

@@ -6,7 +6,7 @@
 /*   By: apaz-pri <apaz-pri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:27:10 by apaz-pri          #+#    #+#             */
-/*   Updated: 2025/05/15 19:37:52 by apaz-pri         ###   ########.fr       */
+/*   Updated: 2025/05/29 14:17:38 by apaz-pri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,33 @@ void	update_envp(t_shell *shell, char *var)
 	shell->envp[i + 1] = NULL;
 }
 
+static void	print_sort(t_exe exe)
+{
+	int	*index;
+	int	i;
+	int	j;
+	int	counter;
+
+	i = -1;
+	index = ft_calloc(ft_get_split_count(exe.shell->envp), sizeof(int));
+	while (exe.shell->envp[++i])
+	{
+		counter = 0;
+		j = -1;
+		while (exe.shell->envp[++j])
+			if (ft_strcmp(exe.shell->envp[i], exe.shell->envp[j]) > 0)
+				counter++;
+		index[counter] = i;
+	}
+	i = 0;
+	while (i < (int)ft_get_split_count(exe.shell->envp))
+	{
+		printf("%s\n", exe.shell->envp[index[i]]);
+		i++;
+	}
+	free(index);
+}
+
 void	b_export(t_exe exe, int j)
 {
 	int	i;
@@ -67,12 +94,8 @@ void	b_export(t_exe exe, int j)
 	if (!exe.commands[j].argv[1])
 	{
 		i = 0;
-		while (exe.shell->envp[i] != NULL)
-		{
-			printf("%s\n", exe.shell->envp[i]);
-			i++;
-		}
-		g_last_return_code = 1;
+		print_sort(exe);
+		g_last_return_code = 0;
 	}
 	i = 1;
 	while (exe.commands[j].argv[i])

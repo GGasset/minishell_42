@@ -14,15 +14,10 @@
 
 void	b_alone(t_exe exe, int j)
 {
-	int	og_stdout;
-
-	og_stdout = dup(STDOUT_FILENO);
 	if (exe.commands[j].output_fd != STDOUT_FILENO
 		&& exe.commands[j].output_fd > 0)
 		dup2(exe.commands[j].output_fd, STDOUT_FILENO);
 	b_run(exe, j);
-	dup2(og_stdout, STDOUT_FILENO);
-	close(og_stdout);
 }
 
 void	command(t_exe exe, t_raw_line raw, t_shell *shell)

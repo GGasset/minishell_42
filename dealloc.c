@@ -82,8 +82,5 @@ void	exit_call(t_shell *s, t_raw_line *lines, t_exe *structure, int code)
 	if (s)
 		ft_free_splitted(s->envp);
 	rl_clear_history();
-	close(0);
-	close(1);
-	close(2);
 	exit(code);
 }

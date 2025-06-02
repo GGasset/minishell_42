@@ -34,7 +34,8 @@ static size_t	get_next_dollar(char *s, size_t start)
 	while (s && s[i])
 	{
 		handle_quotes(s[i], &quotes);
-		if (s[i] == '$' && quotes != '\'' && is_valid_env_char(s[i + 1]))
+		if (s[i] == '$' && quotes != '\'' && is_valid_env_char(s[i + 1])
+			&& ((s[i + 1] == '?' && ft_isspace(s[i + 2])) || s[i + 1] != '?'))
 			return (i - start + 1);
 		i++;
 	}

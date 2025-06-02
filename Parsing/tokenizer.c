@@ -67,7 +67,7 @@ static void	set_file(t_raw_cmd *out, char *tmp_s, char current_op)
 	{
 		contains_file = out->file != 0;
 		if (!contains_file)
-			out->file = remove_outer_quotes(tmp_s, FALSE);
+			out->file = ft_strdup_free(tmp_s, FALSE);
 		out->argv = argv_append(out->argv, tmp_s, FALSE);
 	}
 }

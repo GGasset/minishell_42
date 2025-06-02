@@ -86,9 +86,9 @@ static t_raw_cmd	tokenize_cmd(char *cmd, int *err, t_shell *shell)
 	i = 0;
 	while (err && !*err)
 	{
-		tmp_s = shell_get_word(cmd, i, &operator);
+		tmp_s = shell_get_word(cmd, i, &operator, err);
 		tmp_s = remove_outer_quotes(tmp_s, TRUE);
-		*err = current_op && !tmp_s;
+		*err = *err || (current_op && !tmp_s);
 		set_redirect(tmp_s, &out, current_op, shell);
 		set_file(&out, tmp_s, current_op);
 		i = get_next_word_start_i(cmd, i);

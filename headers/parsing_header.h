@@ -92,7 +92,7 @@ int				check_invalid_quotes(char *s);
  # Memory management
 * Returns malloc'ed pointer
 */
-char			*shell_get_word(char *s, size_t start, char *delimiter);
+char			*shell_get_word(char *s, size_t i, char *delimiter, int *er);
 
 /*
 * # Behaviour

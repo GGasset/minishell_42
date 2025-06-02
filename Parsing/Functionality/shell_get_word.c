@@ -12,11 +12,12 @@
 
 #include "parsing_header.h"
 
-static char	set_delimiter(char *s, size_t start, size_t len)
+static char	set_delimiter(char *s, size_t start, size_t len, int *err)
 {
 	char	out;
 	size_t	i;
 
+	*err = *err;
 	i = start + len;
 	if (s[i] && is_word_delimiter(s[i]) && is_word_delimiter(s[i + 1]))
 	{
@@ -28,6 +29,8 @@ static char	set_delimiter(char *s, size_t start, size_t len)
 		i++;
 		if (s[i] == out && is_redirect_operator(s[i]))
 			out++;
+		if (is_redirect_operator(s[i + 1]))
+			*err = 1;
 		return (out);
 	}
 	else
@@ -70,27 +73,27 @@ size_t	get_next_word_start_i(char *s, size_t start)
 	return (start);
 }
 
-char	*shell_get_word(char *s, size_t start, char *delimiter)
+char	*shell_get_word(char *s, size_t i, char *delimiter, int *er)
 {
 	char	quote;
 	size_t	len;
 
 	if (!s)
 		return (0);
-	while (ft_isspace(s[start]))
-		start++;
-	quote = get_quote_at_point(s, start);
+	while (ft_isspace(s[i]))
+		i++;
+	quote = get_quote_at_point(s, i);
 	len = 0;
-	while (quote || !is_word_delimiter(s[start + len]))
+	while (quote || !is_word_delimiter(s[i + len]))
 	{
-		if (!s[start + len])
+		if (!s[i + len])
 			break ;
-		handle_quotes(s[start + len], &quote);
+		handle_quotes(s[i + len], &quote);
 		len++;
 	}
 	if (delimiter)
-		*delimiter = set_delimiter(s, start, len);
+		*delimiter = set_delimiter(s, i, len, er);
 	if (!len)
 		return (0);
-	return (ft_substr(s, start, len));
+	return (ft_substr(s, i, len));
 }
